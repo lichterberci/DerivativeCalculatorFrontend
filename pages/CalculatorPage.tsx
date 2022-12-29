@@ -4,7 +4,7 @@ export default function CalculatorPage () {
 
     return (<>
 
-        This is a calculator, believe me!
+        <p>This is a calculator, believe me!</p>
 
     </>);
 };
