@@ -1,6 +1,5 @@
-
-
 .myContainer{
+    position:relative;
     max-width:1240px;
     width:100%;
     margin-left:auto;
@@ -15,10 +14,34 @@
 }
 
 .inputHolder{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    width:90%;
+    max-width: 600px;
+}
 
+.inputHolder > button{
+    margin-left:50px;
 }
 
 .errorText {
-    color: red;
+    color: blue;
     font-size: 1.2rem;
+}
+
+.title{
+    text-align:center;
+}
+
+.derivative {
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.solutionWrapper{
+    width:600px;
+    overflow-x: auto;
 }
