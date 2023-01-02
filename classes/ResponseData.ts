@@ -1,17 +1,17 @@
-import { StepDescription } from "./StepDescription";
+import { IStepDescription } from "./StepDescription";
 
-export interface SolutionDataNullable {
+export interface ISolutionDataNullable {
     inputAsLatex: string | null;
     simplifiedInputAsLatex: string | null;
     outputAsLatex: string | null;
     stepsAsLatex: (string | null)[] | null;
-    stepDescriptions: (StepDescription | null)[] | null;
+    stepDescriptions: (IStepDescription | null)[] | null;
 }
 
-export interface SolutionData {
+export interface ISolutionData {
     inputAsLatex: string;
     simplifiedInputAsLatex: string;
     outputAsLatex: string;
     stepsAsLatex: string[];
-    stepDescriptions: (StepDescription | null)[];
+    stepDescriptions: (IStepDescription | null)[];
 }

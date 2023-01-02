@@ -1,0 +1,24 @@
+
+
+.myContainer{
+    max-width:1240px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+.inputHolder{
+
+}
+
+.errorText {
+    color: red;
+    font-size: 1.2rem;
+}

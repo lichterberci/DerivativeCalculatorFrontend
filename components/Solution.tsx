@@ -1,8 +1,11 @@
 import MathJax from "better-react-mathjax/MathJax";
-import { SolutionData } from "../classes/ResponseData";
+import React from "react";
+import { ISolutionData } from "../classes/ResponseData";
 import SolutionStep from "./SolutionStep";
 
-export default function Solution (data: SolutionData | null): JSX.Element {
+export default function Solution (props: { data: ISolutionData | null }): JSX.Element {
+
+    const { data } = props;
 
     if (data == null)
         return <></>
@@ -10,20 +13,18 @@ export default function Solution (data: SolutionData | null): JSX.Element {
     return (
         <div className="solution-wrapper">
             <div className="input-output-latex">
-                <MathJax> 
-                    $$ {data.simplifiedInputAsLatex} = {data.outputAsLatex} $$
+                <MathJax dynamic> 
+                    { `$$ ${data.simplifiedInputAsLatex} $$` }
                 </MathJax>
             </div>
             <ul className="step-list">
             {
-                data.stepsAsLatex.map((step, i) => 
+                data.stepsAsLatex.map((stepAsLatex: string, i: number) => 
                     <li key={i}>
-                    {
-                        SolutionStep(
-                            step, 
-                            i < data.stepDescriptions.length ? data.stepDescriptions[i] : null
-                        )
-                    }
+                        <SolutionStep
+                            stepAsLatex = {stepAsLatex}
+                            stepDescription = {i < data.stepDescriptions.length ? data.stepDescriptions[i] : null}
+                        />
                     </li>
                 )   
             }

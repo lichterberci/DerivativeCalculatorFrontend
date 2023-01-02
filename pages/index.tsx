@@ -1,11 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
 import { MathJaxContext } from 'better-react-mathjax'
 
 import CalculatorPage from './CalculatorPage'
 import MathJaxConfig from "../mathjax.config.json"
+import { GenerateExercise } from '../scripts/QueryBackend'
+import DifficultyLevel from '../classes/DifficultyLevel'
+import ExercisePage from './ExercisePage.'
 
 export default function Home() {
   return (
@@ -16,9 +18,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main>
         <MathJaxContext version={3} config={MathJaxConfig}>
-          <CalculatorPage />
+          <ExercisePage/>
+          {/* <CalculatorPage/> */}
         </MathJaxContext>
       </main>
     </>
