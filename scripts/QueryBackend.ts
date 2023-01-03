@@ -1,4 +1,4 @@
-import DifficultyLevel, { GetDifficultyLevelString } from "../classes/DifficultyLevel";
+import DifficultyLevel from "../classes/DifficultyLevel";
 import type { ISolutionData, ISolutionDataNullable } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
 import ValidateResponse from "./ValidateResponse";

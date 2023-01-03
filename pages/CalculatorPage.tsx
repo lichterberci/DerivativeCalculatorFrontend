@@ -1,11 +1,10 @@
 import { MathJaxContext } from "better-react-mathjax";
-import { setLazyProp } from "next/dist/server/api-utils";
 import {useRef, useState} from "react";
 import { ISolutionData } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
 import Solution from "../components/Solution";
 import { DifferentiateInput } from "../scripts/QueryBackend";
-import styles from "../styles/calculatorPage.module.css"
+import styles from "../styles/CalculatorPage.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 
 export default function CalculatorPage (): JSX.Element {
