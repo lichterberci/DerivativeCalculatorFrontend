@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    "GTAG_KEY" : "G-KEDCLTLY4G"
+    "GTAG_KEY" : "G-99397P9H1K"
   }
 }
 
