@@ -7,12 +7,18 @@ const API_URL = process.env.API_URL ?? "https://derivativecalculatorapi.azureweb
 
 export async function DifferentiateInput (input: string): Promise<ISolutionData | IResponseError> {
 
-    const URL = `${API_URL}/differentiate/${input}`;
+    const URL = `${API_URL}/differentiate/`;
 
     let response: Response;
 
     try {
-        response = await fetch(URL);
+        response = await fetch(URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: `"${input}"`
+        });
     } catch (e: any) {
         console.error(e.message);
         throw e;
