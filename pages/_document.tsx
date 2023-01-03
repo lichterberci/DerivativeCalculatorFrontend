@@ -23,6 +23,7 @@ const navBarItems: INavbarItemData[] = [
 export default function Document() {
 	return (
 		<Html lang="en">
+			<Head />
 			<body>
 				<Navbar items={navBarItems} />
 				<Main />

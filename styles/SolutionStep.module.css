@@ -7,6 +7,6 @@
 }
 
 .stepHover:hover{
-    font-size:1.05rem;
-    transition: 1s;
+    font-size:1.03rem;
+    transition: 0.2s;
 }

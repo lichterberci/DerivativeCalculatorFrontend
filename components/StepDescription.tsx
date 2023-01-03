@@ -21,19 +21,15 @@ export default function StepDescription (props: { stepDescription: IStepDescript
                     { `$$ f\\left(x\\right) = ${ stepDescription.fxAsLatex } $$` }
                 </MathJax>
             </div>
-            <>
             {
-                (() => {
-                if (stepDescription.gxAsLatex != null) {
-                    <div className="step-description-gx">
-                        <MathJax dynamic>
-                            { `$$ g\\left(x\\right) = ${ stepDescription.gxAsLatex } $$` }
-                        </MathJax>
-                    </div>
-                }
-                })()
+                stepDescription.gxAsLatex != null
+                &&
+                <div className="step-description-gx">
+                    <MathJax dynamic>
+                        { `$$ g\\left(x\\right) = ${ stepDescription.gxAsLatex } $$` }
+                    </MathJax>
+                </div>
             }
-            </>
         </div>
     );
 }
