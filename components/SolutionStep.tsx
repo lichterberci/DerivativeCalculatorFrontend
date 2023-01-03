@@ -5,9 +5,16 @@ import StepDescription from "./StepDescription";
 import styles from "../styles/SolutionStep.module.css";
 import classnames from "classnames";
 
-export default function SolutionStep (props: { stepAsLatex: string, stepDescription: IStepDescription | null }): JSX.Element {
+export default function SolutionStep (
+    props: { 
+        stepAsLatex: string, 
+        stepDescription: IStepDescription | null, 
+        varToDiff: string 
+    }
+): JSX.Element 
+{
     
-    const { stepAsLatex, stepDescription } = props;
+    const { stepAsLatex, stepDescription, varToDiff } = props;
     
     const [isShowingDescription, setIsShowingDescription] = useState<boolean>(false);
 
@@ -24,7 +31,7 @@ export default function SolutionStep (props: { stepAsLatex: string, stepDescript
                 </MathJax>
             </div>
             {
-                isShowingDescription && <StepDescription stepDescription={stepDescription} />
+                isShowingDescription && <StepDescription stepDescription={stepDescription} varToDiff={varToDiff} />
             }
         </div>
     );

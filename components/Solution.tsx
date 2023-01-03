@@ -29,6 +29,7 @@ export default function Solution (props: { data: ISolutionData | null }): JSX.El
                             <SolutionStep
                                 stepAsLatex = {stepAsLatex}
                                 stepDescription = {i < data.stepDescriptions.length ? data.stepDescriptions[i] : null}
+                                varToDiff = {data.varToDiff}
                             />
                         </li>
                     )

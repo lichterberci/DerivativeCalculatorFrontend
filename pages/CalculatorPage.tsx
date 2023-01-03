@@ -7,20 +7,37 @@ import { DifferentiateInput } from "../scripts/QueryBackend";
 import styles from "../styles/CalculatorPage.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 
-export default function CalculatorPage (): JSX.Element {
+let fetchAbortController = new AbortController();
+let fetchAbortSignal = fetchAbortController.signal;
 
+export default function CalculatorPage (): JSX.Element {
+    
     const inputRef = useRef("");
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const QueryDifferentiationAndUpdateUI = async () => {
+
+        if (isLoading) {
+            fetchAbortController.abort();
+            fetchAbortController = new AbortController();
+            fetchAbortSignal = fetchAbortController.signal;
+        }
 
         if (errorText != null)
             await setErrorText(null);
 
-        const data: ISolutionData | IResponseError = await DifferentiateInput(inputRef.current);
-        
+        await setIsLoading(true);
+
+        const data: ISolutionData | IResponseError = await DifferentiateInput(inputRef.current, fetchAbortSignal);
+
+        setIsLoading(false);
+
         if ("type" in data && "message" in data) { // error
+
+            if (data.type == "ABORT ERROR")
+                return;
 
             setErrorText(`${data.message}`);
             setSolutionData(null);

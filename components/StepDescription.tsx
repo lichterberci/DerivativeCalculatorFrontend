@@ -1,35 +1,30 @@
 import { MathJax } from "better-react-mathjax";
 import { IStepDescription } from "../classes/StepDescription";
+import styles from "../styles/StepDescription.module.css"
 
-export default function StepDescription (props: { stepDescription: IStepDescription | null }): JSX.Element {
+export default function StepDescription (props: { stepDescription: IStepDescription | null, varToDiff: string }): JSX.Element {
 
-    const { stepDescription } = props;
+    const { stepDescription, varToDiff } = props;
 
     if (stepDescription === null) {
         return (<></>);
     }
 
     return (
-        <div className="step-description">
+        <div className={styles.descriptionWrapper}>
             <div className="step-description-rule">
-                <MathJax dynamic>
-                    { `$$ ${ stepDescription.ruleNameAsLatex } $$` }
+                <MathJax dynamic inline>
+                    { `Szabály: \\( ${ stepDescription.ruleNameAsLatex } \\)` }
                 </MathJax>
             </div>
-            <div className="step-description-fx">
-                <MathJax dynamic>
-                    { `$$ f\\left(x\\right) = ${ stepDescription.fxAsLatex } $$` }
+            <div className={styles.fxAndGx}>
+                
+                <MathJax dynamic inline>
+                    { ` Behelyettesítés: \\( f\\left(${varToDiff}\\right) = ${ stepDescription.fxAsLatex } \\) ${(
+                        stepDescription.gxAsLatex != null ? ` és \\( g\\left(${varToDiff}\\right) = ${ stepDescription.gxAsLatex } \\)` : ""
+                    )}` }
                 </MathJax>
             </div>
-            {
-                stepDescription.gxAsLatex != null
-                &&
-                <div className="step-description-gx">
-                    <MathJax dynamic>
-                        { `$$ g\\left(x\\right) = ${ stepDescription.gxAsLatex } $$` }
-                    </MathJax>
-                </div>
-            }
         </div>
     );
 }

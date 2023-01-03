@@ -1,0 +1,10 @@
+.descriptionWrapper {
+
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45em;
+
+}

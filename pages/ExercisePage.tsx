@@ -7,24 +7,42 @@ import Solution from "../components/Solution";
 import { GenerateExercise } from "../scripts/QueryBackend";
 import MathJaxConfig from "../mathjax.config.json"
 
+let fetchAbortController = new AbortController();
+let fetchAbortSignal = fetchAbortController.signal;
+
 export default function ExercisePage (): JSX.Element {
 
     const [showSolution, setShowSolution] = useState<boolean>(false);
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const selectedLevel = useRef<DifficultyLevel>("MEDIUM");
 
     const GenerateExerciseAndUpdateUI = async () => {
 
+        if (isLoading) {
+            fetchAbortController.abort();
+            fetchAbortController = new AbortController();
+            fetchAbortSignal = fetchAbortController.signal;
+        }
+
         if (errorText != null)
             await setErrorText(null);
 
+        await setIsLoading(true);
+
         const level = selectedLevel.current;
 
-        const result: ISolutionData | IResponseError = await GenerateExercise(level);
+        const result: ISolutionData | IResponseError = await GenerateExercise(level, fetchAbortSignal);
+
+        setIsLoading(false);
 
         if ("type" in result && "message" in result) { // error
+
+            if (result.type == "ABORT ERROR")
+                return;
+
             setErrorText(result.message);
             setSolutionData(null);
             return;

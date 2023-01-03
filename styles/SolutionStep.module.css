@@ -1,5 +1,5 @@
 .stepHolder{
-    font-size:1rem
+    font-size: 1.2rem
 }
 
 .stepHover{
@@ -7,6 +7,6 @@
 }
 
 .stepHover:hover{
-    font-size:1.03rem;
+    font-size: 1.3rem;
     transition: 0.2s;
 }
