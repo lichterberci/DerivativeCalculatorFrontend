@@ -1,0 +1,28 @@
+.stepList{
+    list-style: none;
+    padding:0
+}
+
+.solutionWrapper{
+    margin-top:50px;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    position: relative;
+    width: fit-content !important;
+    background:linear-gradient(to right, #4A00E0, #8E2DE2);
+    border:none;
+    color:white;
+    font-weight: lighter;
+    border-radius: 8px;
+    padding:6px 10px;
+    cursor:pointer;
+    transition:0.1s;
+    margin-top:50px
+}
+
