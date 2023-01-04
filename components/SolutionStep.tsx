@@ -21,12 +21,12 @@ export default function SolutionStep (
     return (
         <div 
             className={[styles.stepHolder, stepDescription != null ? styles.stepHover : ""].join(" ")}
-            // onMouseEnter={() => setIsShowingDescription(true)}
-            // onMouseLeave={() => setIsShowingDescription(false)}
             onClick={() => setIsShowingDescription(!isShowingDescription)}
         >
-            <div className="step-latex">
-                <MathJax dynamic>
+            <div className={styles.stepLatex}>
+                <MathJax  
+                    className={[styles.stepMathJax, stepDescription != null ? "" : styles.stepMathJaxLast].join(" ")}
+                    dynamic>
                     { `$$ ${stepAsLatex} $$` }
                 </MathJax>
             </div>

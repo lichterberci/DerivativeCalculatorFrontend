@@ -55,6 +55,7 @@ export default function CalculatorPage (): JSX.Element {
             <div className={styles.myContainer}>
                 <span className={styles.inputHolder}>
                     <input 
+                        className={styles.input}
                         type="text" 
                         placeholder="sin(x)" 
                         onChange={e => inputRef.current = e.target.value}
@@ -64,7 +65,7 @@ export default function CalculatorPage (): JSX.Element {
                         }}
                     />
 
-                    <button onClick={QueryDifferentiationAndUpdateUI}>
+                    <button className={styles.button} onClick={QueryDifferentiationAndUpdateUI}>
                         Differentiate
                     </button>
                 </span>
