@@ -81,7 +81,11 @@ export default function CalculatorPage (): JSX.Element {
                 </div>
 
                 <div className={styles.solutionWrapper}>
+                {
+                    solutionData != null && isLoading == false
+                    &&
                     <Solution data={solutionData}/>
+                }
                 </div>
             </div>
         </MathJaxContext>

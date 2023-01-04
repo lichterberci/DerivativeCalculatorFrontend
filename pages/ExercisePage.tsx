@@ -85,7 +85,7 @@ export default function ExercisePage (): JSX.Element {
                 }
             </div>
             {
-                showSolution == false && solutionData != null
+                showSolution == false && solutionData != null && isLoading == false
                 &&
                 <div>
                     <MathJax dynamic>
@@ -95,7 +95,7 @@ export default function ExercisePage (): JSX.Element {
                 </div>
             }   
             {
-                showSolution
+                showSolution && isLoading == false
                 &&
                 <div className="solution-wrapper">
                     <Solution data={solutionData}/>

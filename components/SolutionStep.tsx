@@ -1,5 +1,5 @@
 import MathJax from "better-react-mathjax/MathJax/MathJax";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IStepDescription } from "../classes/StepDescription";
 import StepDescription from "./StepDescription";
 import styles from "../styles/SolutionStep.module.css";
@@ -17,6 +17,13 @@ export default function SolutionStep (
     const { stepAsLatex, stepDescription, varToDiff } = props;
     
     const [isShowingDescription, setIsShowingDescription] = useState<boolean>(false);
+
+    // whenever the data changes, we close the step
+    useEffect(() => {
+
+      setIsShowingDescription(false);
+
+    }, [props])
 
     return (
         <div 
