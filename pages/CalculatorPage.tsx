@@ -1,11 +1,14 @@
 import { MathJaxContext } from "better-react-mathjax";
 import {useRef, useState} from "react";
+import Image from "next/image"
+
 import { ISolutionData } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
 import Solution from "../components/Solution";
 import { DifferentiateInput } from "../scripts/QueryBackend";
 import styles from "../styles/CalculatorPage.module.css"
 import MathJaxConfig from "../mathjax.config.json"
+import LoadingAnim from "../public/LoadingAnim.gif"
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
@@ -82,9 +85,17 @@ export default function CalculatorPage (): JSX.Element {
 
                 <div className={styles.solutionWrapper}>
                 {
-                    solutionData != null && isLoading == false
-                    &&
-                    <Solution data={solutionData}/>
+                    (() => {
+                    if (isLoading == false) {
+                        if (solutionData != null)
+                            return <Solution data={solutionData}/>
+                        else // error message is displayed, so we don't have to do anything here
+                            return <></>
+                    } 
+                    else { // display loading anim
+                        return <Image alt="Loading animation" src={LoadingAnim} width={100} height={100}/>
+                    }
+                    })()
                 }
                 </div>
             </div>

@@ -1,11 +1,14 @@
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { ChangeEvent, DetailedHTMLProps, SelectHTMLAttributes, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
+import Image from "next/image"
+
 import DifficultyLevel from "../classes/DifficultyLevel";
 import { ISolutionData } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
 import Solution from "../components/Solution";
 import { GenerateExercise } from "../scripts/QueryBackend";
 import MathJaxConfig from "../mathjax.config.json"
+import LoadingAnim from "../public/LoadingAnim.gif"
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
@@ -95,11 +98,17 @@ export default function ExercisePage (): JSX.Element {
                 </div>
             }   
             {
-                showSolution && isLoading == false
-                &&
-                <div className="solution-wrapper">
-                    <Solution data={solutionData}/>
-                </div>
+                (() => {
+                    if (isLoading == false) {
+                        if (solutionData != null)
+                            return <Solution data={solutionData}/>
+                        else // error message is displayed, so we don't have to do anything here
+                            return <></>
+                    } 
+                    else { // display loading anim
+                        return <Image alt="Loading animation" src={LoadingAnim} width={100} height={100}/>
+                    }
+                })()
             }
         </MathJaxContext>
     </>);

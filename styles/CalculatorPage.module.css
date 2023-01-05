@@ -82,6 +82,7 @@
 }
 
 .solutionWrapper{
-    width:600px;
-    overflow-x: auto;
+    width: 600px;
+    
+    /* overflow-x: auto; */
 }
