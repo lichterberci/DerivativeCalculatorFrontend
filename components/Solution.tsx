@@ -17,7 +17,7 @@ export default function Solution (props: { data: ISolutionData | null }): JSX.El
         <div className={styles.solutionWrapper}>
             <div className={styles.solutionWrapperInner}>
                 <div className="input-output-latex">
-                    <MathJax dynamic> 
+                    <MathJax dynamic className={styles.inputOutputMathJax}> 
                         { `$$ ${data.simplifiedInputAsLatex} = ${data.outputAsLatex} $$` }
                     </MathJax>
                 </div>
@@ -32,6 +32,7 @@ export default function Solution (props: { data: ISolutionData | null }): JSX.El
                                     stepAsLatex = {stepAsLatex}
                                     stepDescription = {i < data.stepDescriptions.length ? data.stepDescriptions[i] : null}
                                     varToDiff = {data.varToDiff}
+                                    isLast = {i == data.stepsAsLatex.length - 1}
                                 />
                             </li>
                         )

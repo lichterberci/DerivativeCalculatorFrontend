@@ -24,7 +24,7 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head />
-			<body>
+			<body style={{width: "100%", height: "100%"}}>
 				<Navbar items={navBarItems} />
 				<Main />
 				<NextScript />

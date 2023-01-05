@@ -3,18 +3,18 @@ import { useEffect, useState } from "react";
 import { IStepDescription } from "../classes/StepDescription";
 import StepDescription from "./StepDescription";
 import styles from "../styles/SolutionStep.module.css";
-import classnames from "classnames";
 
 export default function SolutionStep (
     props: { 
         stepAsLatex: string, 
         stepDescription: IStepDescription | null, 
-        varToDiff: string 
+        varToDiff: string,
+        isLast: bool
     }
 ): JSX.Element 
 {
     
-    const { stepAsLatex, stepDescription, varToDiff } = props;
+    const { stepAsLatex, stepDescription, varToDiff, isLast } = props;
     
     const [isShowingDescription, setIsShowingDescription] = useState<boolean>(false);
 
@@ -32,7 +32,7 @@ export default function SolutionStep (
         >
             <div className={styles.stepLatex}>
                 <MathJax  
-                    className={[styles.stepMathJax, stepDescription != null ? "" : styles.stepMathJaxLast].join(" ")}
+                    className={[styles.stepMathJax, isLast ? styles.stepMathJaxLast : "" ].join(" ")}
                     dynamic>
                     { `$$ ${stepAsLatex} $$` }
                 </MathJax>
