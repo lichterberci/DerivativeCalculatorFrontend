@@ -5,7 +5,15 @@ import StepDescription from "./StepDescription";
 import styles from "../styles/SolutionStep.module.css";
 import classnames from "classnames";
 
-export default function SolutionStep (props: { stepAsLatex: string, stepDescription: IStepDescription | null }): JSX.Element {
+export default function SolutionStep (
+    props: { 
+        stepAsLatex: string, 
+        stepDescription: IStepDescription | null, 
+        varToDiff: string,
+        isLast: boolean
+    }
+): JSX.Element 
+{
     
     const { stepAsLatex, stepDescription } = props;
     
