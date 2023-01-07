@@ -9,7 +9,7 @@ export default function SolutionStep (
         stepAsLatex: string, 
         stepDescription: IStepDescription | null, 
         varToDiff: string,
-        isLast: bool
+        isLast: boolean
     }
 ): JSX.Element 
 {
