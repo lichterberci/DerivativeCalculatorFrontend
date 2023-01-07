@@ -6,7 +6,7 @@ import { ISolutionData } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
 import Solution from "../components/Solution";
 import { DifferentiateInput } from "../scripts/QueryBackend";
-import styles from "../styles/CalculatorPage.module.css"
+import styles from "../styles/calculator.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
 

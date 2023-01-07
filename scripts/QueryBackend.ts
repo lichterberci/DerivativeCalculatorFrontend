@@ -1,6 +1,7 @@
 import DifficultyLevel from "../classes/DifficultyLevel";
 import type { ISolutionData, ISolutionDataNullable } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
+import { GoogleLogEvent } from "./GoogleAnalytics";
 import ValidateResponse from "./ValidateResponse";
 
 const API_URL = process.env.API_URL ?? "https://derivativecalculatorapi.azurewebsites.net";
@@ -10,6 +11,10 @@ export async function DifferentiateInput (input: string, signal: AbortSignal): P
     const URL = `${API_URL}/differentiate/`;
 
     let response: Response;
+
+    GoogleLogEvent("differentiate", {
+        "input": input
+    });
 
     try {
         response = await fetch(URL, {
@@ -73,6 +78,10 @@ export async function GenerateExercise (level: DifficultyLevel, signal: AbortSig
     const URL = `${API_URL}/generate-exercise/${levelString}`;
 
     let response: Response;
+
+    GoogleLogEvent("exercise", {
+        "level": level
+    });
 
     try {
         response = await fetch(URL, {
