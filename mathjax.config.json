@@ -1,8 +1,7 @@
 {
-	"fast-preview": {
-		"disabled": true
-	},
-	"tex2jax": {
+	"loader": { "load": ["[tex]/html", "[tex]/physics"] },
+	"tex": {
+		"packages": { "[+]": ["html", "physics"] },
 		"inlineMath": [
 			["$", "$"],
 			["\\(", "\\)"]
@@ -11,6 +10,9 @@
 			["$$", "$$"],
 			["\\[", "\\]"]
 		]
+	},
+	"fast-preview": {
+		"disabled": true
 	},
 	"messageStyle": "none"
 }

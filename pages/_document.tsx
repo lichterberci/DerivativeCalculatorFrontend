@@ -11,11 +11,11 @@ const navBarItems: INavbarItemData[] = [
 		name: "Kezdőlap"
 	},
 	{
-		href: "/CalculatorPage",
+		href: "/calculator",
 		name: "Ellenőrzés"
 	},
 	{
-		href: "/ExercisePage",
+		href: "/exercise",
 		name: "Gyakorlás"
 	}
 ];

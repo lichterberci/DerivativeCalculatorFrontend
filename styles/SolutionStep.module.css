@@ -2,24 +2,23 @@
     font-size: 1rem;
 }
 
-.stepHover{
-    cursor:pointer;
-    transition: 0.05s;
-}
-
-.stepHover:hover .stepMathJax{
-    font-size: 1.05rem;
-    transition: 0.1s;
-    color:rgba(133,77,252,255)
-}
-
 .stepLatex{
     position: relative;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
 
+.stepHover{
+    cursor:pointer;
+    transition: 0.05s;
+}
+
+.stepHover:hover .stepMathJax{
+    font-size: 1.3rem;
+    transition: 0.1s;
+    color:rgba(133,77,252,255)
 }
 
 .stepMathJax {
@@ -32,7 +31,7 @@
 
     padding: 10px 7px;
     
-    font-size: 1rem;
+    font-size: 1.1rem;
 
     border-bottom:0.5px solid rgb(187, 187, 187);
 

@@ -35,10 +35,12 @@
 
 .inputOutputMathJax {
     width: fit-content;
-    max-width: min(90vw, 1000px);
+    max-width: 90vw;
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
 }
 
 .inputOutputMathJax::-webkit-scrollbar {

@@ -100,7 +100,7 @@ export default function ExercisePage (): JSX.Element {
             {
                 (() => {
                     if (isLoading == false) {
-                        if (solutionData != null)
+                        if (solutionData != null && showSolution)
                             return <Solution data={solutionData}/>
                         else // error message is displayed, so we don't have to do anything here
                             return <></>
