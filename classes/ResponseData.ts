@@ -14,4 +14,5 @@ export interface ISolutionData {
     outputAsLatex: string;
     stepsAsLatex: string[];
     stepDescriptions: (IStepDescription | null)[];
+    varToDiff: string
 }

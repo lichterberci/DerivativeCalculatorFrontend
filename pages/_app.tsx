@@ -1,5 +1,8 @@
 import type { AppProps } from 'next/app'
+import { useRouter } from 'next/router';
 import Script from 'next/script'
+import { useEffect } from 'react';
+import { GoogleLogPage } from '../scripts/GoogleAnalytics';
 
 export default function App({ Component, pageProps }: AppProps) {
     
@@ -22,16 +25,19 @@ export default function App({ Component, pageProps }: AppProps) {
         
         <Script strategy="lazyOnload" id="gtagScript">
         {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.GTAG_KEY}', {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.GTAG_KEY}', {
             page_path: window.location.pathname,
-            });
+        });
         `}
-    </Script>
-
-    <Component {...pageProps} />
-</>)
-  
-}
+        </Script>
+        
+        
+        
+        <Component {...pageProps} />
+        </>)
+        
+    }
+    

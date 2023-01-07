@@ -1,15 +1,20 @@
 import DifficultyLevel from "../classes/DifficultyLevel";
 import type { ISolutionData, ISolutionDataNullable } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
+import { GoogleLogEvent } from "./GoogleAnalytics";
 import ValidateResponse from "./ValidateResponse";
 
 const API_URL = process.env.API_URL ?? "https://derivativecalculatorapi.azurewebsites.net";
 
-export async function DifferentiateInput (input: string): Promise<ISolutionData | IResponseError> {
+export async function DifferentiateInput (input: string, signal: AbortSignal): Promise<ISolutionData | IResponseError> {
 
     const URL = `${API_URL}/differentiate/`;
 
     let response: Response;
+
+    GoogleLogEvent("differentiate", {
+        "input": input
+    });
 
     try {
         response = await fetch(URL, {
@@ -17,11 +22,22 @@ export async function DifferentiateInput (input: string): Promise<ISolutionData 
             headers: {
                 "Content-Type": "application/json"
             },
-            body: `"${input}"`
+            body: `"${input}"`,
+            signal: signal
         });
-    } catch (e: any) {
-        console.error(e.message);
-        throw e;
+    } catch (err: any) {
+        if (err.name == "AbortError")
+            return {
+                type: "ABORT ERROR",
+                message: "Fetch aborted!"
+            };
+
+        console.error(err.message);
+
+        return {
+            type: "FETCH ERROR",
+            message: err.message
+        };
     }
 
     if (response.ok == false) {
@@ -55,7 +71,7 @@ export async function DifferentiateInput (input: string): Promise<ISolutionData 
     return result as ISolutionData;
 }
 
-export async function GenerateExercise (level: DifficultyLevel): Promise<ISolutionData | IResponseError> {
+export async function GenerateExercise (level: DifficultyLevel, signal: AbortSignal): Promise<ISolutionData | IResponseError> {
 
     const levelString = level.toLowerCase();
 
@@ -63,11 +79,27 @@ export async function GenerateExercise (level: DifficultyLevel): Promise<ISoluti
 
     let response: Response;
 
+    GoogleLogEvent("exercise", {
+        "level": level
+    });
+
     try {
-        response = await fetch(URL);
-    } catch (e: any) {
-        console.error(e.message);
-        throw e;
+        response = await fetch(URL, {
+            signal: signal
+        });
+    } catch (err: any) {
+        if (err.name == "AbortError")
+            return {
+                type: "ABORT ERROR",
+                message: "Fetch aborted!"
+            };
+
+        console.error(err.message);
+
+        return {
+            type: "FETCH ERROR",
+            message: err.message
+        };
     }
 
     if (response.ok == false) {

@@ -1,9 +1,8 @@
 import MathJax from "better-react-mathjax/MathJax/MathJax";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IStepDescription } from "../classes/StepDescription";
 import StepDescription from "./StepDescription";
 import styles from "../styles/SolutionStep.module.css";
-import classnames from "classnames";
 
 export default function SolutionStep (
     props: { 
@@ -15,24 +14,31 @@ export default function SolutionStep (
 ): JSX.Element 
 {
     
-    const { stepAsLatex, stepDescription } = props;
+    const { stepAsLatex, stepDescription, varToDiff, isLast } = props;
     
     const [isShowingDescription, setIsShowingDescription] = useState<boolean>(false);
+
+    // whenever the data changes, we close the step
+    useEffect(() => {
+
+      setIsShowingDescription(false);
+
+    }, [props])
 
     return (
         <div 
             className={[styles.stepHolder, stepDescription != null ? styles.stepHover : ""].join(" ")}
-            // onMouseEnter={() => setIsShowingDescription(true)}
-            // onMouseLeave={() => setIsShowingDescription(false)}
             onClick={() => setIsShowingDescription(!isShowingDescription)}
         >
-            <div className="step-latex">
-                <MathJax dynamic>
+            <div className={styles.stepLatex}>
+                <MathJax  
+                    className={[styles.stepMathJax, isLast ? styles.stepMathJaxLast : "" ].join(" ")}
+                    dynamic>
                     { `$$ ${stepAsLatex} $$` }
                 </MathJax>
             </div>
             {
-                isShowingDescription && <StepDescription stepDescription={stepDescription} />
+                isShowingDescription && <StepDescription stepDescription={stepDescription} varToDiff={varToDiff} />
             }
         </div>
     );

@@ -11,12 +11,16 @@ const navBarItems: INavbarItemData[] = [
 		name: "Kezdőlap"
 	},
 	{
-		href: "/CalculatorPage",
+		href: "/calculator",
 		name: "Ellenőrzés"
 	},
 	{
-		href: "/ExercisePage",
+		href: "/exercise",
 		name: "Gyakorlás"
+	},
+	{
+		href: "/about",
+		name: "Rólunk"
 	}
 ];
 
@@ -24,7 +28,7 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head />
-			<body>
+			<body style={{width: "100%", height: "100%", margin: 0}}>
 				<Navbar items={navBarItems} />
 				<Main />
 				<NextScript />

@@ -2,6 +2,7 @@ import MathJax from "better-react-mathjax/MathJax";
 import React, { useState } from "react";
 import { ISolutionData } from "../classes/ResponseData";
 import SolutionStep from "./SolutionStep";
+import styles from "../styles/Solution.module.css"
 
 export default function Solution (props: { data: ISolutionData | null }): JSX.Element {
 
@@ -13,29 +14,33 @@ export default function Solution (props: { data: ISolutionData | null }): JSX.El
         return <></>
 
     return (
-        <div className="solution-wrapper">
-            <div className="input-output-latex">
-                <MathJax dynamic> 
-                    { `$$ ${data.simplifiedInputAsLatex} = ${data.outputAsLatex} $$` }
-                </MathJax>
-            </div>
-            {
-                isShowingSteps
-                &&
-                <ul className="step-list">
+        <div className={styles.solutionWrapper}>
+            <div className={styles.solutionWrapperInner}>
+                <div className="input-output-latex">
+                    <MathJax dynamic className={styles.inputOutputMathJax}> 
+                        { `$$ ${data.simplifiedInputAsLatex} = ${data.outputAsLatex} $$` }
+                    </MathJax>
+                </div>
                 {
-                    data.stepsAsLatex.map((stepAsLatex: string, i: number) => 
-                        <li key={i}>
-                            <SolutionStep
-                                stepAsLatex = {stepAsLatex}
-                                stepDescription = {i < data.stepDescriptions.length ? data.stepDescriptions[i] : null}
-                            />
-                        </li>
-                    )
+                    isShowingSteps
+                    &&
+                    <ul className={styles.stepList}>
+                    {
+                        data.stepsAsLatex.map((stepAsLatex: string, i: number) => 
+                            <li key={i}>
+                                <SolutionStep
+                                    stepAsLatex = {stepAsLatex}
+                                    stepDescription = {i < data.stepDescriptions.length ? data.stepDescriptions[i] : null}
+                                    varToDiff = {data.varToDiff}
+                                    isLast = {i == data.stepsAsLatex.length - 1}
+                                />
+                            </li>
+                        )
+                    }
+                    </ul>
                 }
-                </ul>
-            }
-            <button onClick={() => showSteps(!isShowingSteps)}>
+            </div>
+            <button className={styles.button} onClick={() => showSteps(!isShowingSteps)}>
                 { isShowingSteps ? "Lépések elrejtése" : "Lépések mutatása" }
             </button>
         </div>

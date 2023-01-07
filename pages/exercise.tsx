@@ -1,30 +1,51 @@
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { ChangeEvent, DetailedHTMLProps, SelectHTMLAttributes, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
+import Image from "next/image"
+
 import DifficultyLevel from "../classes/DifficultyLevel";
 import { ISolutionData } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
 import Solution from "../components/Solution";
 import { GenerateExercise } from "../scripts/QueryBackend";
 import MathJaxConfig from "../mathjax.config.json"
+import LoadingAnim from "../public/LoadingAnim.gif"
+
+let fetchAbortController = new AbortController();
+let fetchAbortSignal = fetchAbortController.signal;
 
 export default function ExercisePage (): JSX.Element {
 
     const [showSolution, setShowSolution] = useState<boolean>(false);
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const selectedLevel = useRef<DifficultyLevel>("MEDIUM");
 
     const GenerateExerciseAndUpdateUI = async () => {
 
+        if (isLoading) {
+            fetchAbortController.abort();
+            fetchAbortController = new AbortController();
+            fetchAbortSignal = fetchAbortController.signal;
+        }
+
         if (errorText != null)
             await setErrorText(null);
 
+        await setIsLoading(true);
+
         const level = selectedLevel.current;
 
-        const result: ISolutionData | IResponseError = await GenerateExercise(level);
+        const result: ISolutionData | IResponseError = await GenerateExercise(level, fetchAbortSignal);
+
+        setIsLoading(false);
 
         if ("type" in result && "message" in result) { // error
+
+            if (result.type == "ABORT ERROR")
+                return;
+
             setErrorText(result.message);
             setSolutionData(null);
             return;
@@ -67,7 +88,7 @@ export default function ExercisePage (): JSX.Element {
                 }
             </div>
             {
-                showSolution == false && solutionData != null
+                showSolution == false && solutionData != null && isLoading == false
                 &&
                 <div>
                     <MathJax dynamic>
@@ -77,11 +98,17 @@ export default function ExercisePage (): JSX.Element {
                 </div>
             }   
             {
-                showSolution
-                &&
-                <div className="solution-wrapper">
-                    <Solution data={solutionData}/>
-                </div>
+                (() => {
+                    if (isLoading == false) {
+                        if (solutionData != null && showSolution)
+                            return <Solution data={solutionData}/>
+                        else // error message is displayed, so we don't have to do anything here
+                            return <></>
+                    } 
+                    else { // display loading anim
+                        return <Image alt="Loading animation" src={LoadingAnim} width={100} height={100}/>
+                    }
+                })()
             }
         </MathJaxContext>
     </>);
