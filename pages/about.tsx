@@ -30,7 +30,7 @@ export default function About (): JSX.Element {
                     Szabó Gergő
                 </div>
                 <div className={styles.responsibilityList}>
-                    <div>Segéderő / kabala</div>
+                    <div></div>
                 </div>
             </div>
         </div>
