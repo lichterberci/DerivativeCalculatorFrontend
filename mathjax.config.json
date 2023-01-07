@@ -2,6 +2,12 @@
 	"loader": { "load": ["[tex]/html", "[tex]/physics"] },
 	"tex": {
 		"packages": { "[+]": ["html", "physics"] },
+		"macros": {
+			"arsinh": "arsinh",
+			"arcosh": "arcosh",
+			"artanh": "artanh",
+			"arcoth": "arcoth"
+		},
 		"inlineMath": [
 			["$", "$"],
 			["\\(", "\\)"]
