@@ -1,0 +1,42 @@
+.aboutContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;    
+    align-items: center;
+}
+
+.ourTeam {
+    display: flex;
+    color: blueviolet;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.teamList {
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+
+}
+
+.teamList > div {
+
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.137);
+    padding: 1rem;
+
+}
+
+.name {
+    font-size: 1.5rem;
+}
+
+.responsibilityList > div {
+    color: grey;
+}
