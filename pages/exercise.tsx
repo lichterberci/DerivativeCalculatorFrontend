@@ -9,6 +9,7 @@ import Solution from "../components/Solution";
 import { GenerateExercise } from "../scripts/QueryBackend";
 import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
+import Head from "next/head";
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
@@ -57,59 +58,64 @@ export default function ExercisePage (): JSX.Element {
 
     return (<>
 
-        <MathJaxContext version={3} config={MathJaxConfig}>
-            <select
-                defaultValue={"MEDIUM"}
-                onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
-            >
-                <option key={"EASY"} value={"EASY"}>
-                    Triviális
-                </option>
-                <option key={"MEDIUM"} value={"MEDIUM"}>
-                    Óbudai
-                </option>
-                <option key={"HARD"} value={"HARD"}>
-                    BME
-                </option>
-                <option key={"HARDCORE"} value={"HARDCORE"}>
-                    Tasnádi
-                </option>
-            </select>
+        <Head>
+            <title>Gyakorló oldal</title>
+        </Head>
+        <main>
+            <MathJaxContext version={3} config={MathJaxConfig}>
+                <select
+                    defaultValue={"MEDIUM"}
+                    onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
+                >
+                    <option key={"EASY"} value={"EASY"}>
+                        Triviális
+                    </option>
+                    <option key={"MEDIUM"} value={"MEDIUM"}>
+                        Óbudai
+                    </option>
+                    <option key={"HARD"} value={"HARD"}>
+                        BME
+                    </option>
+                    <option key={"HARDCORE"} value={"HARDCORE"}>
+                        Tasnádi
+                    </option>
+                </select>
 
-            <button onClick={GenerateExerciseAndUpdateUI}>Generate exercise</button>
+                <button onClick={GenerateExerciseAndUpdateUI}>Generate exercise</button>
 
-            <div>
-                {
-                    errorText != null
-                    && 
-                    <div>
-                        { errorText }
-                    </div>
-                }
-            </div>
-            {
-                showSolution == false && solutionData != null && isLoading == false
-                &&
                 <div>
-                    <MathJax dynamic>
-                        { `$$ ${solutionData?.inputAsLatex} = ? $$` }
-                    </MathJax>
-                    <button onClick={() => setShowSolution(true)}>Megoldás mutatása</button>
-                </div>
-            }   
-            {
-                (() => {
-                    if (isLoading == false) {
-                        if (solutionData != null && showSolution)
-                            return <Solution data={solutionData}/>
-                        else // error message is displayed, so we don't have to do anything here
-                            return <></>
-                    } 
-                    else { // display loading anim
-                        return <Image alt="Loading animation" src={LoadingAnim} width={100} height={100}/>
+                    {
+                        errorText != null
+                        && 
+                        <div>
+                            { errorText }
+                        </div>
                     }
-                })()
-            }
-        </MathJaxContext>
+                </div>
+                {
+                    showSolution == false && solutionData != null && isLoading == false
+                    &&
+                    <div>
+                        <MathJax dynamic>
+                            { `$$ ${solutionData?.inputAsLatex} = ? $$` }
+                        </MathJax>
+                        <button onClick={() => setShowSolution(true)}>Megoldás mutatása</button>
+                    </div>
+                }   
+                {
+                    (() => {
+                        if (isLoading == false) {
+                            if (solutionData != null && showSolution)
+                                return <Solution data={solutionData}/>
+                            else // error message is displayed, so we don't have to do anything here
+                                return <></>
+                        } 
+                        else { // display loading anim
+                            return <Image alt="Loading animation" src={LoadingAnim} width={100} height={100}/>
+                        }
+                    })()
+                }
+            </MathJaxContext>
+        </main>
     </>);
 }
