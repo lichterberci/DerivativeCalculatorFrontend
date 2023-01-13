@@ -5,6 +5,9 @@ import Navbar, {INavbarItemData} from "../components/Navbar"
 
 import MathJaxConfig from "../mathjax.config.json"
 
+// TODO: instead of text, we should just use icons!!
+// ? will this be ok for PC ?
+
 const navBarItems: INavbarItemData[] = [
 	{
 		href: "/",
