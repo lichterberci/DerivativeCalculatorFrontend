@@ -49,7 +49,7 @@ export function GetBackendPreferences(): IBackendPreferences | null {
             "sin", "cos", "tan", "cot", 
             "arcsin", "arccos", "arctan", "arccot",
             "sinh", "cosh", "tanh", "coth",
-            "arsinh", "arcosh", "arctanh", "arcoth"
+            "arsinh", "arcosh", "artanh", "arcoth"
         ])
 
     return {
