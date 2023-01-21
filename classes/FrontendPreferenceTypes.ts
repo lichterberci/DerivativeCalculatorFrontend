@@ -2,6 +2,7 @@
 export interface ISimplificationPreferences {
 
     shouldEvalLogarithm: boolean;
+    shouldEvalTrig: boolean;
 
 }
 

@@ -24,6 +24,10 @@ const navBarItems: INavbarItemData[] = [
 	{
 		href: "/about",
 		name: "Rólunk"
+	},
+	{
+		href: "/settings",
+		name: "Beállítások"
 	}
 ];
 

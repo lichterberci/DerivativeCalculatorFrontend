@@ -1,3 +1,6 @@
+import IBackendPreferences from "../classes/BackendPreferenceTypes";
+import { ISimplificationPreferences } from "../classes/FrontendPreferenceTypes";
+
 export function SetPreferences (keyValuePairs: { [key: string]: any }): void {
 
     if (typeof window === 'undefined') {
@@ -25,4 +28,33 @@ export function GetPreferences (key: string): any | undefined {
     }
 
     return JSON.parse(data);
+}
+
+export function GetBackendPreferences(): IBackendPreferences | null {
+
+    const simplificationPreferences: ISimplificationPreferences = GetPreferences("simplificationPreferences");
+
+    if (simplificationPreferences === undefined)
+        return null;
+
+    let opsNotToEvaluate: string[] = [];
+    
+    console.dir(simplificationPreferences)
+
+    if (simplificationPreferences.shouldEvalLogarithm == false)
+        opsNotToEvaluate = opsNotToEvaluate.concat(["ln", "log"]);
+
+    if (simplificationPreferences.shouldEvalTrig == false)
+        opsNotToEvaluate = opsNotToEvaluate.concat([
+            "sin", "cos", "tan", "cot", 
+            "arcsin", "arccos", "arctan", "arccot",
+            "sinh", "cosh", "tanh", "coth",
+            "arsinh", "arcosh", "arctanh", "arcoth"
+        ])
+
+    return {
+        simplificationPreferences: {
+            opsNotToEvaluate: opsNotToEvaluate
+        }
+    };
 }
