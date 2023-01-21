@@ -39,15 +39,17 @@ export function GetBackendPreferences(): IBackendPreferences | null {
 
     let opsNotToEvaluate: string[] = [];
     
-    console.dir(simplificationPreferences)
-
     if (simplificationPreferences.shouldEvalLogarithm == false)
         opsNotToEvaluate = opsNotToEvaluate.concat(["ln", "log"]);
 
     if (simplificationPreferences.shouldEvalTrig == false)
         opsNotToEvaluate = opsNotToEvaluate.concat([
             "sin", "cos", "tan", "cot", 
-            "arcsin", "arccos", "arctan", "arccot",
+            "arcsin", "arccos", "arctan", "arccot"
+        ])
+
+    if (simplificationPreferences.shouldEvalHyp == false)
+        opsNotToEvaluate = opsNotToEvaluate.concat([
             "sinh", "cosh", "tanh", "coth",
             "arsinh", "arcosh", "artanh", "arcoth"
         ])

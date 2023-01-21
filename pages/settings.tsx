@@ -76,6 +76,15 @@ export default function Settings (): JSX.Element {
 
             <input 
                 type="checkbox"
+                name="hyp"
+                checked={simplificationPreferences?.shouldEvalHyp}
+                onChange={e => UpdateSimplificationPreferences("shouldEvalHyp", e.target.checked)}
+            />
+            Hiperbolikus függvények kiértékelése
+            <br/>
+
+            <input 
+                type="checkbox"
                 name="darkmode"
                 checked={UIPreferences?.darkMode}
                 onChange={e => UpdateUserInterfacePreferences("darkMode", e.target.checked)}
