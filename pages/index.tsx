@@ -12,6 +12,7 @@ export default function Home() {
 
 	}, [])
 
+
 	return (<>
 		<Head>
 			<title>Deriváló segéd</title>

@@ -38,7 +38,7 @@ export default function Document() {
 			<Head />
 			<body style={{width: "100%", height: "100%", margin: 0}}>
 				{/* <Navbar items={navBarItems} /> */}
-				<HamburgerMenu items={navBarItems}/>
+				
 				<Main />
 				<NextScript />
 			</body>

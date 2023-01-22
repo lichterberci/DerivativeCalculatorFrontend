@@ -1,65 +1,47 @@
 
-.bm-burger-button {
-
-    width: 36px;
-    height: 30px;
-    left: 36px;
-
-    top: 36px;
-}
-
-.bm-burger-bars {
-    background: #373a47;
-}  
-
-
-.bm-cross-button {
-    height: 24px;
-    width: 24px;
-}
-
-.bm-cross {
-    background: #bdc3c7;
-}
-
-.bm-menu-wrap {
-    position: fixed;
-    height: 100%;
-}
-
-.bm-menu {
-    background: #373a47;
-    padding: 0.3rem 0.3rem 0;
-    font-size: 1.15em;
-}
-
-.bm-morph-shape {
-    fill: #373a47;
-}
-
-.bm-item-list {
-
-    color: #b8b7ad;
-    padding: 0.8em;
-}
-
-.bm-item {
-    display: inline-block;
-}
-
-.bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
-}
-/* styling next link component so that will be a column list of links*/
-.bm-item-list a {
-    display: flex;
-    flex-direction: column;
-}
-
-.holderNuzi{
-    background-color:red
-}
-
 .navBarItem{
-    background-color:red
+    text-decoration: none;
+    color:black;
+}
+
+.holder{
+    padding:7px 0px;
+    display:flex;
+    flex-direction:row;
+    max-width:600;
+    align-items:center;
+    justify-content:space-evenly
+}
+
+.hamburgerHolder{
+    display:none
+}
+
+@media screen and (max-width: 480px){
+
+
+    .holder{
+        display: none;
+    }
+
+    .hamburgerHolder{
+        position: relative;
+        display: block;
+        width:45px;
+        z-index: 5;
+    }
+
+    .burgerMenuHolder{
+        position: relative;;
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hamburgerItem{
+        text-decoration: none;
+        color:white;
+        padding: 5px;
+    }
+    
 }

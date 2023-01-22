@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router';
 import Script from 'next/script'
 import { useEffect } from 'react';
+import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -19,6 +20,29 @@ export default function App({ Component, pageProps }: AppProps) {
             router.events.off('routeChangeStart', handleRouteChange)
         }
     }, [router.events])
+
+    const navBarItems = [
+		{
+			href: "/",
+			name: "Kezdőlap"
+		},
+		{
+			href: "/calculator",
+			name: "Ellenőrzés"
+		},
+		{
+			href: "/exercise",
+			name: "Gyakorlás"
+		},
+		{
+			href: "/about",
+			name: "Rólunk"
+		},
+		{
+			href: "/settings",
+			name: "Beállítások"
+		}
+	];
     
     return (<>
         <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_KEY}`} />
@@ -34,8 +58,8 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
         </Script>
         
-        
-        
+        <HamburgerMenu items={navBarItems}/>
+
         <Component {...pageProps} />
         </>)
         
