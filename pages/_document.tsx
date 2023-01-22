@@ -2,6 +2,7 @@ import { MathJaxContext } from 'better-react-mathjax'
 import { Html, Head, Main, NextScript } from 'next/document'
 import Script from 'next/script';
 import Navbar, {INavbarItemData} from "../components/Navbar"
+import HamburgerMenu from '../components/HamburgerMenu';
 
 import MathJaxConfig from "../mathjax.config.json"
 
@@ -29,7 +30,8 @@ export default function Document() {
 		<Html lang="en">
 			<Head />
 			<body style={{width: "100%", height: "100%", margin: 0}}>
-				<Navbar items={navBarItems} />
+				{/* <Navbar items={navBarItems} /> */}
+				<HamburgerMenu items={navBarItems}/>
 				<Main />
 				<NextScript />
 			</body>
