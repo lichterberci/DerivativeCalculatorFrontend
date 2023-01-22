@@ -12,7 +12,7 @@ export default function Navbar (props: { items: INavbarItemData[] }): JSX.Elemen
     const { items } = props;
 
     return (
-        <div>
+        <div className={styles.menu}>
             <div style={{display:"flex", flexDirection:"row", maxWidth:600,alignItems:'center', justifyContent:'space-evenly'}}>
             {   
                 items.map((item, i) => {

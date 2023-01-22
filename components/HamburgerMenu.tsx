@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { slide as Menu } from "react-burger-menu"
-import styles from '../styles/burger.module.css'
+import styles from '../styles/HamburgerMenu.module.css'
 
 export interface INavbarItemData {
     name: string,
@@ -12,9 +11,8 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
 {
     const { items } = props;
     
-    return(
+    return(<>
         <div className={styles.holderNuzi}> 
-        
             <div style={{display:"flex", flexDirection:"row", maxWidth:600,alignItems:'center', justifyContent:'space-evenly'}}>
                 {   
                     items.map((item, i) => {
@@ -35,7 +33,7 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
                 </Menu>
             </div> */}
         </div> 
-    )
+    </>);
 } 
 
 
