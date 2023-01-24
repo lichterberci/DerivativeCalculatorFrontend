@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
+import { WriteBugReport } from '../scripts/Firebase';
 import { GetPreferences, SetPreferences } from '../scripts/Preferences';
 
 export default function Home() {
@@ -30,6 +31,12 @@ export default function Home() {
 				}}
 			/>
 			Darkmode
+
+			<button onClick={() => WriteBugReport({
+				timestamp: Date.now(),
+				priority: 1,
+				description: "This is a test bug report"
+			})}>Send bug report</button>
 		</main>
 	</>);
 }
