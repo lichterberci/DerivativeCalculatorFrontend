@@ -58,7 +58,7 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
         </Script>
         
-        <HamburgerMenu items={navBarItems}/>
+        {/* <HamburgerMenu items={navBarItems}/> */}
 
         <Component {...pageProps} />
         </>)
