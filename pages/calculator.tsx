@@ -103,7 +103,7 @@ export default function CalculatorPage (): JSX.Element {
                                     return <></>
                             } 
                             else { // display loading anim
-                                return <Image alt="Loading animation" src={LoadingAnim} width={100} height={100}/>
+                                return <Image alt="Loading animation" src={LoadingAnim} width={600} height={300}/>
                             }
                             })()
                         }

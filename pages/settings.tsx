@@ -7,7 +7,8 @@ export default function Settings (): JSX.Element {
 
     const [simplificationPreferences, setSimplificationPreferences] = useState<ISimplificationPreferences>({
         shouldEvalLogarithm: false,
-        shouldEvalTrig: true
+        shouldEvalTrig: true,
+        shouldEvalHyp: true
     });
 
     const [UIPreferences, setUIPreferences] = useState<IUserInterfacePreferences>({

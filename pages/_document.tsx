@@ -6,6 +6,7 @@ import HamburgerMenu from '../components/HamburgerMenu';
 
 import MathJaxConfig from "../mathjax.config.json"
 
+
 // TODO: instead of text, we should just use icons!!
 // ??? will this be ok for PC ???
 

@@ -1,0 +1,144 @@
+import React, { useState } from "react";
+import { WriteBugReport } from "../scripts/Firebase";
+
+export default function ReportBug (): JSX.Element {
+
+    const [title, setTitle] = useState<string>("");
+    const [titleError, setTitleError] = useState<null | string>(null);
+    const [description, setDescription] = useState<string>("");
+    const [descriptionError, setDescriptionError] = useState<null | string>(null);
+    const [priority, setPriority] = useState<number>(0);
+    const [priorityError, setPriorityError] = useState<null | string>(null);
+    const [sendError, setSendError] = useState<null | string>(null);
+
+    const ValidateAndSend = async () => {
+
+        await setSendError(null);
+
+        let isDataValid = true;
+
+        if (priority < 0 || priority > 3) {
+            console.error(`Priority is invalid! (${priority})`);
+            setDescriptionError(`Priority is invalid! (${priority})`);
+            isDataValid = false;
+        }
+
+        if (title.trim() == "") {
+            console.error("Title must not be empty!");
+            setTitleError("Title must not be empty!");
+            isDataValid = false;
+        }
+
+        if (title.length > 50) {
+            console.error("Title is too long!");
+            setTitleError("Title is too long!");
+            isDataValid = false;
+        }
+
+        if (description.trim() == "") {
+            console.error("Description must not be empty!");
+            setDescriptionError("Description must not be empty!");
+            isDataValid = false;
+        }
+
+        if (description.length > 140) {
+            console.error("Description is too long!");
+            setDescriptionError("Description is too long!");
+            isDataValid = false;
+        }
+
+        if (isDataValid == false)
+            return;
+
+        const success = await WriteBugReport({
+            title: title,
+            description: description,
+            priority: priority,
+            timestamp: Date.now()
+        });
+
+        if (success == false) {
+            setSendError("Could not send bug report!");
+            return;
+        }
+
+        setTitle("");
+        setDescription("");
+        setPriority(0);
+    };
+
+    return (<>
+        <div style={{display: "flex", flexDirection: "column"}}>
+            <input 
+                type="text" 
+                placeholder="Add a title..."
+                value={title}
+                onChange={e => {
+                    setTitle(e.target.value);
+                    setTitleError(null);
+                }}
+            />
+
+            {
+                titleError != null
+                &&
+                <div>
+                    { titleError }
+                </div>
+            }
+
+            <textarea 
+                rows={3}
+                placeholder="Describe your problem..."
+                value={description}
+                onChange={e => {
+                    setDescription(e.target.value);
+                    setDescriptionError(null);
+                }}
+            />  
+
+            {
+                descriptionError != null
+                &&
+                <div>
+                    { descriptionError }
+                </div>
+            }
+
+            <select
+                value={priority}
+                onChange={e => {
+                    setPriority(Number.parseInt(e.target.value));
+                    setPriorityError(null);
+                }}
+            >
+                <option key={0} value={0}>Kellemetlenség</option>
+                <option key={1} value={1}>Időszakos probléma</option>
+                <option key={2} value={2}>Gyakori probléma</option>
+                <option key={3} value={3}>A weboldal működését meggátló probléma</option>
+            </select>
+
+            {
+                priorityError != null
+                &&
+                <div>
+                    { priorityError }
+                </div>
+            }
+
+            <button
+                onClick={() => ValidateAndSend()}
+            >
+                Send
+            </button>
+
+            {
+                sendError != null
+                &&
+                <div>
+                    { sendError }
+                </div>
+            }
+        </div>
+    </>);
+}

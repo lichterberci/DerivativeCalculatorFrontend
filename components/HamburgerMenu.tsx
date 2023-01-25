@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { slide as Menu } from "react-burger-menu"
-import styles from '../styles/burger.module.css'
+import styles from '../styles/HamburgerMenu.module.css'
+import { slide as Menu } from 'react-burger-menu'
 
 export interface INavbarItemData {
     name: string,
@@ -12,21 +12,20 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
 {
     const { items } = props;
     
-    return(
-        <div> 
-          	<div className={styles.outer}>
-				<div className={styles.holder}>
-					{   
-						items.map((item, i) => {
-							return (
-								<Link key={i} className={styles.navBarItem} href={item.href}>
-									{ item.name }
-								</Link>  
-							);
-						})
-					}
-				</div>
-          	</div>
+    return(<>
+        <div className={styles.holderNuzi}> 
+            
+            <div style={{display:"flex", flexDirection:"row", maxWidth:600,alignItems:'center', justifyContent:'space-evenly'}}>
+                {   
+                    items.map((item, i) => {
+                        return (
+                            <Link key={i} className={styles.navBarItem} href={item.href}>
+                                { item.name }
+                            </Link>  
+                        );
+                    })
+                }
+            </div>
 
             <div className={styles.hamburgerHolder}>
                 <Menu styles={ stylesDik } disableOverlayClick customBurgerIcon={<HamburgerIcon />} width={'auto'} className={styles.burgerMenuHolder} >
@@ -42,7 +41,7 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
                 </Menu>
             </div>
         </div> 
-    )
+    </>);
 } 
 
 var stylesDik = {

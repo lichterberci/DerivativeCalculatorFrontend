@@ -1,12 +1,16 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
+import { FirebaseInit, WriteBugReport } from '../scripts/Firebase';
 import { GetPreferences, SetPreferences } from '../scripts/Preferences';
+import ReportBug from "../components/ReportBug"
 
 export default function Home() {
 
 	const [darkMode, setDarkMode] = useState<boolean>(false);
 
 	useEffect (() => {
+
+		FirebaseInit();
 
 		setDarkMode(GetPreferences("darkMode"));
 
@@ -30,6 +34,8 @@ export default function Home() {
 				}}
 			/>
 			Darkmode
+			
+			<ReportBug />
 		</main>
 	</>);
 }
