@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import { FirebaseInit, WriteBugReport } from '../scripts/Firebase';
 import { GetPreferences, SetPreferences } from '../scripts/Preferences';
+import ReportBug from "../components/ReportBug"
 
 export default function Home() {
 
@@ -33,12 +34,8 @@ export default function Home() {
 				}}
 			/>
 			Darkmode
-
-			<button onClick={() => WriteBugReport({
-				timestamp: Date.now(),
-				priority: 1,
-				description: "This is a test bug report"
-			})}>Send bug report</button>
+			
+			<ReportBug />
 		</main>
 	</>);
 }
