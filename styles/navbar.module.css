@@ -1,26 +1,14 @@
-
-.myContainer{
-    max-width:1240px;
-    width:100%;
-    margin-left:auto;
-    margin-right:auto;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    padding-left:1rem;
-    padding-right:1rem;
-    background-color:red;
+.menuIcon{
+    display:none;
 }
 
-.navBarItem {
-    list-style: none;
-    background-color:red;
+.menu{
+    display:none;
+    color:red
+}
+
+.navBarItem{
     color:red;
+    text-decoration: none;
+    background-color: green;
 }
-
-.navBarHolder{
-    list-style: none;
-}
-

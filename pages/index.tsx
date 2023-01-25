@@ -1,16 +1,43 @@
 import Head from 'next/head'
+import { useEffect, useState } from 'react';
+import { WriteBugReport } from '../scripts/Firebase';
+import { GetPreferences, SetPreferences } from '../scripts/Preferences';
+
 export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>Deriváló segéd</title>
-        <meta name="description" content="Egy oldal a deriválás gyakorlására. Elsősorban a BME diákjainak fejlesztve." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
-          
-      </main>
-    </>
-  )
+
+	const [darkMode, setDarkMode] = useState<boolean>(false);
+
+	useEffect (() => {
+
+		setDarkMode(GetPreferences("darkMode"));
+
+	}, [])
+
+
+	return (<>
+		<Head>
+			<title>Deriváló segéd</title>
+			<meta name="description" content="Egy oldal a deriválás gyakorlására. Elsősorban a BME diákjainak fejlesztve." />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<link rel="icon" href="/favicon.ico" />
+		</Head>
+		<main style={{backgroundColor: darkMode ? "black" : "white", color: darkMode ? "white" : "black"}}>
+			<input
+				type={"checkbox"}
+				checked={darkMode}
+				onChange={e => {
+					SetPreferences({"darkMode": e.target.checked});
+					setDarkMode(e.target.checked);
+				}}
+			/>
+			Darkmode
+
+			<button onClick={() => WriteBugReport({
+				timestamp: Date.now(),
+				priority: 1,
+				description: "This is a test bug report"
+			})}>Send bug report</button>
+		</main>
+	</>);
 }
+	

@@ -59,53 +59,55 @@ export default function CalculatorPage (): JSX.Element {
         </Head>
         <main>
             <MathJaxContext version={3} config={MathJaxConfig}>
-                <h1 className={styles.title}>
-                    <span className={styles.nemHiszed}>Nem hiszed?</span>
-                    <span>{" "}</span>
-                    <span className={styles.derivative}> Deriváld le!</span>
-                </h1>
                 <div className={styles.myContainer}>
-                    <span className={styles.inputHolder}>
-                        <input 
-                            className={styles.input}
-                            type="text" 
-                            placeholder="sin(x)" 
-                            onChange={e => inputRef.current = e.target.value}
-                            onKeyDown={e => {
-                                if (e.key == "Enter")
-                                    QueryDifferentiationAndUpdateUI()
-                            }}
-                        />
+                    <div style={{marginTop:100}}>
+                        <h1 className={styles.title}>
+                            <span className={styles.nemHiszed}>Nem hiszed?</span>
+                            <span>{" "}</span>
+                            <span className={styles.derivative}> Deriváld le!</span>
+                        </h1>
+                        <span className={styles.inputHolder}>
+                            <input 
+                                className={styles.input}
+                                type="text" 
+                                placeholder="sin(x)" 
+                                onChange={e => inputRef.current = e.target.value}
+                                onKeyDown={e => {
+                                    if (e.key == "Enter")
+                                        QueryDifferentiationAndUpdateUI()
+                                }}
+                            />
 
-                        <button className={styles.button} onClick={QueryDifferentiationAndUpdateUI}>
-                            Differentiate
-                        </button>
-                    </span>
+                            <button className={styles.button} onClick={QueryDifferentiationAndUpdateUI}>
+                                Differentiate
+                            </button>
+                        </span>
 
-                    <div>
+                        <div>
+                            {
+                                errorText != null
+                                && 
+                                <div className={styles.errorText}>
+                                    { errorText }
+                                </div>
+                            }
+                        </div>
+
+                        <div className={styles.solutionWrapper}>
                         {
-                            errorText != null
-                            && 
-                            <div className={styles.errorText}>
-                                { errorText }
-                            </div>
+                            (() => {
+                            if (isLoading == false) {
+                                if (solutionData != null)
+                                    return <Solution data={solutionData}/>
+                                else // error message is displayed, so we don't have to do anything here
+                                    return <></>
+                            } 
+                            else { // display loading anim
+                                return <Image alt="Loading animation" src={LoadingAnim} width={600} height={300}/>
+                            }
+                            })()
                         }
-                    </div>
-
-                    <div className={styles.solutionWrapper}>
-                    {
-                        (() => {
-                        if (isLoading == false) {
-                            if (solutionData != null)
-                                return <Solution data={solutionData}/>
-                            else // error message is displayed, so we don't have to do anything here
-                                return <></>
-                        } 
-                        else { // display loading anim
-                            return <Image alt="Loading animation" src={LoadingAnim} width={100} height={100}/>
-                        }
-                        })()
-                    }
+                        </div>
                     </div>
                 </div>
             </MathJaxContext>
