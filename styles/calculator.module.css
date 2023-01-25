@@ -18,19 +18,20 @@
     display:flex;
     flex-direction: row;
     justify-content:center;
-    width:90%;
-    max-width: 600px;
+    width:80%;
+    max-width:600px;
+    margin: 0 auto;
 }
 
 .button{
-    margin-left:50px;
+    margin-left:20px;
 }
 
 .button{
     background:linear-gradient(to right, #4A00E0, #8E2DE2);
     border:none;
     color:white;
-    font-weight: lighter;
+    font-weight: 400;
     border-radius: 8px;
     padding:6px 10px;
     cursor:pointer;
@@ -90,5 +91,21 @@
     width: min(600px, 100%);
     
     /* overflow-x: auto; */
+}
+
+@media screen and (max-width: 480px){
+
+    .inputHolder{
+        width: 90%;
+    }
+
+    .title{
+        font-size:2.5rem
+    }
+
+    .button{
+
+        padding:8px 12px;
+    }
 }
 

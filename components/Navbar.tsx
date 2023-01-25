@@ -8,7 +8,7 @@ export interface INavbarItemData {
 }
 
 export default function Navbar (props: { items: INavbarItemData[] }): JSX.Element {
-   
+
     const { items } = props;
 
     return (

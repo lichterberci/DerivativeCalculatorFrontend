@@ -14,17 +14,19 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
     
     return(
         <div> 
-            <div className={styles.holder}>
-                {   
-                    items.map((item, i) => {
-                        return (
-                            <Link key={i} className={styles.navBarItem} href={item.href}>
-                                { item.name }
-                            </Link>  
-                        );
-                    })
-                }
-            </div>
+          	<div className={styles.outer}>
+				<div className={styles.holder}>
+					{   
+						items.map((item, i) => {
+							return (
+								<Link key={i} className={styles.navBarItem} href={item.href}>
+									{ item.name }
+								</Link>  
+							);
+						})
+					}
+				</div>
+          	</div>
 
             <div className={styles.hamburgerHolder}>
                 <Menu styles={ stylesDik } disableOverlayClick customBurgerIcon={<HamburgerIcon />} width={'auto'} className={styles.burgerMenuHolder} >
@@ -50,17 +52,17 @@ var stylesDik = {
       height: '30px',
     },
     bmBurgerBars: {
-      background: '#373a47'
+      background: '#5e0de0'
     },
     bmBurgerBarsHover: {
-      background: '#a90000'
+      background: '#5e0de0',
     },
     bmCrossButton: {
       height: '24px',
       width: '24px'
     },
     bmCross: {
-      background: '#bdc3c7'
+      background: "white"
     },
     bmMenuWrap: {
       position: 'fixed',
@@ -69,8 +71,8 @@ var stylesDik = {
       flexDirection: 'column',
     },
     bmMenu: {
-      background: '#373a47',
-      padding: '2.5em 1.5em 0',
+      background: '#3D1766',
+      padding: '2.5em 3em 0em 1em',
       fontSize: '1.15em',
       overflow: 'hidden',
     },
@@ -80,13 +82,14 @@ var stylesDik = {
     bmItemList: {
       width:"100%",  
       color: '#b8b7ad',
-      padding: '0.8em',
+      padding: '1em',
       display:'flex',
       flexDirection: 'column',
       overflow: 'hidden',
     },
     bmItem: {
-      display: 'inline-block'
+      display: 'inline-block',
+      marginTop:"0.75rem"
     },
     bmOverlay: {
       background: 'rgba(0, 0, 0, 0.3)'
@@ -94,7 +97,7 @@ var stylesDik = {
   }
 
 
-const HamburgerIcon = () => (<div className='p-1/2'><svg className="w-8 h-8 text-gray-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></div>)
+const HamburgerIcon = () => (<div className='p-1/2'><svg className="w-8 h-8 text-gray-500" fill="none" strokeLinecap="square" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></div>)
 
 export const Links = () => (<>
     <Link className='font-bold p-4' href="/">Kezdőlap</Link>

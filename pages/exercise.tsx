@@ -11,6 +11,8 @@ import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
 
+import styles from "../styles/exercise.module.css"
+
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
 
@@ -63,25 +65,35 @@ export default function ExercisePage (): JSX.Element {
         </Head>
         <main>
             <MathJaxContext version={3} config={MathJaxConfig}>
-                <select
-                    defaultValue={"MEDIUM"}
-                    onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
-                >
-                    <option key={"EASY"} value={"EASY"}>
-                        Triviális
-                    </option>
-                    <option key={"MEDIUM"} value={"MEDIUM"}>
-                        Óbudai
-                    </option>
-                    <option key={"HARD"} value={"HARD"}>
-                        BME
-                    </option>
-                    <option key={"HARDCORE"} value={"HARDCORE"}>
-                        Tasnádi
-                    </option>
-                </select>
 
-                <button onClick={GenerateExerciseAndUpdateUI}>Generate exercise</button>
+            <div className={styles.myContainer}>
+                
+                <h1 className={styles.title}>
+                    Gyakorold a deriválást. <br/> <span className={styles.textBackground}>Rád fér...</span>
+                </h1>
+
+                <div className={styles.inputHolder}>
+                    <select
+                        className={styles.select}
+                        defaultValue={"MEDIUM"}
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
+                    >
+                        <option key={"EASY"} value={"EASY"}>
+                            Triviális
+                        </option>
+                        <option key={"MEDIUM"} value={"MEDIUM"}>
+                            Óbudai
+                        </option>
+                        <option key={"HARD"} value={"HARD"}>
+                            BME
+                        </option>
+                        <option key={"HARDCORE"} value={"HARDCORE"}>
+                            Tasnádi
+                        </option>
+                    </select>
+
+                    <button className={styles.button} onClick={GenerateExerciseAndUpdateUI}>Generate exercise</button>
+                </div>
 
                 <div>
                     {
@@ -95,11 +107,11 @@ export default function ExercisePage (): JSX.Element {
                 {
                     showSolution == false && solutionData != null && isLoading == false
                     &&
-                    <div>
-                        <MathJax dynamic>
+                    <div className={styles.solutionHolder}>
+                        <MathJax className={styles.exercise} dynamic>
                             { `$$ ${solutionData?.inputAsLatex} = ? $$` }
                         </MathJax>
-                        <button onClick={() => setShowSolution(true)}>Megoldás mutatása</button>
+                        <button className={styles.button} onClick={() => setShowSolution(true)}>Megoldás mutatása</button>
                     </div>
                 }   
                 {
@@ -115,6 +127,8 @@ export default function ExercisePage (): JSX.Element {
                         }
                     })()
                 }
+            </div>
+
             </MathJaxContext>
         </main>
     </>);

@@ -1,4 +1,4 @@
-import { IDifferentiationQueryBody } from "../classes/BodyTypes";
+import { IDifferentiationQueryBody, IExerciseQueryBody } from "../classes/BodyTypes";
 import DifficultyLevel from "../classes/DifficultyLevel";
 import type { ISolutionData, ISolutionDataNullable } from "../classes/ResponseData";
 import IResponseError from "../classes/ResponseError";
@@ -82,7 +82,7 @@ export async function GenerateExercise (level: DifficultyLevel, signal: AbortSig
 
     const levelString = level.toLowerCase();
 
-    const URL = `${API_URL}/generate-exercise/${levelString}`;
+    const URL = `${API_URL}/generate-exercise/`;
 
     let response: Response;
 
@@ -90,9 +90,20 @@ export async function GenerateExercise (level: DifficultyLevel, signal: AbortSig
         "level": level
     });
 
+    const body: IExerciseQueryBody = {
+        level: level as string,
+        difficultyMetrics: null,
+        preferences: GetBackendPreferences()
+    };
+
     try {
         response = await fetch(URL, {
-            signal: signal
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            signal: signal,
+            body: JSON.stringify(body)
         });
     } catch (err: any) {
         if (err.name == "AbortError")
