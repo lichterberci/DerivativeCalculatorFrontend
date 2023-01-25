@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getDatabase, set, ref } from "firebase/database";
+import { FirebaseApp, initializeApp } from "firebase/app";
+import { Analytics, getAnalytics } from "firebase/analytics";
+import { getDatabase, set, ref, Database } from "firebase/database";
 import IBugReport from "../classes/BugReport";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,26 +21,46 @@ export const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const firebaseApp = initializeApp(firebaseConfig);
-export const firebaseAnalytics = getAnalytics(firebaseApp);
-export const db = getDatabase(firebaseApp);
+export let firebaseApp: FirebaseApp | null = null;
+export let firebaseAnalytics: Analytics | null = null;
+export let db: Database | null = null;
+
+export function FirebaseInit (): void {
+    
+    if (firebaseApp === null)
+        firebaseApp = initializeApp(firebaseConfig);
+    if (firebaseAnalytics === null)
+        firebaseAnalytics = getAnalytics(firebaseApp);
+    if (db === null)
+        db = getDatabase(firebaseApp);
+
+    console.log("Firebase initialized!");
+}
 
 export async function WriteBugReport (bugReport: IBugReport): Promise<boolean> {
 
-    const reportId: string = Date.now().toString() + "-" + Math.floor(Math.random() * 10000).toString();
+    if (db === null) {
+        console.error("Cannot write bug report, db is uninitialized!");
+        return false;
+    }
+
+    const reportId: string = new Date(Date.now()).toISOString().slice(0, 10) + "_" + Math.floor(Math.random() * 1000000).toString();
 
     try {
         await set(
             ref(
-                db, 
+                db as Database, 
                 `bug_reports/${reportId}`
             ), 
             bugReport
         );
         
+        console.log("Bug report sent successfully!");
+
         return true; // success
     } 
     catch (err) {
+        console.log("Bug report could not be sent!");
         console.error(err);
         return false;
     }
