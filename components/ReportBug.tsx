@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { WriteBugReport } from "../scripts/Firebase";
+import styles from "../styles/RepurtBug.module.css"
 
 export default function ReportBug (): JSX.Element {
 
@@ -68,8 +69,11 @@ export default function ReportBug (): JSX.Element {
     };
 
     return (<>
-        <div style={{display: "flex", flexDirection: "column"}}>
+        <div className={styles.repurtBugHolder} >
+
+            <h1 className={styles.title}>Valami hibát találtál?<br></br> Küldd el nekünk!</h1>
             <input 
+                className={styles.titleInput}
                 type="text" 
                 placeholder="Add a title..."
                 value={title}
@@ -88,6 +92,7 @@ export default function ReportBug (): JSX.Element {
             }
 
             <textarea 
+                className={styles.bugInput}
                 rows={3}
                 placeholder="Describe your problem..."
                 value={description}
@@ -106,6 +111,7 @@ export default function ReportBug (): JSX.Element {
             }
 
             <select
+                className={styles.dropDown}
                 value={priority}
                 onChange={e => {
                     setPriority(Number.parseInt(e.target.value));
@@ -127,6 +133,7 @@ export default function ReportBug (): JSX.Element {
             }
 
             <button
+                className={styles.button}
                 onClick={() => ValidateAndSend()}
             >
                 Send
