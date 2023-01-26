@@ -62,7 +62,8 @@ export function GetBackendPreferences(): IBackendPreferences | null {
 }
 
 export function SetCSSThemeFromLocalStorage (): void {
-    const { darkMode: boolean }: IUserInterfacePreferences = GetPreferences("UIPreferences");
+
+    const UIPreferences: IUserInterfacePreferences = GetPreferences("UIPreferences");
 
     const primaryColorDarkMode: string = "#2222AA";
     const secondaryColorDarkMode: string = "#AA22AA";
@@ -74,7 +75,7 @@ export function SetCSSThemeFromLocalStorage (): void {
     const backgroundColorLightMode: string = "#FFFFFF";
     const textColorLightMode: string = "#000000";
 
-    if (darkMode) {
+    if (UIPreferences.darkMode) {   
         document.documentElement.style.setProperty("--primary-color", primaryColorDarkMode);
         document.documentElement.style.setProperty("--secondary-color", secondaryColorDarkMode);
         document.documentElement.style.setProperty("--background-color", backgroundColorDarkMode);
