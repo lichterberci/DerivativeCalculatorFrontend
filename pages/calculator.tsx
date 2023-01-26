@@ -1,5 +1,5 @@
 import { MathJaxContext } from "better-react-mathjax";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Image from "next/image"
 
 import { ISolutionData } from "../classes/ResponseData";
@@ -10,6 +10,8 @@ import styles from "../styles/calculator.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
+import { FirebaseInit } from "../scripts/Firebase";
+import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
@@ -20,6 +22,12 @@ export default function CalculatorPage (): JSX.Element {
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    useEffect (() => {
+        FirebaseInit();
+
+        SetCSSThemeFromLocalStorage();
+    }, []);
 
     const QueryDifferentiationAndUpdateUI = async () => {
 

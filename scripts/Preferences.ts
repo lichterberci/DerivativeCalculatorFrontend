@@ -1,5 +1,5 @@
 import IBackendPreferences from "../classes/BackendPreferenceTypes";
-import { ISimplificationPreferences } from "../classes/FrontendPreferenceTypes";
+import { ISimplificationPreferences, IUserInterfacePreferences } from "../classes/FrontendPreferenceTypes";
 
 export function SetPreferences (keyValuePairs: { [key: string]: any }): void {
 
@@ -59,4 +59,34 @@ export function GetBackendPreferences(): IBackendPreferences | null {
             opsNotToEvaluate: opsNotToEvaluate
         }
     };
+}
+
+export function SetCSSThemeFromLocalStorage (): void {
+    const { darkMode: boolean }: IUserInterfacePreferences = GetPreferences("UIPreferences");
+
+    const primaryColorDarkMode: string = "#2222AA";
+    const secondaryColorDarkMode: string = "#AA22AA";
+    const backgroundColorDarkMode: string = "#000000";
+    const textColorDarkMode: string = "#FFFFFF";
+
+    const primaryColorLightMode: string = "#2222AA";
+    const secondaryColorLightMode: string = "#AA22AA";
+    const backgroundColorLightMode: string = "#FFFFFF";
+    const textColorLightMode: string = "#000000";
+
+    if (darkMode) {
+        document.documentElement.style.setProperty("--primary-color", primaryColorDarkMode);
+        document.documentElement.style.setProperty("--secondary-color", secondaryColorDarkMode);
+        document.documentElement.style.setProperty("--background-color", backgroundColorDarkMode);
+        document.documentElement.style.setProperty("--text-color", textColorDarkMode);
+        
+        console.log("Styles set to dark mode!");
+    } else {
+        document.documentElement.style.setProperty("--primary-color", primaryColorLightMode);
+        document.documentElement.style.setProperty("--secondary-color", secondaryColorLightMode);
+        document.documentElement.style.setProperty("--background-color", backgroundColorLightMode);
+        document.documentElement.style.setProperty("--text-color", textColorLightMode);
+        
+        console.log("Styles set to light mode!");
+    }
 }

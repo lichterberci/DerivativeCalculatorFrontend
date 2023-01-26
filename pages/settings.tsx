@@ -1,7 +1,8 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { ISimplificationPreferences, IUserInterfacePreferences } from "../classes/FrontendPreferenceTypes";
-import { GetPreferences, SetPreferences } from "../scripts/Preferences";
+import { FirebaseInit } from "../scripts/Firebase";
+import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from "../scripts/Preferences";
 
 export default function Settings (): JSX.Element {
 
@@ -16,13 +17,18 @@ export default function Settings (): JSX.Element {
     });
 
     useEffect(() => {
-          
+        
+        FirebaseInit();
+        
+        SetCSSThemeFromLocalStorage();
+        
+
         const simpPref: ISimplificationPreferences = GetPreferences("simplificationPreferences");
         setSimplificationPreferences(simpPref);
-
+        
         const UIPref: IUserInterfacePreferences = GetPreferences("UIPreferences");
         setUIPreferences(UIPref);
-
+        
     }, []);
     
     const UpdateSimplificationPreferences = (key: string, value: any) => {
@@ -49,6 +55,8 @@ export default function Settings (): JSX.Element {
         setUIPreferences(newValue);
         
         SetPreferences({"UIPreferences": newValue});
+
+        SetCSSThemeFromLocalStorage();
     };
 
     return (<>
