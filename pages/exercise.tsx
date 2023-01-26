@@ -1,5 +1,5 @@
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image"
 
 import DifficultyLevel from "../classes/DifficultyLevel";
@@ -12,6 +12,8 @@ import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
 
 import styles from "../styles/exercise.module.css"
+import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
+import { FirebaseInit } from "../scripts/Firebase";
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
@@ -24,6 +26,12 @@ export default function ExercisePage (): JSX.Element {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const selectedLevel = useRef<DifficultyLevel>("MEDIUM");
+
+    useEffect (() => {
+        FirebaseInit();
+
+        SetCSSThemeFromLocalStorage();
+    }, []);
 
     const GenerateExerciseAndUpdateUI = async () => {
 

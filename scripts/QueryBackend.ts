@@ -91,7 +91,7 @@ export async function GenerateExercise (level: DifficultyLevel, signal: AbortSig
     });
 
     const body: IExerciseQueryBody = {
-        level: level as string,
+        level: levelString,
         difficultyMetrics: null,
         preferences: GetBackendPreferences()
     };
