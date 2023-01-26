@@ -13,9 +13,9 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
     const { items } = props;
     
     return(<>
-        <div className={styles.holderNuzi}> 
-            
-            <div style={{display:"flex", flexDirection:"row", maxWidth:600,alignItems:'center', justifyContent:'space-evenly'}}>
+        <div className={styles.outerHolder}> 
+
+            <div className={styles.navbarHolder}>
                 {   
                     items.map((item, i) => {
                         return (
@@ -80,7 +80,7 @@ var stylesDik = {
     },
     bmItemList: {
       width:"100%",  
-      color: '#b8b7ad',
+      color: 'white',
       padding: '1em',
       display:'flex',
       flexDirection: 'column',
@@ -88,7 +88,9 @@ var stylesDik = {
     },
     bmItem: {
       display: 'inline-block',
-      marginTop:"0.75rem"
+      marginTop:"1.5rem",
+      color: 'white',
+      textDecoration:"none"
     },
     bmOverlay: {
       background: 'rgba(0, 0, 0, 0.3)'

@@ -96,14 +96,14 @@ export default function CalculatorPage (): JSX.Element {
                         <div className={styles.solutionWrapper}>
                         {
                             (() => {
-                            if (isLoading == false) {
-                                if (solutionData != null)
+                                if (isLoading == false) {
+                                    if (solutionData != null)
                                     return <Solution data={solutionData}/>
-                                else // error message is displayed, so we don't have to do anything here
+                                    else // error message is displayed, so we don't have to do anything here
                                     return <></>
-                            } 
-                            else { // display loading anim
-                                return <Image alt="Loading animation" src={LoadingAnim} width={600} height={300}/>
+                                } 
+                                else { // display loading anim
+                                    return <Image className={styles.loading} alt="Loading animation" src={LoadingAnim} width={600} height={300}/>
                             }
                             })()
                         }

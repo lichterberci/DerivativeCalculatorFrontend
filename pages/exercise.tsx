@@ -114,19 +114,22 @@ export default function ExercisePage (): JSX.Element {
                         <button className={styles.button} onClick={() => setShowSolution(true)}>Megoldás mutatása</button>
                     </div>
                 }   
-                {
-                    (() => {
-                        if (isLoading == false) {
-                            if (solutionData != null && showSolution)
+
+                <div className={styles.solutionWrapper}>
+                    {
+                        (() => {
+                            if (isLoading == false) {
+                                if (solutionData != null && showSolution)
                                 return <Solution data={solutionData}/>
-                            else // error message is displayed, so we don't have to do anything here
+                                else // error message is displayed, so we don't have to do anything here
                                 return <></>
-                        } 
-                        else { // display loading anim
-                            return <Image alt="Loading animation" src={LoadingAnim} width={600} height={300}/>
-                        }
-                    })()
-                }
+                            } 
+                            else { // display loading anim
+                                return <Image className={styles.loading}  alt="Loading animation" src={LoadingAnim} width={600} height={300}/>
+                            }
+                        })()
+                    }
+                </div>
             </div>
 
             </MathJaxContext>
