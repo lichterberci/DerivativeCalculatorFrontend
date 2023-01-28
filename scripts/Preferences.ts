@@ -65,6 +65,13 @@ export function SetCSSThemeFromLocalStorage (): void {
 
     const UIPreferences: IUserInterfacePreferences = GetPreferences("UIPreferences");
 
+    if (UIPreferences === undefined) {
+        
+        console.warn("Cannot set UI preferences from local storage! Retrying in 0.1 sec...");
+
+        setTimeout(SetCSSThemeFromLocalStorage, 500);        
+    }
+
     const primaryColorDarkMode: string = "#2222AA";
     const secondaryColorDarkMode: string = "#AA22AA";
     const backgroundColorDarkMode: string = "#000000";
