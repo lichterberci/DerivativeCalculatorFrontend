@@ -1,5 +1,6 @@
 import Link from "next/link";
-import styles from "../styles/navbar.module.css";
+import HamburgerMenu from "./HamburgerMenu";
+import styles from "../styles/navBar.module.css"
 
 export interface INavbarItemData {
     name: string,
@@ -11,20 +12,20 @@ export default function Navbar (props: { items: INavbarItemData[] }): JSX.Elemen
     const { items } = props;
 
     return (
-        <div className={styles.myContainer}>
-            <nav className={styles.navBarHolder}>
+        <div className={styles.menu}>
+            <div style={{display:"flex", flexDirection:"row", maxWidth:600,alignItems:'center', justifyContent:'space-evenly'}}>
             {   
                 items.map((item, i) => {
                     return (
-                        <li className={styles.navBarItem} key={i}>
-                            <Link href={item.href}>
+                        <div className={styles.navBarItem} key={i}>
+                            <Link className={styles.navBarItem} href={item.href}>
                                 { item.name }
                             </Link>
-                        </li>
+                        </div>
                     );
                 })
             }
-            </nav>
+            </div>
         </div>
     );
 };

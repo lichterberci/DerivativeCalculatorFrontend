@@ -2,7 +2,14 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router';
 import Script from 'next/script'
 import { useEffect } from 'react';
+import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';
+import { Roboto } from "@next/font/google"
+
+const roboto = Roboto({
+    weight: '400',
+    subsets: ['latin'],
+});  
 
 export default function App({ Component, pageProps }: AppProps) {
     
@@ -19,6 +26,29 @@ export default function App({ Component, pageProps }: AppProps) {
             router.events.off('routeChangeStart', handleRouteChange)
         }
     }, [router.events])
+
+    const navBarItems = [
+		{
+			href: "/",
+			name: "Kezdőlap"
+		},
+		{
+			href: "/calculator",
+			name: "Ellenőrzés"
+		},
+		{
+			href: "/exercise",
+			name: "Gyakorlás"
+		},
+		{
+			href: "/about",
+			name: "Rólunk"
+		},
+		{
+			href: "/settings",
+			name: "Beállítások"
+		}
+	];
     
     return (<>
         <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_KEY}`} />
@@ -34,10 +64,12 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
         </Script>
         
-        
-        
-        <Component {...pageProps} />
-        </>)
+        <main className={roboto.className}>
+            <HamburgerMenu items={navBarItems}/>
+
+            <Component {...pageProps} />
+        </main>
+    </>)
         
     }
     

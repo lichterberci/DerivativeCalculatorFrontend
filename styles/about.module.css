@@ -1,42 +1,29 @@
-.aboutContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;    
+.myContainer{
+    max-width: 1240px;
+    display:flex;
     align-items: center;
+    justify-content: center;
+    padding-left:2rem;
+    padding-right:2rem;
+    padding-bottom:100px;
+    margin:0 auto;
 }
 
-.ourTeam {
-    display: flex;
-    color: blueviolet;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-.teamList {
-
-    display: flex;
+.teamHolder{
+    margin-top:100px;
+    width:100%;
+    display:flex;
     flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
-
+    justify-content: space-evenly;
+    align-items:center;
+    flex-wrap:wrap ;
+    padding-top: 0;
 }
 
-.teamList > div {
-
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.137);
-    padding: 1rem;
-
-}
-
-.name {
-    font-size: 1.5rem;
-}
-
-.responsibilityList > div {
-    color: grey;
+@media screen and (max-width: 480px){
+    .teamHolder {
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
 }

@@ -1,0 +1,55 @@
+
+.holder{
+    position: fixed;
+    background-color: #6C00FF;
+    padding:7px 0px;
+    display:flex;
+    flex-direction:row;
+    max-width:600;
+    width: 100%;
+    top:0;
+    z-index: 5;
+    align-items:center;
+    justify-content:left;
+    gap: 3rem;
+    padding-left: 3rem;
+
+}
+
+.navBarItem{
+    text-decoration: none;
+    color:white;
+    font-size: 0.8rem;
+}
+.hamburgerHolder{
+    display:none
+}
+
+@media screen and (max-width: 480px){
+
+
+    .holder{
+        display: none;
+    }
+
+    .hamburgerHolder{
+        position: relative;
+        display: block;
+        width:45px;
+        z-index: 5;
+    }
+
+    .burgerMenuHolder{
+        position: relative;;
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hamburgerItem{
+        text-decoration: none;
+        color:white;
+        padding: 10px;
+    }
+    
+}
