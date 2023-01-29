@@ -1,15 +1,16 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
-import { WriteBugReport } from '../scripts/Firebase';
-import { GetPreferences, SetPreferences } from '../scripts/Preferences';
+import { FirebaseInit, WriteBugReport } from '../scripts/Firebase';
+import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from '../scripts/Preferences';
+import ReportBug from "../components/ReportBug"
 
 export default function Home() {
 
-	const [darkMode, setDarkMode] = useState<boolean>(false);
-
 	useEffect (() => {
 
-		setDarkMode(GetPreferences("darkMode"));
+		FirebaseInit();
+
+		SetCSSThemeFromLocalStorage();
 
 	}, [])
 
@@ -21,22 +22,9 @@ export default function Home() {
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
-		<main style={{backgroundColor: darkMode ? "black" : "white", color: darkMode ? "white" : "black"}}>
-			<input
-				type={"checkbox"}
-				checked={darkMode}
-				onChange={e => {
-					SetPreferences({"darkMode": e.target.checked});
-					setDarkMode(e.target.checked);
-				}}
-			/>
-			Darkmode
-
-			<button onClick={() => WriteBugReport({
-				timestamp: Date.now(),
-				priority: 1,
-				description: "This is a test bug report"
-			})}>Send bug report</button>
+		<main>
+			
+			<ReportBug />
 		</main>
 	</>);
 }

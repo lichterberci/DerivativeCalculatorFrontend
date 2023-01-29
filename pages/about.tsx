@@ -1,9 +1,17 @@
 import Head from "next/head";
 import styles from "../styles/about.module.css"
 import TeamCard from "../components/TeamCard";
-import { useRef } from 'react';
+import { useEffect } from 'react';
+import { FirebaseInit } from "../scripts/Firebase";
+import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
 
 export default function About (): JSX.Element {
+
+    useEffect (() => {
+        FirebaseInit();
+
+        SetCSSThemeFromLocalStorage();
+    }, []);
 
     const team = [
         {

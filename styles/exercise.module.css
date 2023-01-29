@@ -1,0 +1,87 @@
+.myContainer{
+    position:relative;
+    max-width:1240px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left:1rem;
+    padding-right:1rem;
+    margin-bottom:100px;
+}
+
+.title{
+    text-align: center;
+    line-height: 150%;
+    padding-top:100px;
+    padding-bottom:50px;
+}
+
+.textBackground{
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+.inputHolder{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 300px;
+}
+
+.select{
+    padding:3px 5px;
+    border:1.5px solid #3D1766;
+    border-radius: 8px;
+    outline:none
+}
+
+.select:focus{
+    border:1.5px solid #3D1766;
+}
+
+.button{
+    background:linear-gradient(to right, #4A00E0, #8E2DE2);
+    border:none;
+    color:white;
+    font-weight: lighter;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding:10px 10px;
+    cursor:pointer;
+    transition:0.1s;
+}
+
+.solutionHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.exercise{
+    padding-top:2rem;
+    padding-bottom:2rem;
+}
+
+.loading{
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+    width:100px;
+    height: 50px;
+    margin-top: 50px;
+}
+
+.solutionWrapper{
+    width: min(600px, 100%);
+    /* overflow-x: auto; */
+};
+

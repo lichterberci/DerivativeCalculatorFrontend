@@ -1,9 +1,36 @@
+.hamburgerHolder{
+    display:none;
+}
 
-.holderNuzi{
-    background-color:red;
-    font-size: 100rem;
+.navbarHolder{
+    position: fixed;
+    background-color: #3D1766;
+    padding:10px 0px;
+    display:flex;
+    flex-direction:row;
+    max-width:600;
+    width: 100%;
+    top:0;
+    z-index: 5;
+    align-items:center;
+    justify-content:left;
+    gap: 5rem;
+    padding-left: 5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 .navBarItem{
-    background-color:red;
+    text-decoration: none;
+    font-size: 1.125rem;
+    color:white;
+}
+
+@media screen and (max-width: 480px){
+    .hamburgerHolder{
+        display:block;
+    }
+
+    .navbarHolder{
+        display:none;
+    }
 }

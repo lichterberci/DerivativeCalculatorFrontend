@@ -1,0 +1,72 @@
+.repurtBugHolder{
+    max-width: 800px;
+    width: 90%;
+    margin:100px auto;
+    padding-top: 5rem;
+    padding-bottom: 7rem;
+    align-items: center;
+    background: #3D1766; 
+    background: linear-gradient(to right, #500f95, #3D1766); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    gap:2rem;
+    border-radius: 12px;
+}
+
+.title{
+    color:white;
+    text-align: center;
+    line-height: 150%;
+    font-weight: normal;
+    font-size: 2.1rem;
+}
+
+.titleInput{
+    padding:10px;
+    outline: none;
+    border:1.5px solid blue;
+    max-width: 500px;
+    width:80%;
+    border-radius: 4px;
+}
+
+.bugInput{
+    padding:10px;
+    outline: none;
+    border:1.5px solid blue;
+    max-width: 500px;
+    width:80%;
+    border-radius: 4px;
+}
+
+.dropDown{
+    padding:10px 10px;
+    outline: none;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.repurtBugHolder{
+    display: flex;
+    flex-direction: column;
+}
+
+.button{
+    background:linear-gradient(to right, #4A00E0, #8E2DE2);
+    border:none;
+    color:white;
+    font-weight: 400;
+    border-radius: 8px;
+    padding:10px 30px;
+    border: 2px solid white;
+    cursor:pointer;
+    transition:0.1s;
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 480px){
+    .repurtBugHolder{
+        width: 95%;
+        gap:3rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }   
+}

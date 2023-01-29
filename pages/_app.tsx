@@ -4,6 +4,12 @@ import Script from 'next/script'
 import { useEffect } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';
+import { Roboto } from "@next/font/google"
+
+const roboto = Roboto({
+    weight: '400',
+    subsets: ['latin'],
+});  
 
 export default function App({ Component, pageProps }: AppProps) {
     
@@ -58,10 +64,12 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
         </Script>
         
-        {/* <HamburgerMenu items={navBarItems}/> */}
+        <main className={roboto.className}>
+            <HamburgerMenu items={navBarItems}/>
 
-        <Component {...pageProps} />
-        </>)
+            <Component {...pageProps} />
+        </main>
+    </>)
         
-    }
+}
     
