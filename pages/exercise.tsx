@@ -85,6 +85,7 @@ export default function ExercisePage (): JSX.Element {
                         className={styles.select}
                         defaultValue={"MEDIUM"}
                         onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
+                        tabIndex={1}
                     >
                         <option key={"EASY"} value={"EASY"}>
                             Triviális
@@ -100,7 +101,13 @@ export default function ExercisePage (): JSX.Element {
                         </option>
                     </select>
 
-                    <button className={styles.button} onClick={GenerateExerciseAndUpdateUI}>Generate exercise</button>
+                    <button 
+                        className={styles.button} 
+                        onClick={GenerateExerciseAndUpdateUI}
+                        tabIndex={2}
+                    >
+                        Generate exercise
+                    </button>
                 </div>
 
                 <div>
@@ -119,7 +126,13 @@ export default function ExercisePage (): JSX.Element {
                         <MathJax className={styles.exercise} dynamic>
                             { `$$ ${solutionData?.inputAsLatex} = ? $$` }
                         </MathJax>
-                        <button className={styles.button} onClick={() => setShowSolution(true)}>Megoldás mutatása</button>
+                        <button 
+                            className={styles.button} 
+                            onClick={() => setShowSolution(true)}
+                            tabIndex={3}
+                        >
+                            Megoldás mutatása
+                        </button>
                     </div>
                 }   
 

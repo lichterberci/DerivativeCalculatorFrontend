@@ -13,9 +13,6 @@ import Head from "next/head";
 import { FirebaseInit } from "../scripts/Firebase";
 import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
 
-import { FirebaseInit } from "../scripts/Firebase";
-import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
-
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
 
