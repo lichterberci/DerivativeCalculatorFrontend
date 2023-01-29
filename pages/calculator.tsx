@@ -10,6 +10,8 @@ import styles from "../styles/calculator.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
+import { FirebaseInit } from "../scripts/Firebase";
+import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
 
 import { FirebaseInit } from "../scripts/Firebase";
 import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
