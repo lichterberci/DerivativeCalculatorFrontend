@@ -71,3 +71,20 @@
     border-bottom:none;
 }
 
+@media screen and (max-width: 480px){
+
+    .stepHolder{
+        position: relative;
+    }
+
+    .stepMathJax {
+        border-bottom:none;
+    }
+    
+    .stepLatex{
+        border-bottom:0.5px solid rgb(187, 187, 187);
+    }
+
+    
+}
+

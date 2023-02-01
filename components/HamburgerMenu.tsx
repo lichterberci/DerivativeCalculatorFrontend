@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from '../styles/HamburgerMenu.module.css'
 import { slide as Menu } from 'react-burger-menu'
+import React, { useState } from 'react';
 
 export interface INavbarItemData {
     name: string,
@@ -10,6 +11,7 @@ export interface INavbarItemData {
 
 export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.Element 
 {
+	const [isOpen, setIsOpen] = useState(false)
     const { items } = props;
     
     return(<>
@@ -28,11 +30,11 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
             </div>
 
             <div className={styles.hamburgerHolder}>
-                <Menu styles={ stylesDik } disableOverlayClick customBurgerIcon={<HamburgerIcon />} width={'auto'} className={styles.burgerMenuHolder} >
+                <Menu  isOpen={isOpen} onOpen={() => setIsOpen(true)} onClose={() => setIsOpen(false)} styles={ stylesDik } disableOverlayClick customBurgerIcon={<HamburgerIcon />} width={'auto'} className={styles.burgerMenuHolder} >
                     {   
                         items.map((item, i) => {
                             return (
-                                <Link key={i} className={styles.hamburgerItem} href={item.href}>
+                                <Link onClick={() => setIsOpen(false)} key={i} className={styles.hamburgerItem} href={item.href}>
                                     { item.name }
                                 </Link>  
                             );

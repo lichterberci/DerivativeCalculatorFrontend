@@ -1,14 +1,27 @@
 .descriptionWrapper {
+
     font-size: 0.9em;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 0.45em;
+    align-items: start;
+    gap: 2em;
     padding-top:20px;
     padding-bottom:20px;
-    padding-left:0px;
-    padding-right:0px;
+    color:rgb(48, 48, 48);
+    width: fit-content;
+    max-width: min(90vw, 1000px);
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
     border-bottom:0.5px solid rgb(187, 187, 187);
-    color:rgb(48, 48, 48)
+}
+
+@media screen and (max-width: 480px){
+    
+    .descriptionWrapper {
+        align-self: start;
+        border-bottom: none;
+    }
+    
 }

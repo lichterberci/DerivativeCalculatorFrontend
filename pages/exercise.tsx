@@ -123,9 +123,13 @@ export default function ExercisePage (): JSX.Element {
                     showSolution == false && solutionData != null && isLoading == false
                     &&
                     <div className={styles.solutionHolder}>
-                        <MathJax className={styles.exercise} dynamic>
-                            { `$$ ${solutionData?.inputAsLatex} = ? $$` }
-                        </MathJax>
+
+                        <div>
+                            <MathJax className={styles.exercise} dynamic>
+                                { `$$ ${solutionData?.inputAsLatex} = ? $$` }
+                            </MathJax>
+                        </div>
+
                         <button 
                             className={styles.button} 
                             onClick={() => setShowSolution(true)}

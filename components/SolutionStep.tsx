@@ -36,10 +36,10 @@ export default function SolutionStep (
                     dynamic>
                     { `$$ ${stepAsLatex} $$` }
                 </MathJax>
+                {
+                    isShowingDescription && <StepDescription stepDescription={stepDescription} varToDiff={varToDiff} />
+                }
             </div>
-            {
-                isShowingDescription && <StepDescription stepDescription={stepDescription} varToDiff={varToDiff} />
-            }
         </div>
     );
 };
