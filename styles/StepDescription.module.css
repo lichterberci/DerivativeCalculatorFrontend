@@ -6,15 +6,16 @@
     justify-content: center;
     align-items: start;
     gap: 2em;
-    padding-top:20px;
-    padding-bottom:20px;
+    padding: 1rem 1.2rem;
     color:rgb(48, 48, 48);
+    border-bottom:0.5px solid rgb(187, 187, 187);
+
     width: fit-content;
     max-width: min(90vw, 1000px);
     white-space: nowrap;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: hidden;
-    border-bottom:0.5px solid rgb(187, 187, 187);
+
 }
 
 @media screen and (max-width: 480px){
