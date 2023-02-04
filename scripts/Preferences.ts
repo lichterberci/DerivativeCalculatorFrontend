@@ -1,5 +1,8 @@
 import IBackendPreferences from "../classes/BackendPreferenceTypes";
 import { ISimplificationPreferences, IUserInterfacePreferences } from "../classes/FrontendPreferenceTypes";
+import { ITheme } from "../classes/Theme";
+
+import THEMES from "../themes.json"
 
 export function SetPreferences (keyValuePairs: { [key: string]: any }): void {
 
@@ -67,31 +70,28 @@ export function SetCSSThemeFromLocalStorage (): void {
 
     if (UIPreferences === undefined)
         console.warn("Cannot set UI preferences from local storage! Setting it to default...");
+    
+    const defaultTheme: string = process.env.DEFAULT_THEME ?? "dark";
+    
+    const themeName = UIPreferences === undefined ? 
+                        defaultTheme : 
+                        UIPreferences.darkMode ? 
+                            "dark" : 
+                            "light";
 
-    const primaryColorDarkMode: string = "#2222AA";
-    const secondaryColorDarkMode: string = "#AA22AA";
-    const backgroundColorDarkMode: string = "#000000";
-    const textColorDarkMode: string = "#FFFFFF";
+    const theme: ITheme | null | undefined = (THEMES as { [key: string]: ITheme })[themeName];
 
-    const primaryColorLightMode: string = "#2222AA";
-    const secondaryColorLightMode: string = "#AA22AA";
-    const backgroundColorLightMode: string = "#FFFFFF";
-    const textColorLightMode: string = "#000000";
-
-    // default is false
-    if (UIPreferences?.darkMode ?? false) {   
-        document.documentElement.style.setProperty("--primary-color", primaryColorDarkMode);
-        document.documentElement.style.setProperty("--secondary-color", secondaryColorDarkMode);
-        document.documentElement.style.setProperty("--background-color", backgroundColorDarkMode);
-        document.documentElement.style.setProperty("--text-color", textColorDarkMode);
-        
-        console.log("Styles set to dark mode!");
-    } else {
-        document.documentElement.style.setProperty("--primary-color", primaryColorLightMode);
-        document.documentElement.style.setProperty("--secondary-color", secondaryColorLightMode);
-        document.documentElement.style.setProperty("--background-color", backgroundColorLightMode);
-        document.documentElement.style.setProperty("--text-color", textColorLightMode);
-        
-        console.log("Styles set to light mode!");
+    if (theme == null) {
+        console.error(`Theme ${themeName} does not exist, cannot set theme!`);
+        return;
     }
+
+    document.documentElement.style.setProperty("--primary-color", theme.primaryColor);
+    document.documentElement.style.setProperty("--secondary-color", theme.secondaryColor);
+    document.documentElement.style.setProperty("--tertiary-color", theme.tertiaryColor);
+    document.documentElement.style.setProperty("--background-color", theme.backgroundColor);
+    document.documentElement.style.setProperty("--text-color", theme.textColor);
+    
+    console.log(`Styles set to ${themeName}`);
+
 }
