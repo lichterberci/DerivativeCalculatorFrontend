@@ -24,14 +24,15 @@
     margin-top: 10rem;
     display: flex;
     flex-direction: column;
-    margin-bottom: 100px;
+    padding-bottom: 100px;
     align-items: center;
+    background-color: var(--primary-color);
+    /* border: 0rem solid var(--primary-color);
+    border-top-width: 1rem; */
 }
 
 .githubTextContainer {
     width: 100%;
-    border: 0rem solid var(--primary-color);
-    border-top-width: 1rem;
     padding: 7rem 0;
     display: flex;
     flex-direction: column;
@@ -42,7 +43,7 @@
 .githubText1 {
     font-size: 4rem;
     font-weight: 100;
-    color: var(--text-color);
+    color: white;
     letter-spacing: 5px;
     word-spacing: 20px;
     margin-bottom: 20px;
@@ -51,7 +52,10 @@
 .githubText2 {
     font-size: 5rem;
     font-weight: 900;
-    color: var(--text-color);
+    background: -webkit-linear-gradient(to right, var(--tertiary-color), var(--secondary-color));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, var(--tertiary-color), var(--secondary-color)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .githubLinkContainer {
@@ -66,7 +70,9 @@
     font-size: 2rem;
     text-decoration: none;
     color: var(--background-color);
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    font-weight: 200;
 }
 
 @media screen and (max-width: 480px){
