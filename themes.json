@@ -1,13 +1,13 @@
 {
     "light" : {
-        "primaryColor": "#6C00FF",
+        "primaryColor": "#3D1766",
         "secondaryColor": "#8E2DE2",
         "tertiaryColor": "#4A00E0",
         "textColor": "black",
         "backgroundColor": "white"
     },
     "dark": {
-        "primaryColor": "#6C00FF",
+        "primaryColor": "#3D1766",
         "secondaryColor": "#8E2DE2",
         "tertiaryColor": "#4A00E0",
         "textColor": "white",
