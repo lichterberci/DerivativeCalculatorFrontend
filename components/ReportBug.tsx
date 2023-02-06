@@ -139,7 +139,7 @@ export default function ReportBug (): JSX.Element {
                     className={styles.button}
                     onClick={() => ValidateAndSend()}
                 >
-                    Send
+                    Küldés
                 </button>
 
                 {

@@ -106,7 +106,7 @@ export default function ExercisePage (): JSX.Element {
                         onClick={GenerateExerciseAndUpdateUI}
                         tabIndex={2}
                     >
-                        Generate exercise
+                        Feladat generálása
                     </button>
                 </div>
 

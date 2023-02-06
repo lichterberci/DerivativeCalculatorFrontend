@@ -87,7 +87,7 @@ export default function CalculatorPage (): JSX.Element {
                             />
 
                             <button className={styles.button} onClick={QueryDifferentiationAndUpdateUI}>
-                                Differentiate
+                                Differenciálás
                             </button>
                         </span>
 
