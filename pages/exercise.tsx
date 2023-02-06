@@ -77,7 +77,7 @@ export default function ExercisePage (): JSX.Element {
             <div className={styles.myContainer}>
                 
                 <h1 className={styles.title}>
-                    Gyakorold a deriválást. <br/> <span className={styles.textBackground}>Rád fér...</span>
+                    Gyakorold a deriválást! <br/> <span className={styles.textBackground}>Rád fér...</span>
                 </h1>
 
                 <div className={styles.inputHolder}>
