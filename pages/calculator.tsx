@@ -78,7 +78,7 @@ export default function CalculatorPage (): JSX.Element {
                             <input 
                                 className={styles.input}
                                 type="text" 
-                                placeholder="sin(x)" 
+                                placeholder="sin(x)^2" 
                                 onChange={e => inputRef.current = e.target.value}
                                 onKeyDown={e => {
                                     if (e.key == "Enter")
