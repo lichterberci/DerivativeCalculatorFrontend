@@ -10,7 +10,6 @@ import styles from "../styles/calculator.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
-
 import { FirebaseInit } from "../scripts/Firebase";
 import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
 
@@ -79,7 +78,7 @@ export default function CalculatorPage (): JSX.Element {
                             <input 
                                 className={styles.input}
                                 type="text" 
-                                placeholder="sin(x)" 
+                                placeholder="sin(x)^2" 
                                 onChange={e => inputRef.current = e.target.value}
                                 onKeyDown={e => {
                                     if (e.key == "Enter")
@@ -88,7 +87,7 @@ export default function CalculatorPage (): JSX.Element {
                             />
 
                             <button className={styles.button} onClick={QueryDifferentiationAndUpdateUI}>
-                                Differentiate
+                                Differenciálás
                             </button>
                         </span>
 

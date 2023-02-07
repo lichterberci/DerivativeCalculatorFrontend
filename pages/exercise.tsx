@@ -77,7 +77,7 @@ export default function ExercisePage (): JSX.Element {
             <div className={styles.myContainer}>
                 
                 <h1 className={styles.title}>
-                    Gyakorold a deriválást. <br/> <span className={styles.textBackground}>Rád fér...</span>
+                    Gyakorold a deriválást! <br/> <span className={styles.textBackground}>Rád fér...</span>
                 </h1>
 
                 <div className={styles.inputHolder}>
@@ -85,6 +85,7 @@ export default function ExercisePage (): JSX.Element {
                         className={styles.select}
                         defaultValue={"MEDIUM"}
                         onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
+                        tabIndex={1}
                     >
                         <option key={"EASY"} value={"EASY"}>
                             Triviális
@@ -100,7 +101,13 @@ export default function ExercisePage (): JSX.Element {
                         </option>
                     </select>
 
-                    <button className={styles.button} onClick={GenerateExerciseAndUpdateUI}>Generate exercise</button>
+                    <button 
+                        className={styles.button} 
+                        onClick={GenerateExerciseAndUpdateUI}
+                        tabIndex={2}
+                    >
+                        Feladat generálása
+                    </button>
                 </div>
 
                 <div>
@@ -116,10 +123,20 @@ export default function ExercisePage (): JSX.Element {
                     showSolution == false && solutionData != null && isLoading == false
                     &&
                     <div className={styles.solutionHolder}>
-                        <MathJax className={styles.exercise} dynamic>
-                            { `$$ ${solutionData?.inputAsLatex} = ? $$` }
-                        </MathJax>
-                        <button className={styles.button} onClick={() => setShowSolution(true)}>Megoldás mutatása</button>
+
+                        <div>
+                            <MathJax className={styles.exercise} dynamic>
+                                { `$$ ${solutionData?.inputAsLatex} = ? $$` }
+                            </MathJax>
+                        </div>
+
+                        <button 
+                            className={styles.button} 
+                            onClick={() => setShowSolution(true)}
+                            tabIndex={3}
+                        >
+                            Megoldás mutatása
+                        </button>
                     </div>
                 }   
 

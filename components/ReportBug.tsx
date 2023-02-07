@@ -20,31 +20,31 @@ export default function ReportBug (): JSX.Element {
 
         if (priority < 0 || priority > 3) {
             console.error(`Priority is invalid! (${priority})`);
-            setDescriptionError(`Priority is invalid! (${priority})`);
+            setDescriptionError(`A prioritás invalid! (${priority})`);
             isDataValid = false;
         }
 
         if (title.trim() == "") {
             console.error("Title must not be empty!");
-            setTitleError("Title must not be empty!");
+            setTitleError("A cím nem lehet üres!");
             isDataValid = false;
         }
 
         if (title.length > 50) {
             console.error("Title is too long!");
-            setTitleError("Title is too long!");
+            setTitleError("A cím túl hosszú!");
             isDataValid = false;
         }
 
         if (description.trim() == "") {
             console.error("Description must not be empty!");
-            setDescriptionError("Description must not be empty!");
+            setDescriptionError("A leírás nem lehet üres!");
             isDataValid = false;
         }
 
         if (description.length > 140) {
             console.error("Description is too long!");
-            setDescriptionError("Description is too long!");
+            setDescriptionError("A leírás túl hosszú!");
             isDataValid = false;
         }
 
@@ -59,7 +59,7 @@ export default function ReportBug (): JSX.Element {
         });
 
         if (success == false) {
-            setSendError("Could not send bug report!");
+            setSendError("Nem tudtuk elküldeni a hibajelentést!");
             return;
         }
 
@@ -68,84 +68,88 @@ export default function ReportBug (): JSX.Element {
         setPriority(0);
     };
 
-    return (<>
-        <div className={styles.repurtBugHolder} >
+    return (
 
-            <h1 className={styles.title}>Valami hibát találtál?<br></br> Küldd el nekünk!</h1>
-            <input 
-                className={styles.titleInput}
-                type="text" 
-                placeholder="Add a title..."
-                value={title}
-                onChange={e => {
-                    setTitle(e.target.value);
-                    setTitleError(null);
-                }}
-            />
+        <div className={styles.myContainer}>
+            
+            <div className={styles.repurtBugHolder} >
 
-            {
-                titleError != null
-                &&
-                <div>
-                    { titleError }
-                </div>
-            }
+                <h1 className={styles.title}>Valami hibát találtál?<br></br> Küldd el nekünk!</h1>
+                <input 
+                    className={styles.titleInput}
+                    type="text" 
+                    placeholder="Adj egy címet..."
+                    value={title}
+                    onChange={e => {
+                        setTitle(e.target.value);
+                        setTitleError(null);
+                    }}
+                />
 
-            <textarea 
-                className={styles.bugInput}
-                rows={3}
-                placeholder="Describe your problem..."
-                value={description}
-                onChange={e => {
-                    setDescription(e.target.value);
-                    setDescriptionError(null);
-                }}
-            />  
+                {
+                    titleError != null
+                    &&
+                    <div>
+                        { titleError }
+                    </div>
+                }
 
-            {
-                descriptionError != null
-                &&
-                <div>
-                    { descriptionError }
-                </div>
-            }
+                <textarea 
+                    className={styles.bugInput}
+                    rows={3}
+                    placeholder="Írd le a problémát..."
+                    value={description}
+                    onChange={e => {
+                        setDescription(e.target.value);
+                        setDescriptionError(null);
+                    }}
+                />  
 
-            <select
-                className={styles.dropDown}
-                value={priority}
-                onChange={e => {
-                    setPriority(Number.parseInt(e.target.value));
-                    setPriorityError(null);
-                }}
-            >
-                <option key={0} value={0}>Kellemetlenség</option>
-                <option key={1} value={1}>Időszakos probléma</option>
-                <option key={2} value={2}>Gyakori probléma</option>
-                <option key={3} value={3}>A weboldal működését meggátló probléma</option>
-            </select>
+                {
+                    descriptionError != null
+                    &&
+                    <div>
+                        { descriptionError }
+                    </div>
+                }
 
-            {
-                priorityError != null
-                &&
-                <div>
-                    { priorityError }
-                </div>
-            }
+                <select
+                    className={styles.dropDown}
+                    value={priority}
+                    onChange={e => {
+                        setPriority(Number.parseInt(e.target.value));
+                        setPriorityError(null);
+                    }}
+                >
+                    <option key={0} value={0}>Kellemetlenség</option>
+                    <option key={1} value={1}>Időszakos probléma</option>
+                    <option key={2} value={2}>Gyakori probléma</option>
+                    <option key={3} value={3}>A weboldal működését meggátló probléma</option>
+                </select>
 
-            <button
-                className={styles.button}
-                onClick={() => ValidateAndSend()}
-            >
-                Send
-            </button>
+                {
+                    priorityError != null
+                    &&
+                    <div>
+                        { priorityError }
+                    </div>
+                }
 
-            {
-                sendError != null
-                &&
-                <div>
-                    { sendError }
-                </div>
-            }
+                <button
+                    className={styles.button}
+                    onClick={() => ValidateAndSend()}
+                >
+                    Küldés
+                </button>
+
+                {
+                    sendError != null
+                    &&
+                    <div>
+                        { sendError }
+                    </div>
+                }
+            </div>
         </div>
-    </>);
+    );
 }
