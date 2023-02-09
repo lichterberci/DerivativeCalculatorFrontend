@@ -79,7 +79,7 @@
 }
 
 .button:hover,
-.button:focus
+.button:focus-visible
 {
     background: var(--background-color);
     border: none;

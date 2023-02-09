@@ -27,6 +27,20 @@
     font-size:1rem;
 }
 
+.button:hover,
+.button:focus-visible
+{
+    background: var(--background-color);
+    border: none;
+    /* background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    outline: 2px solid var(--secondary-color);
+    /* transition: 0.1s; */
+    color: var(--text-color);
+}
+
 .solutionWrapperInner {
     display: flex;
     width: fit-content;
