@@ -91,7 +91,13 @@ export function SetCSSThemeFromLocalStorage (): void {
     document.documentElement.style.setProperty("--tertiary-color", theme.tertiaryColor);
     document.documentElement.style.setProperty("--background-color", theme.backgroundColor);
     document.documentElement.style.setProperty("--text-color", theme.textColor);
-    
+    document.documentElement.style.setProperty("--dark-background-color", theme.darkBackgroundColor);
+    document.documentElement.style.setProperty("--text-on-dark-background", theme.textOnDarkBackground);
+    document.documentElement.style.setProperty("--scrollbar-active", theme.scrollbarActiveColor);
+    document.documentElement.style.setProperty("--scrollbar-inactive", theme.scrollbarInactiveColor);
+    document.documentElement.style.setProperty("--error-color", theme.errorColor);
+    document.documentElement.style.setProperty("--team-card-background", theme.teamCardBackground);
+
     console.log(`Styles set to ${themeName}`);
 
 }

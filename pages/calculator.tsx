@@ -65,7 +65,7 @@ export default function CalculatorPage (): JSX.Element {
         <Head>
             <title>Ellenőrző oldal</title>
         </Head>
-        <main>
+        <main className={styles.main}>
             <MathJaxContext version={3} config={MathJaxConfig}>
                 <div className={styles.myContainer}>
                     <div style={{marginTop:100}}>
@@ -84,9 +84,14 @@ export default function CalculatorPage (): JSX.Element {
                                     if (e.key == "Enter")
                                         QueryDifferentiationAndUpdateUI()
                                 }}
+                                tabIndex={1}
                             />
 
-                            <button className={styles.button} onClick={QueryDifferentiationAndUpdateUI}>
+                            <button 
+                                className={styles.button} 
+                                onClick={QueryDifferentiationAndUpdateUI}
+                                tabIndex={1}
+                            >
                                 Differenciálás
                             </button>
                         </span>
