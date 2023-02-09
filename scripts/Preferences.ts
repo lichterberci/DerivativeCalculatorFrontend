@@ -71,7 +71,11 @@ export function SetCSSThemeFromLocalStorage (): void {
     if (UIPreferences === undefined)
         console.warn("Cannot set UI preferences from local storage! Setting it to default...");
     
-    const defaultTheme: string = process.env.DEFAULT_THEME ?? "dark";
+    const defaultTheme: string = window.matchMedia ? 
+                                    window.matchMedia('(prefers-color-scheme: dark)').matches ?
+                                        "dark" :
+                                        "light"    :
+                                    process.env.DEFAULT_COLOR_THEME ?? "dark";
     
     const themeName = UIPreferences === undefined ? 
                         defaultTheme : 
