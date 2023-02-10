@@ -24,7 +24,7 @@ export default function Home() {
 		</Head>
 		<main>
 
-			<div style={{color: "red", textAlign: "center", margin: "auto"}}>A weboldal fejlesztés alatt áll!</div>
+			<div style={{color: "red", textAlign: "center", margin: "auto", marginTop: "50px"}}>A weboldal fejlesztés alatt áll!</div>
 
 			<ReportBug />
 		</main>
