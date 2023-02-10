@@ -8,15 +8,13 @@ export interface INavbarItemData {
     href: string
 }
 
-
 export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.Element 
 {
 	const [isOpen, setIsOpen] = useState(false)
     const { items } = props;
     
     return(<>
-        <div className={styles.outerHolder}> 
-
+        <nav className={styles.outerHolder}> 
             <div className={styles.navbarHolder}>
                 {   
                     items.map((item, i) => {
@@ -30,7 +28,16 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
             </div>
 
             <div className={styles.hamburgerHolder}>
-                <Menu  isOpen={isOpen} onOpen={() => setIsOpen(true)} onClose={() => setIsOpen(false)} styles={ stylesDik } disableOverlayClick customBurgerIcon={<HamburgerIcon />} width={'auto'} className={styles.burgerMenuHolder} >
+                <Menu 
+                  isOpen={isOpen} 
+                  onOpen={() => setIsOpen(true)} 
+                  onClose={() => setIsOpen(false)} 
+                  styles={ stylesDik } 
+                  disableOverlayClick 
+                  customBurgerIcon={<HamburgerIcon />} 
+                  width={'auto'} 
+                  className={styles.burgerMenuHolder}
+                >
                     {   
                         items.map((item, i) => {
                             return (
@@ -42,7 +49,7 @@ export default function HamburgerMenu(props: { items: INavbarItemData[] }): JSX.
                     }
                 </Menu>
             </div>
-        </div> 
+        </nav> 
     </>);
 } 
 

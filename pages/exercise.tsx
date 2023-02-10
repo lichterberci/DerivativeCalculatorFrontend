@@ -87,16 +87,16 @@ export default function ExercisePage (): JSX.Element {
                         onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
                         tabIndex={1}
                     >
-                        <option key={"EASY"} value={"EASY"}>
+                        <option key={"EASY"} value={"EASY"} className={styles.option}>
                             Triviális
                         </option>
-                        <option key={"MEDIUM"} value={"MEDIUM"}>
+                        <option key={"MEDIUM"} value={"MEDIUM"} className={styles.option}>
                             Óbudai
                         </option>
-                        <option key={"HARD"} value={"HARD"}>
+                        <option key={"HARD"} value={"HARD"} className={styles.option}>
                             BME
                         </option>
-                        <option key={"HARDCORE"} value={"HARDCORE"}>
+                        <option key={"HARDCORE"} value={"HARDCORE"} className={styles.option}>
                             Tasnádi
                         </option>
                     </select>

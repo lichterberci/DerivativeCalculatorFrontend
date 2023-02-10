@@ -1,17 +1,33 @@
+.main {
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    height: fit-content;
+    width: 100%;
+    overflow-x: hidden;
+}
+
 .myContainer{
-    position:relative;
-    max-width:1240px;
-    width:100%;
-    margin-left:auto;
-    margin-right:auto;
-    display:flex;
+    position: relative;
+    
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     box-sizing: border-box;
-    padding-left:1rem;
-    padding-right:1rem;
-    margin-bottom:100px;
+    
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+
+    background-color: var(--background-color);
+    overflow-x: hidden;
+    max-width: 1240px;
+    width: 100vw;
 }
 
 .inputHolder{
@@ -24,49 +40,60 @@
 }
 
 .button{
-    margin-left:20px;
+    margin: 2px;
+    margin-left: min(20px, 5vw);
 }
 
 .button{
-    background:linear-gradient(to right, #4A00E0, #8E2DE2);
-    border:none;
-    color:white;
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+    border: none;
+    color: var(--text-on-dark-background);
     font-weight: 400;
     border-radius: 8px;
-    padding:10px 10px;
-    cursor:pointer;
-    transition:0.1s;
-    font-size: 1rem;
+    padding: min(10px, 2vw) min(10px, 2vw);
+    cursor: pointer;
+    transition: 0.1s;
+    font-size: min(1rem, 5vw);
 }
 
-.button:hover{
-    background:white;
+.button:hover,
+.button:focus-visible
+{
+    background: var(--background-color);
     border: none;
-    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); 
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    outline:2px solid rgba(133,77,252,255);
-    transition:0.1;
+    -webkit-text-fill-color: transparent; */
+    outline: 2px solid var(--secondary-color);
+    /* transition: 0.1s; */
+    color: var(--text-color);
 }
 
-.input{
+.input {
     border: none;
-    border-bottom: 1px solid black;
-    width: min(60vw, 30rem);
+    border-bottom: 1px solid var(--text-color);
+    background-color: transparent;
+    width: min(70%, 30rem);
+    color: var(--text-color);
 }
 
-.input::placeholder{
-    color:grey;
+.input::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
 }
 
-.input:focus{
-    outline: none
+.input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
 }
 
 .errorText {
-    color: blue;
+    color: var(--error-color);
     font-size: 1.2rem;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 400;
 }
 
 .title{
@@ -78,11 +105,12 @@
 
 .nemHiszed {
     white-space: nowrap;
+    color: var(--text-color);
 }
 
 .derivative {
-    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
@@ -98,18 +126,18 @@
 }
 
 .solutionWrapper{
-    width: min(600px, 100%);
+    width: min(600px, 100vw);
     /* overflow-x: auto; */
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 800px){
 
     .inputHolder{
-        width: 90%;
+        width: 80vw;
     }
 
     .title{
-        font-size:2.5rem
+        font-size: min(2.5rem, 10vw);
     }
 
     .button{

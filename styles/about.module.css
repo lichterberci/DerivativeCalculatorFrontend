@@ -1,21 +1,21 @@
 .myContainer{
     max-width: 1240px;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding-left:2rem;
-    padding-right:2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     margin:0 auto;
 }
 
 .teamHolder{
     margin-top:100px;
-    width:100%;
-    display:flex;
+    width: 100%;
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items:center;
-    flex-wrap:wrap ;
+    align-items: center;
+    flex-wrap: wrap ;
     padding-top: 0;
 }
 
@@ -26,14 +26,14 @@
     flex-direction: column;
     padding-bottom: 100px;
     align-items: center;
-    background-color: var(--primary-color);
+    background-color: var(--dark-background-color);
     /* border: 0rem solid var(--primary-color);
     border-top-width: 1rem; */
 }
 
 .githubTextContainer {
     width: 100%;
-    padding: 7rem 0;
+    padding: min(7rem, 5vh) 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,19 +41,20 @@
 }
 
 .githubText1 {
-    font-size: 4rem;
+    font-size: min(5rem, 13vw);
     font-weight: 100;
-    color: white;
+    color: var(--text-on-dark-background);
     letter-spacing: 5px;
-    word-spacing: 20px;
-    margin-bottom: 20px;
+    word-spacing: min(20px, 1vw);
+    margin-bottom: min(20px, 1vw);
+    text-align: center;
 }
 
 .githubText2 {
-    font-size: 5rem;
+    font-size: min(5rem, 15vw);
     font-weight: 900;
-    background: -webkit-linear-gradient(to right, var(--tertiary-color), var(--secondary-color));  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, var(--tertiary-color), var(--secondary-color)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -62,17 +63,21 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: max(50%, 300px);
+    width: max(40%, 320px);
 }
 
 .githubLink {
-    padding: 1rem;
-    font-size: 2rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.5rem;
     text-decoration: none;
-    color: var(--background-color);
-    background-color: var(--secondary-color);
+    color: var(--text-on-dark-background);
+    /* background-color: var(--secondary-color); */
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+    /* border: 1px solid var(--text-on-dark-background); */
     border-radius: 15px;
     font-weight: 200;
+    margin: 1rem 2rem;
+    text-align: center;
 }
 
 @media screen and (max-width: 480px){
@@ -80,5 +85,9 @@
         flex-direction: column;
         justify-content: center;
         align-items:center;
+    }
+
+    .githubLinkContainer {
+        flex-direction: column;
     }
 }

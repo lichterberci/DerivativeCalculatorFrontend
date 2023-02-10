@@ -72,7 +72,7 @@ export default function ReportBug (): JSX.Element {
 
         <div className={styles.myContainer}>
             
-            <div className={styles.repurtBugHolder} >
+            <div className={styles.reportBugHolder} >
 
                 <h1 className={styles.title}>Valami hibát találtál?<br></br> Küldd el nekünk!</h1>
                 <input 
@@ -89,7 +89,7 @@ export default function ReportBug (): JSX.Element {
                 {
                     titleError != null
                     &&
-                    <div>
+                    <div className={styles.error}>
                         { titleError }
                     </div>
                 }
@@ -108,7 +108,7 @@ export default function ReportBug (): JSX.Element {
                 {
                     descriptionError != null
                     &&
-                    <div>
+                    <div className={styles.error}>
                         { descriptionError }
                     </div>
                 }
@@ -130,7 +130,7 @@ export default function ReportBug (): JSX.Element {
                 {
                     priorityError != null
                     &&
-                    <div>
+                    <div className={styles.error}>
                         { priorityError }
                     </div>
                 }
@@ -145,7 +145,7 @@ export default function ReportBug (): JSX.Element {
                 {
                     sendError != null
                     &&
-                    <div>
+                    <div className={styles.error}>
                         { sendError }
                     </div>
                 }

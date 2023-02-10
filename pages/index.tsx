@@ -23,6 +23,9 @@ export default function Home() {
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<main>
+
+			<div style={{color: "red", textAlign: "center", margin: "auto"}}>A weboldal fejlesztés alatt áll!</div>
+
 			<ReportBug />
 		</main>
 	</>);

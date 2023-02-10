@@ -22,8 +22,8 @@
 }
 
 .textBackground{
-    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
@@ -36,27 +36,40 @@
     width: 300px;
 }
 
-.select{
+.select {
     padding:3px 5px;
-    border:1.5px solid #3D1766;
+    border: 1.5px solid var(--text-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
     border-radius: 8px;
-    outline:none
+    outline: none;
 }
 
-.select:focus{
-    border:1.5px solid #3D1766;
+.select:focus {
+    border: 1.5px solid var(--secondary-color);
     outline:none;
-    border: 1px solid #800ba3; 
+    outline: 1px solid var(--secondary-color); 
     /* create a BIG glow */
-    box-shadow: 0px 0px 5px #800ba3;
-    -moz-box-shadow: 0px 0px 5px #800ba3;
-    -webkit-box-shadow: 0px 0px 5px #800ba3;  
+    box-shadow: 0px 0px 5px var(--secondary-color);
+    -moz-box-shadow: 0px 0px 5px var(--secondary-color);
+    -webkit-box-shadow: 0px 0px 5px var(--secondary-color);  
 }
 
-.button{
-    background:linear-gradient(to right, #4A00E0, #8E2DE2);
+.option {
+    /* the individual options */
+    font-size: 0.9rem;
+}
+
+.option:checked {
+    /* background: linear-gradient(var(--text-color), var(--text-color));
+    background-color: var(--text-color) !important; for IE */
+    /* color: var(--secondary-color) !important; */
+}
+
+.button {
+    background:linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
     border:none;
-    color:white;
+    color:var(--text-on-dark-background);
     font-weight: lighter;
     border-radius: 8px;
     font-size: 1rem;
@@ -65,13 +78,18 @@
     transition:0.1s;
 }
 
-.button:focus {
-    outline:none;
-    border: 1px solid #800ba3; 
-    /* create a BIG glow */
-    box-shadow: 0px 0px 5px #800ba3; 
-    -moz-box-shadow: 0px 0px 5px #800ba3;
-    -webkit-box-shadow: 0px 0px 5px #800ba3;  
+.button:hover,
+.button:focus-visible
+{
+    background: var(--background-color);
+    border: none;
+    /* background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    outline: 2px solid var(--secondary-color);
+    /* transition: 0.1s; */
+    color: var(--text-color);
 }
 
 .solutionHolder {
@@ -92,7 +110,7 @@
     margin-bottom: 2rem;
 
     width: fit-content;
-    max-width: min(90vw, 1000px);
+    max-width: min(90vw, 1280px);
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
@@ -102,7 +120,7 @@
     position: relative;
     left:50%;
     transform: translateX(-50%);
-    width:100px;
+    width: 100px;
     height: 50px;
     margin-top: 50px;
 }
@@ -113,7 +131,7 @@
 
 
 .exercise::-webkit-scrollbar {
-    background-color: white;
+    background-color: transparent;
     height: 0;
 }
 
@@ -122,15 +140,15 @@
 }
 
 .exercise::-webkit-scrollbar-thumb {
-    background-color: rgb(212, 212, 212);
+    background-color: var(--scrollbar-inactive);
     border-radius: 1rem;
     height: 0.2rem;
 }
 
 .exercise::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(95, 95, 95);
+    background-color: var(--scrollbar-active);
 }
 
 .exercise::-webkit-scrollbar-track {
-    background-color: white;
+    background-color: transparent;
 }

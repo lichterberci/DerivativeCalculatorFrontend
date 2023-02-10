@@ -35,7 +35,7 @@ const navBarItems: INavbarItemData[] = [
 
 export default function Document() {
 	return (
-		<Html lang="en">
+		<Html lang="en" style={{ backgroundColor: "var(--background-color)", color: "var(--text-color)"}}>
 			<Head />
 			<body style={{width: "100%", height: "100%", margin: 0}}>
 				{/* <Navbar items={navBarItems} /> */}

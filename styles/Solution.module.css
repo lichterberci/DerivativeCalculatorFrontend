@@ -15,9 +15,9 @@
 .button{
     position: relative;
     width: fit-content !important;
-    background:linear-gradient(to right, #4A00E0, #8E2DE2);
+    background:linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
     border:none;
-    color:white;
+    color:var(--text-on-dark-background);
     font-weight: lighter;
     border-radius: 8px;
     padding:10px 10px;
@@ -25,6 +25,20 @@
     transition:0.1s;
     margin-top:50px;
     font-size:1rem;
+}
+
+.button:hover,
+.button:focus-visible
+{
+    background: var(--background-color);
+    border: none;
+    /* background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    outline: 2px solid var(--secondary-color);
+    /* transition: 0.1s; */
+    color: var(--text-color);
 }
 
 .solutionWrapperInner {
@@ -45,7 +59,7 @@
 }
 
 .inputOutputMathJax::-webkit-scrollbar {
-    background-color: white;
+    background-color: transparent;
     height: 0;
 }
 
@@ -54,21 +68,21 @@
 }
 
 .inputOutputMathJax::-webkit-scrollbar-thumb {
-    background-color: rgb(212, 212, 212);
+    background-color: var(--scrollbar-inactive);
     border-radius: 1rem;
     height: 0.2rem;
 }
 
 .inputOutputMathJax::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(95, 95, 95);
+    background-color: var(--scrollbar-active);
 }
 
 .inputOutputMathJax::-webkit-scrollbar-track {
-    background-color: white;
+    background-color: var(--background-color);
 }
 
 @media screen and (max-width: 480px){
     .button{
-        padding:8px 12px;
+        padding: 8px 12px;
     }
 }

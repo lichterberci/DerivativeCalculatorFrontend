@@ -1,16 +1,28 @@
 {
     "light" : {
         "primaryColor": "#3D1766",
-        "secondaryColor": "#8E2DE2",
-        "tertiaryColor": "#4A00E0",
+        "secondaryColor": "#4A00E0",
+        "tertiaryColor": "#8E2DE2",
         "textColor": "black",
-        "backgroundColor": "white"
+        "backgroundColor": "white",
+        "textOnDarkBackground": "white",
+        "darkBackgroundColor": "#3D1766",
+        "scrollbarInactiveColor": "#d4d4d4",
+        "scrollbarActiveColor": "#5f5f5f",
+        "errorColor": "#f00",
+        "teamCardBackground": "#fafafa"
     },
     "dark": {
         "primaryColor": "#3D1766",
-        "secondaryColor": "#8E2DE2",
-        "tertiaryColor": "#4A00E0",
+        "secondaryColor": "#6769e6",
+        "tertiaryColor": "#8E2DE2",
         "textColor": "white",
-        "backgroundColor": "#444444"
+        "backgroundColor": "#444444",
+        "textOnDarkBackground": "white",
+        "darkBackgroundColor": "#3D1766",
+        "scrollbarInactiveColor": "#5f5f5f",
+        "scrollbarActiveColor": "#d4d4d4",
+        "errorColor": "#f00",
+        "teamCardBackground": "#3d3d3d"
     }
 }

@@ -1,11 +1,11 @@
 .name{
-    font-size:1.125rem  
+    font-size: 1.125rem;
 }
 
 .cardHolder{
     margin-top: 50px;
-    background-color: rgb(253, 253, 253);
-    width:300px;
+    background-color: var(--team-card-background);
+    width: min(300px, 100%);
     box-shadow: 7px 8px 8px -7px rgba(0,0,0,0.73);
     -webkit-box-shadow: 7px 8px 8px -10px rgba(0,0,0,0.73);
     -moz-box-shadow: 7px 8px 8px -7px rgba(0,0,0,0.73);
@@ -15,7 +15,7 @@
 .banner{
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    height: 225px;
+    height: min(225px, 40vh);
 }
 
 .infoHolder{
@@ -30,31 +30,32 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border:3px solid white;
+    border:3px solid var(--background-color);
     box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.73);
     -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.73);
     -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.73);
 }
 
-.responsibilityList{
-    display:flex;
+.responsibilityList {
+    display: flex;
     flex-direction: start;
-    padding-left:0.5rem;
-    padding-right:0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     flex-wrap: wrap;
-    padding-bottom:0.75rem;
+    padding-bottom: 0.75rem;
 }
 
-.responsibility{
-    padding:2px 7px;
+.responsibility {
+    padding: 2px 7px;
     font-size: 1rem;
     border-radius: 16px;
-    margin-left:10px;
-    margin-top:15px;
-    border:1.5px solid rgba(133,77,252,255);
-    color:rgba(133,77,252,255);
+    margin-left: 10px;
+    margin-top: 15px;
+    border: 1.5px solid var(--secondary-color);
+    color: var(--secondary-color);
     font-weight: lighter;
     box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.73);
     -webkit-box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.73);
     -moz-box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.73);
+    cursor: default;
 }

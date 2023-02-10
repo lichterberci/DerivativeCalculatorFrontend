@@ -18,6 +18,12 @@ export async function DifferentiateInput (input: string, signal: AbortSignal): P
         "input": input
     });
 
+    if (input.trim() == "")
+        return {
+            type: "PARSING ERROR",
+            message: "Input is empty!"
+        };
+
     const body: IDifferentiationQueryBody = {
         input: input,
         preferences: GetBackendPreferences()

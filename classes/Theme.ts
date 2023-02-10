@@ -4,4 +4,10 @@ export interface ITheme {
     tertiaryColor: string;
     textColor: string;
     backgroundColor: string;
+    textOnDarkBackground: string;
+    darkBackgroundColor: string;
+    scrollbarActiveColor: string;
+    scrollbarInactiveColor  : string;
+    errorColor: string;
+    teamCardBackground: string;
 }

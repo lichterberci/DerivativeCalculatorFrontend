@@ -13,16 +13,19 @@
     padding-right:1rem;
     margin-bottom:100px;
 }
-.repurtBugHolder{
+
+.reportBugHolder{
+    display: flex;
+    flex-direction: column;
     max-width: 800px;
     width: 90%;
     margin:100px auto;
     align-items: center;
-    gap:2rem;
+    /* gap: 2rem; */
 }
 
 .title{
-    color:#3D1766;
+    color: var(--text-color);
     text-align: center;
     line-height: 150%;
     font-weight: normal;
@@ -33,46 +36,96 @@
     padding:10px;
     outline: none;
     max-width: 500px;
-    width:80%;
+    width: 80%;
     border-radius: 5px;
-    border:1.5px solid #3D1766
+    border: 1px solid var(--text-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin-top: 2rem;
 }
 
 .bugInput{
     padding:10px;
     outline: none;
-    border:1.5px solid #3D1766;
+    border: 1px solid var(--text-color);
     max-width: 500px;
     width:80%;
     border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    resize: none;
+    margin-top: 2rem;
+}
+
+.titleInput::placeholder,
+.bugInput::placeholder {
+
+    color: var(--text-color);
+    opacity: 0.7;
+
+}
+
+.titleInput:focus,
+.bugInput:focus
+{
+    border-color: var(--secondary-color);
+    outline: 1px solid var(--secondary-color);
 }
 
 .dropDown{
     max-width: 300px;
-    width:85%;
+    width: 85%;
     padding:10px 10px;
     outline: none;
     text-align: center;
     border-radius: 4px;
     margin: 0;
+    margin-top: 2rem;
+
+    color: var(--text-color);
+    background-color: var(--background-color);
+    outline: none;
+    border-color: var(--text-color);
 }
 
-.repurtBugHolder{
-    display: flex;
-    flex-direction: column;
+.dropDown:focus {
+
+    border-color: var(--secondary-color);
+    outline: 1px solid var(--secondary-color);
+
 }
 
-.button{
-    background:linear-gradient(to right, #4A00E0, #8E2DE2);
+.button {
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
     border:none;
-    color:white;
+    color: var(--text-on-dark-background);
     font-weight: 400;
     border-radius: 8px;
-    padding:10px 30px;
-    border: 2px solid white;
+    padding: 10px 30px;
+    /* border: 2px solid white; */
     cursor:pointer;
     transition:0.1s;
     font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.button:hover,
+.button:focus-visible
+{
+    background: var(--background-color);
+    border: none;
+    /* background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    outline: 2px solid var(--secondary-color);
+    /* transition: 0.1s; */
+    color: var(--text-color);
+}
+
+.error {
+    color: var(--error-color);
+    margin: 0.3rem;
 }
 
 @media screen and (max-width: 480px){
@@ -83,3 +136,4 @@
         padding-right: 0rem;
     }   
 }
+
