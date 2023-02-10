@@ -27,12 +27,6 @@ export default function ExercisePage (): JSX.Element {
 
     const selectedLevel = useRef<DifficultyLevel>("MEDIUM");
 
-    useEffect (() => {
-        FirebaseInit();
-
-        SetCSSThemeFromLocalStorage();
-    }, []);
-
     const GenerateExerciseAndUpdateUI = async () => {
 
         if (isLoading) {

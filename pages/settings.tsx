@@ -16,12 +16,7 @@ export default function Settings (): JSX.Element {
         darkMode: false
     });
 
-    useEffect(() => {
-        
-        FirebaseInit();
-        
-        SetCSSThemeFromLocalStorage();
-        
+    useEffect(() => {        
 
         const simpPref: ISimplificationPreferences = GetPreferences("simplificationPreferences");
         setSimplificationPreferences(simpPref);

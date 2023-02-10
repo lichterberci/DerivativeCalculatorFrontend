@@ -23,12 +23,6 @@ export default function CalculatorPage (): JSX.Element {
     const [errorText, setErrorText] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    useEffect (() => {
-        FirebaseInit();
-
-        SetCSSThemeFromLocalStorage();
-    }, []);
-
     const QueryDifferentiationAndUpdateUI = async () => {
 
         if (isLoading) {

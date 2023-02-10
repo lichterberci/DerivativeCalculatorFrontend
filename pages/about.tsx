@@ -8,12 +8,7 @@ import Link from "next/link";
 
 export default function About (): JSX.Element {
 
-    useEffect (() => {
-        FirebaseInit();
-
-        SetCSSThemeFromLocalStorage();
-    }, []);
-
+ 
     const team = [
         {
             name:"Lichter Bertalan",

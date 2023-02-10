@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';
 import { Roboto } from "@next/font/google"
+import { FirebaseInit } from '../scripts/Firebase';
+import { SetCSSThemeFromLocalStorage } from '../scripts/Preferences';
 
 const roboto = Roboto({
     weight: '400',
@@ -50,6 +52,14 @@ export default function App({ Component, pageProps }: AppProps) {
 		}
 	];
     
+    useEffect (() => {
+
+		FirebaseInit();
+
+		SetCSSThemeFromLocalStorage();
+
+	}, [])
+
     return (<>
         <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_KEY}`} />
         
@@ -63,7 +73,7 @@ export default function App({ Component, pageProps }: AppProps) {
         });
         `}
         </Script>
-        
+
         <main className={roboto.className}>
             <HamburgerMenu items={navBarItems}/>
 

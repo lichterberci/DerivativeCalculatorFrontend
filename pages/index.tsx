@@ -6,15 +6,6 @@ import ReportBug from "../components/ReportBug"
 
 export default function Home() {
 
-	useEffect (() => {
-
-		FirebaseInit();
-
-		SetCSSThemeFromLocalStorage();
-
-	}, [])
-
-
 	return (<>
 		<Head>
 			<title>Deriváló segéd</title>
