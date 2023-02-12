@@ -51,7 +51,15 @@ export default function ExercisePage (): JSX.Element {
             if (result.type == "ABORT ERROR")
                 return;
 
-            setErrorText(result.message);
+            const errorTypesToDisplay = ["PARSING ERROR"];
+
+            const prettyErrorType = data.type.charAt(0) + data.type.toLocaleLowerCase(["hu", "en"]) + "!";
+
+            if (errorTypesToDisplay.includes(data.type))
+                setErrorText(`${data.message}`);
+            else
+                setErrorText(`${prettyErrorType}`);
+                
             setSolutionData(null);
             return;
         }

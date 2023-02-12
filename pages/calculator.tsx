@@ -45,7 +45,15 @@ export default function CalculatorPage (): JSX.Element {
             if (data.type == "ABORT ERROR")
                 return;
 
-            setErrorText(`${data.message}`);
+            const errorTypesToDisplay = ["PARSING ERROR"];
+
+            const prettyErrorType = data.type.charAt(0) + data.type.toLocaleLowerCase(["hu", "en"]) + "!";
+
+            if (errorTypesToDisplay.includes(data.type))
+                setErrorText(`${data.message}`);
+            else
+                setErrorText(`${prettyErrorType}`);
+
             setSolutionData(null);
 
             return;            
@@ -105,9 +113,9 @@ export default function CalculatorPage (): JSX.Element {
                             (() => {
                                 if (isLoading == false) {
                                     if (solutionData != null)
-                                    return <Solution data={solutionData}/>
+                                        return <Solution data={solutionData}/>
                                     else // error message is displayed, so we don't have to do anything here
-                                    return <></>
+                                        return <></>
                                 } 
                                 else { // display loading anim
                                     return <Image className={styles.loading} alt="Loading animation" src={LoadingAnim} width={600} height={300}/>
