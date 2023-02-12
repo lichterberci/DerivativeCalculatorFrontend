@@ -21,7 +21,7 @@ export async function DifferentiateInput (input: string, signal: AbortSignal): P
     if (input.trim() == "")
         return {
             type: "PARSING ERROR",
-            message: "Input is empty!"
+            message: "A bemenet üres!"
         };
 
     const body: IDifferentiationQueryBody = {
