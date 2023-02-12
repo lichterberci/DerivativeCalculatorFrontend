@@ -53,13 +53,13 @@ export default function ExercisePage (): JSX.Element {
 
             const errorTypesToDisplay = ["PARSING ERROR"];
 
-            const prettyErrorType = data.type.charAt(0) + data.type.toLocaleLowerCase(["hu", "en"]) + "!";
+            const prettyErrorType = result.type.charAt(0) + result.type.slice(1).toLocaleLowerCase(["hu", "en"]) + "!";
 
-            if (errorTypesToDisplay.includes(data.type))
-                setErrorText(`${data.message}`);
+            if (errorTypesToDisplay.includes(result.type))
+                setErrorText(`${result.message}`);
             else
                 setErrorText(`${prettyErrorType}`);
-                
+
             setSolutionData(null);
             return;
         }

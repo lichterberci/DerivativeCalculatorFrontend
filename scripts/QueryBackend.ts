@@ -57,10 +57,17 @@ export async function DifferentiateInput (input: string, signal: AbortSignal): P
 
         console.error(`Fetch unsuccessful: ${response.status} (${response.statusText})`);
 
-        const errorType: string | null = response.headers.get("x-exception-type");
-        const errorMessage: string | null = response.headers.get("x-exception-message");
+        if (response.body == null)
+            return {
+                type: "UNKNOWN ERROR",
+                message: "An error occurred!"
+            };
 
-        if (errorType == null || errorMessage == null)
+        const result = await response.json() as ISolutionDataNullable;
+
+        const { errorType, errorMessage } = result;
+
+        if (errorType == null)
             return {
                 type: "UNKNOWN ERROR",
                 message: "An error occurred!"
@@ -70,7 +77,7 @@ export async function DifferentiateInput (input: string, signal: AbortSignal): P
 
         return {
             type: errorType,
-            message: errorMessage
+            message: errorMessage ?? "Hiba történt!"
         };
     }
 
@@ -130,10 +137,17 @@ export async function GenerateExercise (level: DifficultyLevel, signal: AbortSig
 
         console.error(`Fetch unsuccessful: ${response.status} (${response.statusText})`);
 
-        const errorType: string | null = response.headers.get("x-exception-type");
-        const errorMessage: string | null = response.headers.get("x-exception-message");
+        if (response.body == null)
+            return {
+                type: "UNKNOWN ERROR",
+                message: "An error occurred!"
+            };
 
-        if (errorType == null || errorMessage == null)
+        const result = await response.json() as ISolutionDataNullable;
+
+        const { errorType, errorMessage } = result;
+
+        if (errorType == null)
             return {
                 type: "UNKNOWN ERROR",
                 message: "An error occurred!"
@@ -143,7 +157,7 @@ export async function GenerateExercise (level: DifficultyLevel, signal: AbortSig
 
         return {
             type: errorType,
-            message: errorMessage
+            message: errorMessage ?? "Hiba történt!"
         };
     }
 

@@ -47,7 +47,7 @@ export default function CalculatorPage (): JSX.Element {
 
             const errorTypesToDisplay = ["PARSING ERROR"];
 
-            const prettyErrorType = data.type.charAt(0) + data.type.toLocaleLowerCase(["hu", "en"]) + "!";
+            const prettyErrorType = data.type.charAt(0) + data.type.slice(1).toLocaleLowerCase(["hu", "en"]) + "!";
 
             if (errorTypesToDisplay.includes(data.type))
                 setErrorText(`${data.message}`);
