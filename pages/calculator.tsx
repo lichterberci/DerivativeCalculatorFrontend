@@ -1,5 +1,5 @@
 import { MathJaxContext } from "better-react-mathjax";
-import {useEffect, useRef, useState} from "react";
+import { useRef, useState } from "react";
 import Image from "next/image"
 
 import { ISolutionData } from "../classes/ResponseData";
@@ -10,8 +10,6 @@ import styles from "../styles/calculator.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
-import { FirebaseInit } from "../scripts/Firebase";
-import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
@@ -35,31 +33,48 @@ export default function CalculatorPage (): JSX.Element {
             await setErrorText(null);
 
         await setIsLoading(true);
-
-        const data: ISolutionData | IResponseError = await DifferentiateInput(inputRef.current, fetchAbortSignal);
-
+        
+        const result: ISolutionData | IResponseError = await DifferentiateInput(inputRef.current, fetchAbortSignal);
+        
         setIsLoading(false);
-
-        if ("type" in data && "message" in data) { // error
-
-            if (data.type == "ABORT ERROR")
+        
+        if ("type" in result && "message" in result) { // error
+            
+            if (result.type == "ABORT ERROR")
                 return;
 
+            setSolutionData(null);
+                
             const errorTypesToDisplay = ["PARSING ERROR"];
 
-            const prettyErrorType = data.type.charAt(0) + data.type.slice(1).toLocaleLowerCase(["hu", "en"]) + "!";
+            const translationTable: { [key: string]: string } = {
+                "PARSING ERROR": "Sikertelen beolvasás!",
+                "UNKNOWN ERROR": "Ismeretlen hiba!",
+                "SIMPLIFICATION ERROR": "Egyszerűsítési hiba!",
+                "DIFFERENTIATION ERROR": "Deriválási hiba!",
+                "EVALUATION ERROR": "Kiértékelési hiba!",
+                "FETCH ERROR": "A szerver nem érhető el!",
+                "EXERCISE GENERATION ERROR": "Feladat generálási hiba!"
+            };
 
-            if (errorTypesToDisplay.includes(data.type))
-                setErrorText(`${data.message}`);
-            else
-                setErrorText(`${prettyErrorType}`);
+            const prettyErrorType = result.type.charAt(0) + result.type.slice(1).toLocaleLowerCase(["hu", "en"]) + "!";
 
-            setSolutionData(null);
+            if (errorTypesToDisplay.includes(result.type)) {
+                setErrorText(`${result.message}`);
+                return;
+            }
+            
+            if (Object.hasOwn(translationTable, result.type)) {
+                setErrorText(translationTable[result.type]);
+                return;
+            }
+            
+            setErrorText(`${prettyErrorType}`);                
 
-            return;            
+            return;
         }
 
-        setSolutionData(data as ISolutionData);
+        setSolutionData(result as ISolutionData);
     }
 
     return (<>
