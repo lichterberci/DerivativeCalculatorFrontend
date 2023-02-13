@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ISimplificationPreferences, IUserInterfacePreferences } from "../classes/FrontendPreferenceTypes";
 import { FirebaseInit } from "../scripts/Firebase";
 import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from "../scripts/Preferences";
+import styles from "../styles/settings.module.css"
 
 export default function Settings (): JSX.Element {
 
@@ -59,42 +60,66 @@ export default function Settings (): JSX.Element {
             <title>Settings</title>
         </Head>
         <main>
-    
-            <input 
-                type="checkbox"
-                name="logarithm"
-                checked={simplificationPreferences?.shouldEvalLogarithm}
-                onChange={e => UpdateSimplificationPreferences("shouldEvalLogarithm", e.target.checked)}
-            />
-            Logaritmusok kiértékelése
-            <br/>
 
-            <input 
-                type="checkbox"
-                name="trig"
-                checked={simplificationPreferences?.shouldEvalTrig}
-                onChange={e => UpdateSimplificationPreferences("shouldEvalTrig", e.target.checked)}
-            />
-            Trigonometrikus függvények kiértékelése
-            <br/>
+            <section className={styles.section}>
 
-            <input 
-                type="checkbox"
-                name="hyp"
-                checked={simplificationPreferences?.shouldEvalHyp}
-                onChange={e => UpdateSimplificationPreferences("shouldEvalHyp", e.target.checked)}
-            />
-            Hiperbolikus függvények kiértékelése
-            <br/>
+                <div className={styles.myContainer}>
+                    <h1 className={styles.title}>Beállítások</h1>
+                    <div className={styles.settingsHolder}>
 
-            <input 
-                type="checkbox"
-                name="darkmode"
-                checked={UIPreferences?.darkMode}
-                onChange={e => UpdateUserInterfacePreferences("darkMode", e.target.checked)}
-            />
-            Sötét mód
+                        <div className={styles.inputHolder}>
+                            <p className={styles.inputTitle}>
+                                Logaritmusok kiértékelése
+                            </p>
+                            <input 
+                                className={styles.input}
+                                type="checkbox"
+                                name="logarithm"
+                                checked={simplificationPreferences?.shouldEvalLogarithm}
+                                onChange={e => UpdateSimplificationPreferences("shouldEvalLogarithm", e.target.checked)}
+                            />
+                        </div>
+                        <div className={styles.inputHolder}>
+                            <p>
+                                Trigonometrikus függvények kiértékelése
+                            </p>
+                            <input 
+                                className={styles.input}
+                                type="checkbox"
+                                name="trig"
+                                checked={simplificationPreferences?.shouldEvalTrig}
+                                onChange={e => UpdateSimplificationPreferences("shouldEvalTrig", e.target.checked)}
+                            />
+                        </div>
+                        <div className={styles.inputHolder}>
+                            <p>
+                                Hiperbolikus függvények kiértékelése
+                            </p>  
+                            <input 
+                                className={styles.input}
+                                type="checkbox"
+                                name="hyp"
+                                checked={simplificationPreferences?.shouldEvalHyp}
+                                onChange={e => UpdateSimplificationPreferences("shouldEvalHyp", e.target.checked)}
+                            />
+                        </div>
 
+                        <div className={styles.inputHolder}>
+                            <p>
+                                Sötét mód
+                            </p> 
+                            <input 
+                                className={styles.input}
+                                type="checkbox"
+                                name="darkmode"
+                                checked={UIPreferences?.darkMode}
+                                onChange={e => UpdateUserInterfacePreferences("darkMode", e.target.checked)}
+                            />
+
+                        </div>
+                    </div>
+                </div>  
+            </section>
 
         </main>
     </>);

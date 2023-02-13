@@ -1,0 +1,56 @@
+.section{
+    padding-top:6rem;
+    padding-bottom:6rem;
+}
+
+.myContainer{
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    box-sizing: border-box;
+    
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+
+    background-color: var(--background-color);
+    overflow-x: hidden;
+    max-width: 1240px;
+    width: 100vw;
+}
+
+.settingsHolder{
+    max-width: 600px;
+    width: 100%;
+}
+
+.inputHolder{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom:1px solid rgb(229, 229, 229)
+}
+
+.inputHolder:last-child{
+    border-bottom: none;
+}
+
+.title{
+    font-size: 2rem;
+}
+
+
+
+@media screen and (max-width: 800px){
+
+    .myContainer{
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
