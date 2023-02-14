@@ -7,6 +7,7 @@ import { GoogleLogPage } from '../scripts/GoogleAnalytics';
 import { Roboto } from "@next/font/google"
 import { FirebaseInit } from '../scripts/Firebase';
 import { SetCSSThemeFromLocalStorage } from '../scripts/Preferences';
+import ReportBug from '../components/ReportBug';
 
 const roboto = Roboto({
     weight: '400',
@@ -76,7 +77,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         <main className={roboto.className}>
             <HamburgerMenu items={navBarItems}/>
-
+            <ReportBug/>
             <Component {...pageProps} />
         </main>
     </>)
