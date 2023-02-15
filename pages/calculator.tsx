@@ -45,7 +45,7 @@ export default function CalculatorPage (): JSX.Element {
 
             setSolutionData(null);
                 
-            const errorTypesToDisplay = ["PARSING ERROR"];
+            const errorTypesToDisplay = ["PARSING ERROR", "EVALUATION ERROR"];
 
             const translationTable: { [key: string]: string } = {
                 "PARSING ERROR": "Sikertelen beolvasás!",
