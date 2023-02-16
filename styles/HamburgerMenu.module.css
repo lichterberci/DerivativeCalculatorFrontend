@@ -13,9 +13,9 @@
     top: 0;
     z-index: 5;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
     gap: 5rem;
-    padding-left: 5rem;
+    /* padding-left: 5rem; */
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
