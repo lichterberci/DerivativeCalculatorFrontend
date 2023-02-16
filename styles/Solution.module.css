@@ -15,7 +15,7 @@
 .button{
     position: relative;
     width: fit-content !important;
-    background:linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+    background:linear-gradient(to right, var(--primary-gradient), var(--secondary-gradient));
     border:none;
     color:var(--text-on-dark-background);
     font-weight: lighter;
@@ -23,7 +23,7 @@
     padding:10px 10px;
     cursor:pointer;
     transition:0.1s;
-    margin-top:50px;
+    margin: 50px 0;
     font-size:1rem;
 }
 

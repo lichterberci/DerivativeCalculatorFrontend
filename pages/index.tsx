@@ -6,15 +6,6 @@ import ReportBug from "../components/ReportBug"
 
 export default function Home() {
 
-	useEffect (() => {
-
-		FirebaseInit();
-
-		SetCSSThemeFromLocalStorage();
-
-	}, [])
-
-
 	return (<>
 		<Head>
 			<title>Deriváló segéd</title>
@@ -23,10 +14,9 @@ export default function Home() {
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<main>
+			
+			<div style={{color: "red", textAlign: "center", margin: "auto", marginTop: "10px"}}>A weboldal fejlesztés alatt áll!</div>
 
-			<div style={{color: "red", textAlign: "center", margin: "auto", marginTop: "50px"}}>A weboldal fejlesztés alatt áll!</div>
-
-			<ReportBug />
 		</main>
 	</>);
 }

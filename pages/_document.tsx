@@ -17,7 +17,7 @@ const navBarItems: INavbarItemData[] = [
 	},
 	{
 		href: "/calculator",
-		name: "Ellenőrzés"
+		name: "Kalkulátor"
 	},
 	{
 		href: "/exercise",

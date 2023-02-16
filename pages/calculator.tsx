@@ -1,5 +1,5 @@
 import { MathJaxContext } from "better-react-mathjax";
-import {useEffect, useRef, useState} from "react";
+import { useRef, useState } from "react";
 import Image from "next/image"
 
 import { ISolutionData } from "../classes/ResponseData";
@@ -10,8 +10,6 @@ import styles from "../styles/calculator.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
-import { FirebaseInit } from "../scripts/Firebase";
-import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
@@ -22,12 +20,6 @@ export default function CalculatorPage (): JSX.Element {
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-
-    useEffect (() => {
-        FirebaseInit();
-
-        SetCSSThemeFromLocalStorage();
-    }, []);
 
     const QueryDifferentiationAndUpdateUI = async () => {
 
@@ -41,23 +33,48 @@ export default function CalculatorPage (): JSX.Element {
             await setErrorText(null);
 
         await setIsLoading(true);
-
-        const data: ISolutionData | IResponseError = await DifferentiateInput(inputRef.current, fetchAbortSignal);
-
+        
+        const result: ISolutionData | IResponseError = await DifferentiateInput(inputRef.current, fetchAbortSignal);
+        
         setIsLoading(false);
-
-        if ("type" in data && "message" in data) { // error
-
-            if (data.type == "ABORT ERROR")
+        
+        if ("type" in result && "message" in result) { // error
+            
+            if (result.type == "ABORT ERROR")
                 return;
 
-            setErrorText(`${data.message}`);
             setSolutionData(null);
+                
+            const errorTypesToDisplay = ["PARSING ERROR", "EVALUATION ERROR"];
 
-            return;            
+            const translationTable: { [key: string]: string } = {
+                "PARSING ERROR": "Sikertelen beolvasás!",
+                "UNKNOWN ERROR": "Ismeretlen hiba!",
+                "SIMPLIFICATION ERROR": "Egyszerűsítési hiba!",
+                "DIFFERENTIATION ERROR": "Deriválási hiba!",
+                "EVALUATION ERROR": "Kiértékelési hiba!",
+                "FETCH ERROR": "A szerver nem érhető el!",
+                "EXERCISE GENERATION ERROR": "Feladat generálási hiba!"
+            };
+
+            const prettyErrorType = result.type.charAt(0) + result.type.slice(1).toLocaleLowerCase(["hu", "en"]) + "!";
+
+            if (errorTypesToDisplay.includes(result.type)) {
+                setErrorText(`${result.message}`);
+                return;
+            }
+            
+            if (Object.hasOwn(translationTable, result.type)) {
+                setErrorText(translationTable[result.type]);
+                return;
+            }
+            
+            setErrorText(`${prettyErrorType}`);                
+
+            return;
         }
 
-        setSolutionData(data as ISolutionData);
+        setSolutionData(result as ISolutionData);
     }
 
     return (<>
@@ -111,9 +128,9 @@ export default function CalculatorPage (): JSX.Element {
                             (() => {
                                 if (isLoading == false) {
                                     if (solutionData != null)
-                                    return <Solution data={solutionData}/>
+                                        return <Solution data={solutionData}/>
                                     else // error message is displayed, so we don't have to do anything here
-                                    return <></>
+                                        return <></>
                                 } 
                                 else { // display loading anim
                                     return <Image className={styles.loading} alt="Loading animation" src={LoadingAnim} width={600} height={300}/>

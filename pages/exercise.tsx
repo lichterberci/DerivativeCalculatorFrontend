@@ -27,12 +27,6 @@ export default function ExercisePage (): JSX.Element {
 
     const selectedLevel = useRef<DifficultyLevel>("MEDIUM");
 
-    useEffect (() => {
-        FirebaseInit();
-
-        SetCSSThemeFromLocalStorage();
-    }, []);
-
     const GenerateExerciseAndUpdateUI = async () => {
 
         if (isLoading) {
@@ -53,17 +47,44 @@ export default function ExercisePage (): JSX.Element {
         setIsLoading(false);
 
         if ("type" in result && "message" in result) { // error
-
+            
             if (result.type == "ABORT ERROR")
                 return;
 
-            setErrorText(result.message);
             setSolutionData(null);
+                
+            const errorTypesToDisplay = ["PARSING ERROR", "EVALUATION ERROR"];;
+
+            const translationTable: { [key: string]: string } = {
+                "PARSING ERROR": "Sikertelen beolvasás!",
+                "UNKNOWN ERROR": "Ismeretlen hiba!",
+                "SIMPLIFICATION ERROR": "Egyszerűsítési hiba!",
+                "DIFFERENTIATION ERROR": "Deriválási hiba!",
+                "EVALUATION ERROR": "Kiértékelési hiba!",
+                "FETCH ERROR": "A szerver nem érhető el!",
+                "EXERCISE GENERATION ERROR": "Feladat generálási hiba!"
+            };
+
+            const prettyErrorType = result.type.charAt(0) + result.type.slice(1).toLocaleLowerCase(["hu", "en"]) + "!";
+
+            if (errorTypesToDisplay.includes(result.type)) {
+                setErrorText(`${result.message}`);
+                return;
+            }
+            
+            if (Object.hasOwn(translationTable, result.type)) {
+                setErrorText(translationTable[result.type]);
+                return;
+            }
+            
+            setErrorText(`${prettyErrorType}`);                
+
             return;
         }
 
         await setShowSolution(false);
-        setSolutionData(result);
+
+        setSolutionData(result as ISolutionData);
     };
 
     return (<>

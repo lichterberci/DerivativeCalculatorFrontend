@@ -11,7 +11,8 @@ const nextConfig = {
     "FIREBASE_MESSAGING_SENDER_ID" : "223603324205",
     "FIREBASE_APP_ID" : "1:223603324205:web:914d7b8136e3af95c28fa4",
     "FIREBASE_MEASUREMENT_ID" : "G-GSZ3EGF6BZ",
-    "DEFAULT_COLOR_THEME" : "light"
+    "DEFAULT_COLOR_THEME" : "light",
+    "API_URL" : "https://derivativecalculatorapi.azurewebsites.net"
   }
 }
 

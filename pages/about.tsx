@@ -8,43 +8,41 @@ import Link from "next/link";
 
 export default function About (): JSX.Element {
 
-    useEffect (() => {
-        FirebaseInit();
-
-        SetCSSThemeFromLocalStorage();
-    }, []);
-
+ 
     const team = [
         {
-            name:"Lichter Bertalan",
+            name: "Lichter Bertalan",
             role: ["algoritmus dizájn", "backend"],
-            url:"lichterbertalan.jpg",
+            url: "lichterbertalan.jpg",
+            email: "lichterbertalan@gmail.com",
             colors: 
                 {
-                    primary:"#8e2de2",
-                    secondary:"#4a00e0"
+                    primary: "#8e2de2",
+                    secondary: "#4a00e0"
                 }
             ,
         },
         {
-            name:"Lipcsey Márton",
+            name: "Lipcsey Márton",
             role: ["frontend", "dizájn"],
-            url:"lipcseymárton.jpg",
+            url: "lipcseymárton.jpg",
+            email: "lipcsey.magyar.marton@gmail.com",
             colors: 
                 {
-                    primary:"#4568DC",
-                    secondary:"#B06AB3"
+                    primary: "#4568DC",
+                    secondary: "#B06AB3"
                 }
             ,
         },
         {
-            name:"Szabó Gergő",
+            name: "Szabó Gergő",
             role: ["segítő"],
-            url:"szabógergő.jpg",
+            url: "szabógergő.jpg",
+            email: "szgergo0307@gmail.com",
             colors: 
                 {
-                    primary:"#9D50BB",
-                    secondary:"#6E48AA"
+                    primary: "#9D50BB",
+                    secondary: "#6E48AA"
                 }
             ,
         },

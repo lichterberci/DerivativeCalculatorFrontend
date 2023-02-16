@@ -10,4 +10,8 @@ export interface ITheme {
     scrollbarInactiveColor  : string;
     errorColor: string;
     teamCardBackground: string;
+    primaryGradient: string;
+    secondaryGradient: string;
+    borderColor: string;
+    responsibilityColor: string;
 }

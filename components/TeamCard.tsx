@@ -20,8 +20,21 @@ export default function TeamCard(props:any){
                         src={`/images/${_props.url}`}
                      />
                     <p className={styles.name}>{_props.name}</p>
+                    {
+                        _props?.email 
+                        &&
+                        <a 
+                            className={styles.email} 
+                            href={`mailto:${_props.email}`}
+                            target="_top" 
+                            rel="noopener noreferrer"
+                        >
+                            { _props.email }
+                        </a>
+                    }
                 </div>
             </div>
+
 
             <div className={styles.responsibilityList}>
                 {

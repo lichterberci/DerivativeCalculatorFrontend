@@ -41,20 +41,17 @@
 }
 
 .githubText1 {
-    font-size: min(5rem, 13vw);
+    font-size:3rem;
     font-weight: 100;
     color: var(--text-on-dark-background);
-    letter-spacing: 5px;
-    word-spacing: min(20px, 1vw);
     margin-bottom: min(20px, 1vw);
     text-align: center;
 }
 
 .githubText2 {
-    font-size: min(5rem, 15vw);
-    font-weight: 900;
-    background: -webkit-linear-gradient(to right, var(--secondary-color), var(--tertiary-color));  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-size:3rem;
+    background: -webkit-linear-gradient(to right, var(--primary-gradient), var(--secondary-gradient));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, var(--primary-gradient), var(--secondary-gradient)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -63,24 +60,33 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: max(40%, 320px);
+    gap: 5rem;
 }
 
 .githubLink {
-    padding: 0.75rem 2rem;
-    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
     text-decoration: none;
     color: var(--text-on-dark-background);
     /* background-color: var(--secondary-color); */
-    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+    background: linear-gradient(to right, var(--primary-gradient), var(--secondary-gradient));
     /* border: 1px solid var(--text-on-dark-background); */
-    border-radius: 15px;
+    border-radius: 8px;
     font-weight: 200;
-    margin: 1rem 2rem;
     text-align: center;
 }
 
+
 @media screen and (max-width: 480px){
+
+    .githubText1, .githubText2{
+        font-size: 2rem;
+    }
+
+    .githubLinkContainer{
+        gap:2rem
+    }
+
     .teamHolder {
         flex-direction: column;
         justify-content: center;

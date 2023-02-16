@@ -101,6 +101,11 @@ export function SetCSSThemeFromLocalStorage (): void {
     document.documentElement.style.setProperty("--scrollbar-inactive", theme.scrollbarInactiveColor);
     document.documentElement.style.setProperty("--error-color", theme.errorColor);
     document.documentElement.style.setProperty("--team-card-background", theme.teamCardBackground);
+    document.documentElement.style.setProperty("--primary-gradient", theme.primaryGradient);
+    document.documentElement.style.setProperty("--secondary-gradient", theme.secondaryGradient);
+    document.documentElement.style.setProperty("--border-color", theme.borderColor);
+    document.documentElement.style.setProperty("--responsibility-color", theme.responsibilityColor);
+
 
     console.log(`Styles set to ${themeName}`);
 
