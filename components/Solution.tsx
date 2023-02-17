@@ -24,20 +24,23 @@ export default function Solution (props: { data: ISolutionData | null }): JSX.El
                 {
                     isShowingSteps
                     &&
-                    <ul className={styles.stepList}>
-                    {
-                        data.stepsAsLatex.map((stepAsLatex: string, i: number) => 
-                            <li key={i}>
-                                <SolutionStep
-                                    stepAsLatex = {stepAsLatex}
-                                    stepDescription = {i < data.stepDescriptions.length ? data.stepDescriptions[i] : null}
-                                    varToDiff = {data.varToDiff}
-                                    isLast = {i == data.stepsAsLatex.length - 1}
-                                />
-                            </li>
-                        )
-                    }
-                    </ul>
+                    <>
+                        <div className={styles.dividerLine} />
+                        <ul className={styles.stepList}>
+                        {
+                            data.stepsAsLatex.map((stepAsLatex: string, i: number) => 
+                                <li key={i}>
+                                    <SolutionStep
+                                        stepAsLatex = {stepAsLatex}
+                                        stepDescription = {i < data.stepDescriptions.length ? data.stepDescriptions[i] : null}
+                                        varToDiff = {data.varToDiff}
+                                        isLast = {i == data.stepsAsLatex.length - 1}
+                                    />
+                                </li>
+                            )
+                        }
+                        </ul>
+                    </>
                 }
             </div>
             <button className={styles.button} onClick={() => showSteps(!isShowingSteps)}>
