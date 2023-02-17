@@ -92,7 +92,9 @@ export default function Home() {
 				</div>
 			</section>
 			
-			
+			<section className={styles.aboutUsContainer}>
+				<Link href="/about" className={styles.aboutUsTitle}>Kik vagyunk?</Link>
+			</section>
 		</main>
 	</>);
 }
