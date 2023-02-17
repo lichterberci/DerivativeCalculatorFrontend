@@ -175,7 +175,7 @@
     font-weight: 300;
     padding: 0.45rem 1rem;
     /* border: 1.5px solid var(--text-color); */
-    border: 10px solid;
+    border: 10px solid transparent;
     border-image-slice: 1;
     border-width: 3px;
     border-image-source: linear-gradient(to left, var(--secondary-gradient), var(--primary-gradient));
