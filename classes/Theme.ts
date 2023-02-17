@@ -14,4 +14,5 @@ export interface ITheme {
     secondaryGradient: string;
     borderColor: string;
     responsibilityColor: string;
+    FAQHighlighColor: string;
 }

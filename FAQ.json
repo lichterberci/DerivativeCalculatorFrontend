@@ -1,10 +1,34 @@
 [
     {
         "question" : "Tudok más változóra deriválni?",
-        "answer"   : "Igen tudsz. Kezdd a kifejezést d/dy-al, hogy y-ra, d/da-val, hogy a-ra deriválj! (e-re nem tudsz, mert az a konstanst jelenti)"
+        "answer"   : "Igen tudsz. Kezdd a kifejezést d/dy-al, hogy y-ra deriválj, d/da-val, hogy a-ra deriválj, stb. (e-re nem tudsz, mert az a konstanst jelenti)"
     },
     {
         "question" : "Milyen műveleteket támogat az oldal?",
         "answer"   : "Minden ZH-n, vizsgán előforduló műveletet. Támogatva van az összeadás, kivonás, szorzás, osztás, hatványozás, e és 10 alapú logaritmusok, sin, cos, tan, cot, arcsin, arccos, arctan, arccot, sinh, cosh, tanh, coth, arsinh, arcosh, artanh, arcoth és az abszolútérték."
+    },
+    {
+        "question" : "Nem értem hogy egyik lépésből hogyan következik a másik...",
+        "answer"   : "A lépésre rányomva leugrik az alkalmazott szabály, és az, hogy mit kell behelyettesíteni."
+    },
+    {
+        "question" : "Csúnya konstansokat kapok, amiket nem értek...",
+        "answer"   : "A beállítások menüpont alatt be tudod állítani, hogy mely függvények legyenek kiértékelve. Pl.: ha a logaritmikus függvények nincsenek kiértékelve, akkor az ln(3) marad ln(3), és nem lesz 1,098."
+    },
+    {
+        "question" : "Hibát találtam, mit tegyek?",
+        "answer"   : "A képernyő bal alsó sarkában található bogarat megnyomva el tudod nekünk küldeni. Amennyiben úgy érzed, hogy magad is meg tudod oldani, írd meg a megoldást, és csinálj egy Pull Requestet! (<a style='color:black;' target='_blank' href='https://github.com/lichterberci/DerivativeCalculatorFrontend'>frontend repo</a>, <a style='color:black;' tareg='_black' href='https://github.com/lichterberci/DerivativeCalculator'>backend repo</a>)"
+    },
+    {
+        "question" : "A sin^2(x)-et nem tudja beolvasni",
+        "answer"   : "A hatványozás mindig a teljes hatványalapot kell hogy kövesse. Pl.: sin(x)^2. Fontos, hogy hatványjellel inverzet nem lehet jelölni! Pl.: sin^-1(x) != arcsin(x)"
+    },
+    {
+        "question" : "A gyakorló feladatok listáját hol láthatom?",
+        "answer"   : "A gyakorló feladatok random generáltak, így nincsen egy lista, amiből lehetne válogatni."
+    },
+    {
+        "question" : "Hibát kapok arra a bemenetre, hogy |x|+|x|",
+        "answer"   : "Bár ebben az esetben egyértelmű az, hogy melyik abszolútérték jelhez melyik tartozik, sokszor nem az, így amennyiben több abszolútértéket szeretnél írni egy lekérdezésbe, használd az abs(x) jelölést!"
     }
 ]

@@ -1,0 +1,31 @@
+.faq-title {
+}
+
+.faq-body{
+    background-color: var(--background-color) !important;  
+}
+
+.faq-row-wrapper{
+    background-color: none !important;
+}
+
+.faq-body .faq-row {
+    margin-top: 1rem !important;
+    padding: 0.3rem 2rem !important;
+    border-radius: 5px  !important;
+    border:none !important;
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25) !important;
+    background-color: white !important;  
+}
+
+
+.faq-body .faq-row:has(.expanding, .expanded) {
+    filter: drop-shadow(0px 0px 4px var(--faq-highlight-color)) !important;
+}
+
+
+.faq-body .faq-row .row-content-text {
+    padding: 1rem 0rem !important;
+    background-color: white !important;  
+}
