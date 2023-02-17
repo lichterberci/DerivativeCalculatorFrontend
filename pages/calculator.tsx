@@ -80,7 +80,8 @@ export default function CalculatorPage (): JSX.Element {
     return (<>
 
         <Head>
-            <title>Ellenőrző oldal</title>
+            <title>Kalkulátor</title>
+            <meta name="description" content="Szeretnéd magad ellenőrizni? Hiányos a megoldókulcs? Lépésről lépésre végigvezetünk tetszőleges problémákon!" />
         </Head>
         <main className={styles.main}>
             <MathJaxContext version={3} config={MathJaxConfig}>

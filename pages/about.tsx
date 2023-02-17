@@ -51,6 +51,7 @@ export default function About (): JSX.Element {
     return (<>
         <Head>
             <title>Rólunk</title>
+            <meta name="description" content="Az oldalt ketten írtuk. A backendet Lichter Bertalan, a frontendet Lipcsey Márton." />
         </Head>
         <main>
             <div className={styles.titleHolder}>
