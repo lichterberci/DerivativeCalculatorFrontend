@@ -26,7 +26,7 @@ export function GetPreferences (key: string): any | undefined {
     const data = localStorage.getItem(key);
 
     if (data === null) {
-        console.error(`Key '${key}' is not set in localStorage!`);
+        console.warn(`Key '${key}' is not set in localStorage!`);
         return undefined;
     }
 
@@ -86,7 +86,7 @@ export function SetCSSThemeFromLocalStorage (): void {
     const theme: ITheme | null | undefined = (THEMES as { [key: string]: ITheme })[themeName];
 
     if (theme == null) {
-        console.error(`Theme ${themeName} does not exist, cannot set theme!`);
+        console.warn(`Theme ${themeName} does not exist, cannot set theme!`);
         return;
     }
 
