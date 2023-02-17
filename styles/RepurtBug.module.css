@@ -8,8 +8,8 @@
     outline: none;
     border: none;
 
-    bottom:20px;
-    left:20px;
+    bottom: 20px;
+    left: 20px;
 
     background-color: none;
     background: none;
@@ -32,7 +32,7 @@
     opacity: 1;
 }
 
-.modal{
+.modal {
     position: relative;
     border-radius: 4px;
     background-color: var(--team-card-background);
@@ -40,6 +40,7 @@
     width: 95%;
     margin:0 auto;
     outline:none;
+    font-family: 'Roboto', sans-serif;
 }
 
 .overlay {
@@ -62,7 +63,7 @@
     /* gap: 2rem; */
 }
 
-.closingX{
+.closingX {
     cursor: pointer;
     position: absolute;
     top: 10px;

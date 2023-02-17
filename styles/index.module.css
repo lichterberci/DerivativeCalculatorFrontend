@@ -159,6 +159,30 @@
     margin-top: 0;
 }
 
+.aboutUsContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 auto 50px auto;
+}
+
+.aboutUsTitle {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 300;
+    padding: 0.45rem 1rem;
+    /* border: 1.5px solid var(--text-color); */
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(to left, var(--secondary-gradient), var(--primary-gradient));
+    border-radius: 20px;
+    shape-image-threshold: 0.5;
+}
+
 @media screen and (max-width: 1150px) {
 
     .ctaWrapper{
