@@ -120,6 +120,8 @@ export default function ReportBug (): JSX.Element {
                         className={styles.titleInput}
                         type="text" 
                         placeholder="Adj egy címet..."
+                        autoComplete="false"
+                        aria-autocomplete="none"
                         value={title}
                         onChange={e => {
                             setTitle(e.target.value);
@@ -139,6 +141,8 @@ export default function ReportBug (): JSX.Element {
                         className={styles.bugInput}
                         rows={3}
                         placeholder="Írd le a problémát..."
+                        autoComplete="false"
+                        aria-autocomplete="none"
                         value={description}
                         onChange={e => {
                             setDescription(e.target.value);
