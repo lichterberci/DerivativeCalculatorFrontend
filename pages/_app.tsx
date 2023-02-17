@@ -12,7 +12,7 @@ import "../styles/FAQ.css"
 
 
 const roboto = Roboto({
-    weight: '400',
+    weight: ['100', '300', '400', '500', '700', '900'],
     subsets: ['latin'],
 });  
 

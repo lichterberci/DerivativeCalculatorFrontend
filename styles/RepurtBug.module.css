@@ -15,11 +15,21 @@
     background: none;
     cursor: pointer;
     transition: 0.2s;
+
+    opacity: 0.85;
+}
+
+@media screen and (max-width: 480px) {
+    .bugButton {
+        left: 10px;
+        bottom: 10px;
+    }
 }
 
 .bugButton:hover{
     transition: 0.2s;
     transform: scale(1.1);
+    opacity: 1;
 }
 
 .modal{

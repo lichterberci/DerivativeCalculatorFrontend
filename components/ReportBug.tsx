@@ -94,11 +94,9 @@ export default function ReportBug (): JSX.Element {
     }
 
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflowY = 'hidden'
-        } else {
-            document.body.style.overflowY = 'auto'
-        }
+        
+        document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
+        
     }, [isOpen])
 
     useEscapeKey();

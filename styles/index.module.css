@@ -15,24 +15,24 @@
 
 .title {
     font-size: 4rem;
-    padding-top:10rem;
+    padding-top: 10rem;
     margin-top: 0;
     margin-bottom: 0;
     text-align: center;
-    font-family: Inter;
+    /* font-family: Inter; */
     font-weight: 400;
     color:white;
 }
 
 .title2 {
-    color:white;
+    color: white;
     text-align: center;
-    margin:0;
+    margin: 0;
     font-size: 4rem;
     margin:0 auto;
-    margin-top: 4rem;;
+    margin-top: 2rem;
     width: fit-content;
-    font-family: Inter;
+    /* font-family: Inter; */
     font-weight: 400;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .button{
-    font-family: Inter;
+    /* font-family: Inter; */
     font-weight: 400;
     padding: 10px 20px;
     font-size: 1.2rem;
@@ -108,7 +108,7 @@
 
 .ctaTitle{
     font-size:1.4rem;
-    font-family: Inter;
+    /* font-family: Inter; */
     /* text-align: center; */
     text-align: justify;
     width: 70%;
@@ -120,7 +120,7 @@
     background-color: #8E10EF;
     color:white;
     font-size: 1.3rem;
-    font-family: Inter;
+    /* font-family: Inter; */
     padding: 8px 1rem;
     border-radius:5px;
 }
@@ -148,7 +148,7 @@
 .faqTitle{
     font-size: 4rem;
     text-align: center;
-    font-family: Inter;
+    /* font-family: Inter; */
     font-weight: 300;
     margin-top: 0;
 }
