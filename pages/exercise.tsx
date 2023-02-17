@@ -109,16 +109,16 @@ export default function ExercisePage (): JSX.Element {
                         tabIndex={1}
                     >
                         <option key={"EASY"} value={"EASY"} className={styles.option}>
-                            Triviális
+                            Könnyű
                         </option>
                         <option key={"MEDIUM"} value={"MEDIUM"} className={styles.option}>
-                            Óbudai
+                            Közepes
                         </option>
                         <option key={"HARD"} value={"HARD"} className={styles.option}>
-                            BME
+                            Nehéz
                         </option>
                         <option key={"HARDCORE"} value={"HARDCORE"} className={styles.option}>
-                            Tasnádi
+                            Nehezebb
                         </option>
                     </select>
 
