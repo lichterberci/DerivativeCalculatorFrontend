@@ -83,7 +83,8 @@ export default function Settings (): JSX.Element {
 
     return (<>
         <Head>
-            <title>Settings</title>
+            <title>Beállítások</title>
+            <meta name="description" content="Formáld az oldal kimenetét és kinézetét tetszésedre!" />
         </Head>
         <main>
 

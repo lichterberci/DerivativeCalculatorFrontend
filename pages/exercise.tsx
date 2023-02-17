@@ -90,7 +90,8 @@ export default function ExercisePage (): JSX.Element {
     return (<>
 
         <Head>
-            <title>Gyakorló oldal</title>
+            <title>Gyakoroljunk!</title>
+            <meta name="description" content="Közeleg a ZH? Szeretnéd újra felvenni a tempót? Feladatainkkal tudsz gyakorolni, és amennyiben más jött ki, megnézheted hol, mit rontottál el!" />
         </Head>
         <main>
             <MathJaxContext version={3} config={MathJaxConfig}>

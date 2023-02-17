@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		},
 		{
 			href: "/calculator",
-			name: "Ellenőrzés"
+			name: "Kalkulátor"
 		},
 		{
 			href: "/exercise",
