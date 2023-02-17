@@ -4,7 +4,7 @@ import Script from 'next/script'
 import { useEffect } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';
-import { Roboto, Inter } from "@next/font/google"
+import { Roboto, Inter, Source_Code_Pro } from "@next/font/google"
 import { FirebaseInit } from '../scripts/Firebase';
 import { SetCSSThemeFromLocalStorage } from '../scripts/Preferences';
 import ReportBug from '../components/ReportBug';

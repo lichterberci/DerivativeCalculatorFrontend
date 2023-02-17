@@ -34,18 +34,18 @@ export default function About (): JSX.Element {
                 }
             ,
         },
-        {
-            name: "Szabó Gergő",
-            role: ["segítő"],
-            url: "szabógergő.jpg",
-            email: "szgergo0307@gmail.com",
-            colors: 
-                {
-                    primary: "#9D50BB",
-                    secondary: "#6E48AA"
-                }
-            ,
-        },
+        // {
+        //     name: "Szabó Gergő",
+        //     role: ["segítő"],
+        //     url: "szabógergő.jpg",
+        //     email: "szgergo0307@gmail.com",
+        //     colors: 
+        //         {
+        //             primary: "#9D50BB",
+        //             secondary: "#6E48AA"
+        //         }
+        //     ,
+        // },
     ]
 
     return (<>
@@ -53,6 +53,10 @@ export default function About (): JSX.Element {
             <title>Rólunk</title>
         </Head>
         <main>
+            <div className={styles.titleHolder}>
+                <div className={styles.navbarOffset} />
+                <h1 className={styles.title}>Csapatunk</h1>
+            </div>
             <div className={styles.myContainer}>
                 <div className={styles.teamHolder}>
                     {
