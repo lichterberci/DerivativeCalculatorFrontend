@@ -96,6 +96,8 @@ export default function CalculatorPage (): JSX.Element {
                                 className={styles.input}
                                 type="text" 
                                 placeholder="sin(x)^2" 
+                                autoComplete="false"
+                                aria-autocomplete="none"
                                 onChange={e => inputRef.current = e.target.value}
                                 onKeyDown={e => {
                                     if (e.key == "Enter")
