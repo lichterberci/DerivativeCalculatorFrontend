@@ -72,7 +72,7 @@ export default function Home() {
 
 					<div className={styles.ctaElement}>
 						<p className={styles.ctaTitle}>Nem érzed biztosnak magad a deriválás terén? <br /> Közeleg egy ZH, és szeretnél felpörögni? <br /> Régen tanultad, és szeretnéd tudni, hogyan megy?</p>
-						<Link className={styles.ctaButton} href="/calculator" >Próbáld ki magad!</Link>
+						<Link className={styles.ctaButton} href="/exercise" >Próbáld ki magad!</Link>
 					</div>
 
 				</div>
