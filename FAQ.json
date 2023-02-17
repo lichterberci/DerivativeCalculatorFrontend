@@ -1,0 +1,10 @@
+[
+    {
+        "question" : "Tudok más változóra deriválni?",
+        "answer"   : "Igen tudsz. Kezdd a kifejezést d/dy-al, hogy y-ra, d/da-val, hogy a-ra deriválj! (e-re nem tudsz, mert az a konstanst jelenti)"
+    },
+    {
+        "question" : "Milyen műveleteket támogat az oldal?",
+        "answer"   : "Minden ZH-n, vizsgán előforduló műveletet. Támogatva van az összeadás, kivonás, szorzás, osztás, hatványozás, e és 10 alapú logaritmusok, sin, cos, tan, cot, arcsin, arccos, arctan, arccot, sinh, cosh, tanh, coth, arsinh, arcosh, artanh, arcoth és az abszolútérték."
+    }
+]
