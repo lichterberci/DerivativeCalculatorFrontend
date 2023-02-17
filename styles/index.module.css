@@ -1,7 +1,13 @@
+.navbarOffset {
+    height: 45px;
+    width: 100%;
+    background-color: #3D1766;
+}
+
 .hero{
     background: linear-gradient(180deg, #3D1766, #8E10EF);
     padding-bottom:15rem;
-    margin-top: 45px;
+    margin-top: 0px;
 }
 
 .myContainer{

@@ -43,7 +43,7 @@ export default function Home() {
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 		<main>
-			
+			<div className = {styles.navbarOffset} />
 			<section className={styles.hero}>
 				<div className={styles.myContainer}>
 
