@@ -14,10 +14,11 @@
         "primaryGradient":"#4568DC",
         "secondaryGradient":"#B06AB3",
         "borderColor":"#3d1766",
-        "responsibilityColor":"none"
+        "responsibilityColor":"none",
+        "FAQHighlighColor": "rgba(142, 16, 239, 0.7)"
     },
     "dark": {
-        "primaryColor": "#4c3c63",
+        "primaryColor": "#3D1766",
         "secondaryColor": "#6769e6",
         "tertiaryColor": "#2d2d2d",
         "textColor": "white",
@@ -31,6 +32,7 @@
         "primaryGradient":"#4568DC",
         "secondaryGradient":"#B06AB3",
         "borderColor":"white",
-        "responsibilityColor":"#2d2d2d"
+        "responsibilityColor":"#2d2d2d",
+        "FAQHighlighColor": " rgba(26, 214, 255, 0.7)"
     }
 }

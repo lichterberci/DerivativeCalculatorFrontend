@@ -1,0 +1,213 @@
+.hero{
+    background: linear-gradient(180deg, #3D1766, #8E10EF);
+    padding-bottom:15rem;
+    margin-top: 45px;
+}
+
+.myContainer{
+    box-sizing: border-box;
+    max-width: 1280px;
+    width:100%;
+    margin:0 auto;
+    padding-left:2rem;
+    padding-right: 2rem;
+}
+
+.title {
+    font-size: 4rem;
+    padding-top: 10rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    /* font-family: Inter; */
+    font-weight: 400;
+    color:white;
+}
+
+.title2 {
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 4rem;
+    margin:0 auto;
+    margin-top: 2rem;
+    width: fit-content;
+    /* font-family: Inter; */
+    font-weight: 400;
+}
+
+.buttonWrapper{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap:6.25rem;
+    margin: 0 auto;
+    margin-top: 4.813rem;
+}
+
+.button{
+    /* font-family: Inter; */
+    font-weight: 400;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    outline:none;
+    border:none;
+    border-radius: 5px;
+    color:#6513AA;
+    background-color: white;
+    text-decoration: none;
+}
+
+.svg{
+    transform: rotate(180deg);
+    width: 100%;
+    height: max-content;
+}
+
+.sphere{
+    position: absolute;;
+    width:100%;
+    background: #E01FFF;
+    filter: blur(60px);
+    bottom:0px;
+    height: 1rem;
+    left:50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.cta{
+    position: relative;
+    margin-top: -400px;
+}
+
+.ctaWrapper{
+    position: relative;
+    max-width: 900px;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem 2rem;
+    height: fit-content;
+    gap: 5rem;
+
+    color: black;
+}
+
+.ctaElement{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.ctaTitle{
+    font-size: 1.4rem;
+    /* font-family: Inter; */
+    /* text-align: center; */
+    text-align: justify;
+    width: 70%;
+}
+
+.ctaButton{
+    display: inline-block;
+    text-decoration: none;
+    background-color: #8E10EF;
+    color:white;
+    font-size: 1.3rem;
+    /* font-family: Inter; */
+    padding: 8px 1rem;
+    border-radius: 5px;
+}
+
+.arrow{
+    position: absolute;
+    right: -10%;
+    top:-100px;
+    width: 120px;
+    height: 120px;
+}
+
+.faq{
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.faqStyleWrapper{
+
+    background-color: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faqTitle{
+    font-size: 4rem;
+    text-align: center;
+    /* font-family: Inter; */
+    font-weight: 300;
+    margin-top: 0;
+}
+
+@media screen and (max-width: 1150px) {
+
+    .ctaWrapper{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        padding:2rem 0;
+        width: 75%;
+    }
+
+    .cta{
+        transform: none;
+        margin-top: -150px;
+    }
+
+}
+
+@media screen and (max-width: 1180px){
+    .arrow{
+        left:0;
+        transform: scaleX(-1);
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .title, .title2{
+        font-size: 3rem;
+    }
+
+    .buttonWrapper{
+        flex-direction: column;
+        gap:2rem
+    }
+
+    .ctaWrapper{
+        gap:2rem;
+        padding: 2rem 0rem;
+        width: 90%;
+    }
+
+    .myContainer{
+        padding-left:0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .hero{
+        margin-top: 0;
+    }
+
+    .arrow{
+        display:none
+    }
+
+}
+

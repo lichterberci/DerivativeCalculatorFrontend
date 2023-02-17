@@ -4,13 +4,15 @@ import Script from 'next/script'
 import { useEffect } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';
-import { Roboto } from "@next/font/google"
+import { Roboto, Inter } from "@next/font/google"
 import { FirebaseInit } from '../scripts/Firebase';
 import { SetCSSThemeFromLocalStorage } from '../scripts/Preferences';
 import ReportBug from '../components/ReportBug';
+import "../styles/FAQ.css"
+
 
 const roboto = Roboto({
-    weight: '400',
+    weight: ['100', '300', '400', '500', '700', '900'],
     subsets: ['latin'],
 });  
 

@@ -20,10 +20,36 @@ export default function Settings (): JSX.Element {
     useEffect(() => {        
 
         const simpPref: ISimplificationPreferences = GetPreferences("simplificationPreferences");
-        setSimplificationPreferences(simpPref);
+
+        if (simpPref === undefined) {
+            // setting default
+            SetPreferences({ "simplificationPreferences": {
+                shouldEvalLogarithm: false,
+                shouldEvalTrig: true,
+                shouldEvalHyp: true
+            } as ISimplificationPreferences});
+        } 
+        else
+            setSimplificationPreferences(simpPref);
+
         
         const UIPref: IUserInterfacePreferences = GetPreferences("UIPreferences");
-        setUIPreferences(UIPref);
+
+        if (UIPref === undefined) {
+
+            // setting default
+            setUIPreferences({
+                darkMode:  window.matchMedia('(prefers-color-scheme: dark)').matches
+            });
+
+            SetPreferences({
+                "UIPreferences": {
+                    darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches
+                } as IUserInterfacePreferences
+            })
+        }
+        else
+            setUIPreferences(UIPref);
         
     }, []);
     

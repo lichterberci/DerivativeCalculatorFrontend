@@ -105,6 +105,7 @@ export function SetCSSThemeFromLocalStorage (): void {
     document.documentElement.style.setProperty("--secondary-gradient", theme.secondaryGradient);
     document.documentElement.style.setProperty("--border-color", theme.borderColor);
     document.documentElement.style.setProperty("--responsibility-color", theme.responsibilityColor);
+    document.documentElement.style.setProperty("--faq-highlight-color", theme.FAQHighlighColor);
 
 
     console.log(`Styles set to ${themeName}`);

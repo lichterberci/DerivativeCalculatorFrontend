@@ -4,7 +4,7 @@
     z-index: 5;
     width: 40px;
     height: 40px;
-    position: absolute;
+    position: fixed;
     outline: none;
     border: none;
 
@@ -15,18 +15,28 @@
     background: none;
     cursor: pointer;
     transition: 0.2s;
+
+    opacity: 0.85;
+}
+
+@media screen and (max-width: 480px) {
+    .bugButton {
+        left: 10px;
+        bottom: 10px;
+    }
 }
 
 .bugButton:hover{
     transition: 0.2s;
     transform: scale(1.1);
+    opacity: 1;
 }
 
 .modal{
     position: relative;
     border-radius: 4px;
     background-color: var(--team-card-background);
-    max-width:1280px;
+    max-width: 800px;
     width: 95%;
     margin:0 auto;
     outline:none;

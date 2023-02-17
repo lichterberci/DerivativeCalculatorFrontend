@@ -3,20 +3,21 @@
 }
 
 .navbarHolder {
+    font-family: Inter;
+    font-weight: 300;
     position: fixed;
-    background-color: var(--primary-color);
-    padding: 10px 0px;
+    top:0;
+    background-color: #3D1766;
+    padding: 12px 0px;
     display: flex;
     flex-direction: row;
     max-width: 600;
     width: 100%;
-    top: 0;
     z-index: 5;
     align-items: center;
     justify-content: center;
     gap: 5rem;
     /* padding-left: 5rem; */
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 .navBarItem {
