@@ -116,7 +116,7 @@ export default function ReportBug (): JSX.Element {
                 <div className={styles.reportBugHolder} >
                     
                     <Image onClick={() => setIsOpen(!isOpen)} 
-                        className={ GetPreferences("UIPreferences").darkMode == true ? styles.closingXWhite : styles.closingX } 
+                        className={ GetPreferences("UIPreferences")?.darkMode == true ? styles.closingXWhite : styles.closingX } 
                         src="/images/x-white.webp" 
                         width={25} height={25} 
                         alt={"closingx"} 

@@ -1,21 +1,19 @@
-import {  } from "../scripts/Preferences"
 import styles from "../styles/consent.module.css"
 import { GetPreferences, SetPreferences } from "../scripts/Preferences"
 import { useEffect, useState } from "react";
-import { JsxAttribute } from "typescript";
 
 export default function Consent() : JSX.Element | null {
 
     const [userConsent, setUserConsent] = useState<boolean>();
 
     useEffect( ()=>{
-        setUserConsent(GetPreferences("userConsent"));
+        setUserConsent(GetPreferences("userConsent") ?? false);
     },[])
 
     const setConsent = () => {
 
         setUserConsent(true);
-        SetPreferences({userConsent : true});
+        SetPreferences({"userConsent" : true});
     }
 
     if ( userConsent == true) {

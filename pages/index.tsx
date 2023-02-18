@@ -1,12 +1,8 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react';
-import { FirebaseInit, WriteBugReport } from '../scripts/Firebase';
-import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from '../scripts/Preferences';
 import ReportBug from "../components/ReportBug"
 import styles from "../styles/index.module.css"
 import Image from 'next/image';
 import Faq from "react-faq-component";
-import IFAQ from "../classes/FAQ"
 import FAQQuestions from "../FAQ.json"
 import Link from 'next/link';
 
