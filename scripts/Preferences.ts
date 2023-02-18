@@ -111,3 +111,4 @@ export function SetCSSThemeFromLocalStorage (): void {
     console.log(`Styles set to ${themeName}`);
 
 }
+

@@ -48,7 +48,7 @@ export default function Home() {
 				<div className={styles.myContainer}>
 
 					<h1 className={styles.title}>A deriválás kicsit meredek?</h1>
-					<h2 className={styles.title2}>Nekünk is XD</h2>
+					<h2 className={styles.title2}>Nekünk is <span className={styles.xd}>XD</span></h2>
 
 					<div className={styles.buttonWrapper}>
 						<Link className={styles.button} href="/calculator" >Kalkulátor</Link>

@@ -6,9 +6,10 @@ import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';
 import { Roboto, Inter, Source_Code_Pro } from "@next/font/google"
 import { FirebaseInit } from '../scripts/Firebase';
-import { SetCSSThemeFromLocalStorage } from '../scripts/Preferences';
+import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from '../scripts/Preferences';
 import ReportBug from '../components/ReportBug';
 import "../styles/FAQ.css"
+import Consent from '../components/Consent';
 
 
 const roboto = Roboto({
@@ -19,6 +20,11 @@ const roboto = Roboto({
 export default function App({ Component, pageProps }: AppProps) {
     
     const router = useRouter();
+
+    const userConsent = { userConsent : false }
+
+    if( GetPreferences("userConsent") == null ) SetPreferences(userConsent);
+        
     
     useEffect(() => {
         const handleRouteChange = (url: string) => {
@@ -80,6 +86,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <main className={roboto.className}>
             <HamburgerMenu items={navBarItems}/>
             <ReportBug/>
+            <Consent/>
             <Component {...pageProps} />
         </main>
     </>)
