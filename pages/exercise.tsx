@@ -119,7 +119,7 @@ export default function ExercisePage (): JSX.Element {
                             Nehéz
                         </option>
                         <option key={"HARDCORE"} value={"HARDCORE"} className={styles.option}>
-                            Nehezebb
+                            6-os ZH
                         </option>
                     </select>
 
