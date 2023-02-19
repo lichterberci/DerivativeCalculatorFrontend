@@ -23,7 +23,10 @@ export default function Consent() : JSX.Element | null {
     return(
         <div className={styles.consentWrapper}
         >   
-            <p className={styles.text}>Beleegyezem, hogy nem fogom csalásra használni.</p>
+            <p className={styles.text}>
+                Elfogadom az <a href="/aszf.html" target="_blank" style={{color: "white"}}>ÁSZF</a>-et, elfogadom a sütiket (kizárólag anlízis céljára vannak használva) és 
+                beleegyezem, hogy nem fogom csalásra használni az oldal tartalmát.
+            </p>
             <button className={styles.button} onClick={() => setConsent()} >Beleegyezem</button>
         </div>
     )
