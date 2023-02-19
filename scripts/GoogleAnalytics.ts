@@ -1,6 +1,6 @@
 // log the pageview with their URL
 export function GoogleLogPage (url: string): void {
-	(window as any).gtag('config', process.env.GTAG_KEY, {
+	(window as any).gtag('config', process.env.FIREBASE_MEASUREMENT_ID, {
 		page_path: url,
 	})
 }
