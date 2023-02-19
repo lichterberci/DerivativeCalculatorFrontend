@@ -55,8 +55,7 @@ export default function ReportBug (): JSX.Element {
         if (isDataValid == false)
             return;
 
-        setIsOpen(!isOpen);
-
+            
         const success = await WriteBugReport({
             title: title,
             description: description,
@@ -68,7 +67,8 @@ export default function ReportBug (): JSX.Element {
             setSendError("Nem tudtuk elküldeni a hibajelentést!");
             return;
         }
-
+        
+        setIsOpen(false);
         setTitle("");
         setDescription("");
         setPriority(0);
