@@ -70,7 +70,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	}, [])
 
     return (<>
-        <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_KEY}`} />
+        {/* <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_KEY}`} />
         
         <Script strategy="lazyOnload" id="gtagScript">
         {`
@@ -81,7 +81,7 @@ export default function App({ Component, pageProps }: AppProps) {
             page_path: window.location.pathname,
         });
         `}
-        </Script>
+        </Script> */}
 
         {/* <main className={roboto.className}> */}
         <main>

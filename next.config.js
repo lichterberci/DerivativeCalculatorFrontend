@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    "GTAG_KEY" : "G-99397P9H1K",
+    "GTAG_KEY_OLD" : "G-99397P9H1K",
     "FIREBASE_API_KEY" : "AIzaSyCPu0Ki58Yv2tKcOCto5ladPMj-5LC3w-U",
     "FIREBASE_AUTH_DOMAIN" : "derivative-calculator-374423.firebaseapp.com",
     "FIREBASE_DATABASE_URL" : "https://derivative-calculator-374423-default-rtdb.europe-west1.firebasedatabase.app",
