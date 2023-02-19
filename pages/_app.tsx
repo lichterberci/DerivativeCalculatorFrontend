@@ -4,7 +4,7 @@ import Script from 'next/script'
 import { useEffect } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';
-import { Roboto, Inter, Source_Code_Pro } from "@next/font/google"
+// import { Roboto, Inter, Source_Code_Pro } from "@next/font/google"
 import { FirebaseInit } from '../scripts/Firebase';
 import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from '../scripts/Preferences';
 import ReportBug from '../components/ReportBug';
@@ -12,10 +12,10 @@ import "../styles/FAQ.css"
 import Consent from '../components/Consent';
 
 
-const roboto = Roboto({
-    weight: ['100', '300', '400', '500', '700', '900'],
-    subsets: ['latin'],
-});  
+// const roboto = Roboto({
+//     weight: ['100', '300', '400', '500', '700', '900'],
+//     subsets: ['latin'],
+// });  
 
 export default function App({ Component, pageProps }: AppProps) {
     
@@ -83,7 +83,8 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
         </Script>
 
-        <main className={roboto.className}>
+        {/* <main className={roboto.className}> */}
+        <main>
             <HamburgerMenu items={navBarItems}/>
             <ReportBug/>
             <Consent/>
