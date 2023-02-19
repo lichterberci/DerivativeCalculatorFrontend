@@ -1,12 +1,8 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react';
-import { FirebaseInit, WriteBugReport } from '../scripts/Firebase';
-import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from '../scripts/Preferences';
 import ReportBug from "../components/ReportBug"
 import styles from "../styles/index.module.css"
 import Image from 'next/image';
 import Faq from "react-faq-component";
-import IFAQ from "../classes/FAQ"
 import FAQQuestions from "../FAQ.json"
 import Link from 'next/link';
 
@@ -48,7 +44,7 @@ export default function Home() {
 				<div className={styles.myContainer}>
 
 					<h1 className={styles.title}>A deriválás kicsit meredek?</h1>
-					<h2 className={styles.title2}>Nekünk is XD</h2>
+					<h2 className={styles.title2}>Nekünk is <span className={styles.xd}>XD</span></h2>
 
 					<div className={styles.buttonWrapper}>
 						<Link className={styles.button} href="/calculator" >Kalkulátor</Link>

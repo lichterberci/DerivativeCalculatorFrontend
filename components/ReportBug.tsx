@@ -3,6 +3,7 @@ import { WriteBugReport } from "../scripts/Firebase";
 import styles from "../styles/RepurtBug.module.css"
 import Modal from 'react-modal';
 import Image from 'next/image'
+import { GetPreferences } from "../scripts/Preferences";
 
 export default function ReportBug (): JSX.Element {
 
@@ -104,7 +105,7 @@ export default function ReportBug (): JSX.Element {
     return (
         
         <div>
-
+                
             <Image onClick={() => setIsOpen(!isOpen)} className={styles.bugButton} src="/images/reportbug.png" width={40} height={40} alt={"bug report"} />
 
             <Modal
@@ -113,8 +114,13 @@ export default function ReportBug (): JSX.Element {
                 overlayClassName={styles.overlay}
             >
                 <div className={styles.reportBugHolder} >
-
-                   <Image onClick={() => setIsOpen(!isOpen)} className={styles.closingX} src="/images/closing_X.png" width={25} height={25} alt={"closingx"} />
+                    
+                    <Image onClick={() => setIsOpen(!isOpen)} 
+                        className={ GetPreferences("UIPreferences")?.darkMode == true ? styles.closingXWhite : styles.closingX } 
+                        src="/images/x-white.webp" 
+                        width={25} height={25} 
+                        alt={"closingx"} 
+                    />
                     <h1 className={styles.title}>Valami hibát találtál?<br></br> Küldd el nekünk!</h1>
                     <input 
                         className={styles.titleInput}
