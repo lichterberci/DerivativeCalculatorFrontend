@@ -12,7 +12,7 @@ import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
 
 import styles from "../styles/exercise.module.css"
-import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
+import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from "../scripts/Preferences";
 import { FirebaseInit } from "../scripts/Firebase";
 
 let fetchAbortController = new AbortController();
@@ -87,6 +87,47 @@ export default function ExercisePage (): JSX.Element {
         setSolutionData(result as ISolutionData);
     };
 
+    useEffect(() => {
+
+        SetPreferences({
+            "ExerciseSolutionData": solutionData
+        });
+
+    }, [solutionData]);
+
+    useEffect(() => {
+
+        const savedSolutionData = GetPreferences("ExerciseSolutionData");
+
+        if (savedSolutionData === undefined)
+            return;
+
+        if (savedSolutionData === null)
+            return;
+
+        setSolutionData(savedSolutionData);
+    }, []);
+
+    const SaveSelectedLevel = (level: string) => {
+
+        SetPreferences({
+            "SelectedLevel": level
+        });
+    };
+
+    const GetSavedSelectedLevel = (): string => {
+
+        const level = GetPreferences("SelectedLevel");
+
+        if (level === undefined)
+            return "MEDIUM";
+            
+        if (level === null)
+            return "MEDIUM";
+
+        return level;
+    }
+
     return (<>
 
         <Head>
@@ -105,8 +146,11 @@ export default function ExercisePage (): JSX.Element {
                 <div className={styles.inputHolder}>
                     <select
                         className={styles.select}
-                        defaultValue={"MEDIUM"}
-                        onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
+                        defaultValue={GetSavedSelectedLevel()}
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+                            selectedLevel.current = e.target.value as DifficultyLevel;
+                            SaveSelectedLevel(selectedLevel.current);
+                        }}
                         tabIndex={1}
                     >
                         <option key={"EASY"} value={"EASY"} className={styles.option}>
