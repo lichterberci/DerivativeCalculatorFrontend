@@ -98,51 +98,62 @@ export default function Settings (): JSX.Element {
                             <p className={styles.inputTitle}>
                                 Logaritmusok kiértékelése
                             </p>
-                            <input 
-                                className={styles.input}
-                                type="checkbox"
-                                name="logarithm"
-                                checked={simplificationPreferences?.shouldEvalLogarithm}
-                                onChange={e => UpdateSimplificationPreferences("shouldEvalLogarithm", e.target.checked)}
-                            />
+
+                            <label className={styles.container}>
+                                <input 
+                                    type="checkbox" 
+                                    checked={simplificationPreferences?.shouldEvalLogarithm}
+                                    onChange={e => UpdateSimplificationPreferences("shouldEvalLogarithm", e.target.checked)}
+                                    name="logarithm"
+                                />
+                                <span className={styles.checkmark}></span>
+                            </label>
+
                         </div>
                         <div className={styles.inputHolder}>
                             <p>
                                 Trigonometrikus függvények kiértékelése
                             </p>
-                            <input 
-                                className={styles.input}
-                                type="checkbox"
-                                name="trig"
-                                checked={simplificationPreferences?.shouldEvalTrig}
-                                onChange={e => UpdateSimplificationPreferences("shouldEvalTrig", e.target.checked)}
-                            />
+                            <label className={styles.container}>
+                                <input 
+                                    type="checkbox" 
+                                    checked={simplificationPreferences?.shouldEvalTrig}
+                                    onChange={e => UpdateSimplificationPreferences("shouldEvalTrig", e.target.checked)}
+                                    name="trig"
+                                />
+                                <span className={styles.checkmark}></span>
+                            </label>
                         </div>
                         <div className={styles.inputHolder}>
                             <p>
                                 Hiperbolikus függvények kiértékelése
                             </p>  
-                            <input 
-                                className={styles.input}
-                                type="checkbox"
-                                name="hyp"
-                                checked={simplificationPreferences?.shouldEvalHyp}
-                                onChange={e => UpdateSimplificationPreferences("shouldEvalHyp", e.target.checked)}
-                            />
+
+                            <label className={styles.container}>
+                                <input 
+                                    type="checkbox" 
+                                    checked={simplificationPreferences?.shouldEvalHyp}
+                                    onChange={e => UpdateSimplificationPreferences("shouldEvalHyp", e.target.checked)}
+                                    name="hyp"
+                                />
+                                <span className={styles.checkmark}></span>
+                            </label>
                         </div>
 
                         <div className={styles.inputHolder}>
                             <p>
                                 Sötét mód
                             </p> 
-                            <input 
-                                className={styles.input}
-                                type="checkbox"
-                                name="darkmode"
-                                checked={UIPreferences?.darkMode}
-                                onChange={e => UpdateUserInterfacePreferences("darkMode", e.target.checked)}
-                            />
 
+                            <label className={styles.container}>
+                                <input 
+                                    type="checkbox" 
+                                    checked={UIPreferences?.darkMode}
+                                    onChange={e => UpdateUserInterfacePreferences("darkMode", e.target.checked)}
+                                    name="darkmode"
+                                />
+                                <span className={styles.checkmark}></span>
+                            </label>
                         </div>
                     </div>
                 </div>  

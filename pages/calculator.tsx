@@ -106,26 +106,31 @@ export default function CalculatorPage (): JSX.Element {
                             <span className={styles.derivative}> Deriváld le!</span>
                         </h1>
                         <span className={styles.inputHolder}>
-                            <input 
-                                className={styles.input}
-                                type="text" 
-                                placeholder="sin(x)^2" 
-                                autoComplete="false"
-                                aria-autocomplete="none"
-                                value={inputText}
-                                onChange={e => {
-                                    setInputText(e.target.value);
+                            
+                            <div style={{display:"flex", flexDirection:"row", gap:"1rem", alignItems:"center"}}>
+                                <input 
+                                    className={styles.input}
+                                    type="text" 
+                                    placeholder="sin(x)^2" 
+                                    autoComplete="false"
+                                    aria-autocomplete="none"
+                                    value={inputText}
+                                    onChange={e => {
+                                        setInputText(e.target.value);
 
-                                    SetPreferences({
-                                        "CalculatorInput": e.target.value
-                                    });
-                                }}
-                                onKeyDown={e => {
-                                    if (e.key == "Enter")
-                                        QueryDifferentiationAndUpdateUI()
-                                }}
-                                tabIndex={1}
-                            />
+                                        SetPreferences({
+                                            "CalculatorInput": e.target.value
+                                        });
+                                    }}
+                                    onKeyDown={e => {
+                                        if (e.key == "Enter")
+                                            QueryDifferentiationAndUpdateUI()
+                                    }}
+                                    tabIndex={1}
+                                />
+                                <Image  onClick={() => setInputText("")} className={ GetPreferences("UIPreferences")?.darkMode == true ? styles.darkClear : styles.clear } src="/images/x-white.webp" alt="x" width={20} height={20} />
+                            </div>
+
 
                             <button 
                                 className={styles.button} 

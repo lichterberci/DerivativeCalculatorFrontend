@@ -34,8 +34,8 @@
     display:flex;
     flex-direction: row;
     justify-content:center;
-    width:80%;
-    max-width:600px;
+    width:100%;
+    max-width:700px;
     margin: 0 auto;
 }
 
@@ -74,9 +74,11 @@
     border: none;
     border-bottom: 1px solid var(--text-color);
     background-color: transparent;
-    width: min(70%, 30rem);
+    width: 100%;
     color: var(--text-color);
+    font-size: 1rem;
 }
+
 
 .input::placeholder {
     color: var(--text-color);
@@ -130,10 +132,34 @@
     /* overflow-x: auto; */
 }
 
+.darkClear{
+    filter:invert();
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.clear{
+    cursor: pointer;
+    transition: 0.2s; 
+}
+
+.clear:hover, .darkClear:hover{
+    transform: scale(1.4);
+    transition: 0.2s;
+}
+
 @media screen and (max-width: 800px){
 
     .inputHolder{
-        width: 80vw;
+        width: 90vw;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input {
+        width: 100%;
     }
 
     .title{
@@ -141,7 +167,8 @@
     }
 
     .button{
-
+        margin-left: 0;
+        margin-top: 2rem;
         padding:8px 12px;
     }
 }
