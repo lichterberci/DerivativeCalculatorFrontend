@@ -85,6 +85,14 @@
     text-decoration: none;
 }
 
+.button:hover,
+.button:focus-within {
+
+    animation: 0.2s;
+    outline: 2px solid white;
+
+}
+
 .svg{
     transform: rotate(180deg);
     width: 100%;
@@ -150,6 +158,15 @@
     /* font-family: Inter; */
     padding: 8px 1rem;
     border-radius: 5px;
+}
+
+.ctaButton:focus-visible,
+.ctaButton:hover {
+    animation: 0.2s;
+    background-color: transparent;
+    outline: 2px solid #8E10EF;
+    color: #8E10EF;
+    font-weight: bold;
 }
 
 .arrow{

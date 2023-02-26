@@ -135,7 +135,7 @@ export default function ExercisePage (): JSX.Element {
                             Nehéz
                         </option>
                         <option key={"HARDCORE"} value={"HARDCORE"} className={styles.option}>
-                            6-os ZH
+                            Brutális
                         </option>
                     </select>
 
