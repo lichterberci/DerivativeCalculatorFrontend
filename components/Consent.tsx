@@ -25,9 +25,9 @@ export default function Consent() : JSX.Element | null {
             className={styles.consentWrapper}
         >   
             <p className={styles.text}>
-                Az oldal sütiket használ! (kizárólag elemzési célra)
+                Az oldal sütiket használ!
             </p>
-            <button className={styles.button} onClick={() => setConsent()} >Beleegyezem</button>
+            <button className={styles.button} onClick={() => setConsent()} >Elfogadom</button>
         </div>
     )
 }
