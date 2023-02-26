@@ -25,7 +25,7 @@ export default function About (): JSX.Element {
         {
             name: "Lipcsey Márton",
             role: ["frontend", "dizájn"],
-            url: "lipcseymárton.jpg",
+            url: "lipcsy.jpg",
             email: "lipcsey.magyar.marton@gmail.com",
             colors: 
                 {
