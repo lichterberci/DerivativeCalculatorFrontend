@@ -17,7 +17,7 @@ let fetchAbortSignal = fetchAbortController.signal;
 
 export default function CalculatorPage (): JSX.Element {
     
-    const inputRef = useRef("");
+    const [inputText, setInputText] = useState<string>("sin(x)^2");
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -35,7 +35,7 @@ export default function CalculatorPage (): JSX.Element {
 
         await setIsLoading(true);
         
-        const result: ISolutionData | IResponseError = await DifferentiateInput(inputRef.current, fetchAbortSignal);
+        const result: ISolutionData | IResponseError = await DifferentiateInput(inputText, fetchAbortSignal);
         
         setIsLoading(false);
         
@@ -76,45 +76,19 @@ export default function CalculatorPage (): JSX.Element {
         }
 
         setSolutionData(result as ISolutionData);
+
+        SetPreferences({
+            "CalculatorSolutionData": result
+        });
     }
 
     useEffect (() => {
 
-        SetPreferences({
-            "CalculatorSolutionData": solutionData
-        });
+        setSolutionData(GetPreferences("CalculatorSolutionData") ?? null);
 
-    }, [solutionData]);
+        setInputText(GetPreferences("CalculatorInput") ?? "");       
 
-    useEffect (() => {
-
-        const solutionData = GetPreferences("CalculatorSolutionData");
-
-        if (solutionData === undefined)
-            return;
-
-        if (solutionData === null)
-            return;
-
-        setSolutionData(solutionData);
     }, []);
-
-    const SaveInputValue = (input: string) => {
-
-        SetPreferences({
-            "CalculatorInput": input
-        });
-    }
-
-    const LoadDefaultInputValue = () => {
-
-        const input = GetPreferences("CalculatorInput");
-
-        if (input === undefined)
-            return "";
-
-        return input;
-    };
 
     return (<>
 
@@ -138,10 +112,13 @@ export default function CalculatorPage (): JSX.Element {
                                 placeholder="sin(x)^2" 
                                 autoComplete="false"
                                 aria-autocomplete="none"
-                                defaultValue={LoadDefaultInputValue()}
+                                value={inputText}
                                 onChange={e => {
-                                    inputRef.current = e.target.value;
-                                    SaveInputValue(e.target.value);
+                                    setInputText(e.target.value);
+
+                                    SetPreferences({
+                                        "CalculatorInput": e.target.value
+                                    });
                                 }}
                                 onKeyDown={e => {
                                     if (e.key == "Enter")
