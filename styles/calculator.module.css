@@ -77,6 +77,7 @@
     width: 100%;
     color: var(--text-color);
     font-size: 1rem;
+    padding-right: 1.2rem;
 }
 
 
@@ -132,16 +133,21 @@
     /* overflow-x: auto; */
 }
 
-.darkClear{
-    filter:invert();
+.darkClear {
+    position: absolute;
+    right: 0;
+    filter: invert();
     cursor: pointer;
     transition: 0.2s;
 }
 
 
-.clear{
+.clear {
+    position: absolute;
+    right: 0;
     cursor: pointer;
     transition: 0.2s; 
+    filter: invert() brightness(.1);
 }
 
 .clear:hover, .darkClear:hover{

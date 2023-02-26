@@ -21,6 +21,7 @@ export default function CalculatorPage (): JSX.Element {
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isInDarkMode, setIsInDarkMode] = useState<boolean>();
 
     const QueryDifferentiationAndUpdateUI = async () => {
 
@@ -88,6 +89,8 @@ export default function CalculatorPage (): JSX.Element {
 
         setInputText(GetPreferences("CalculatorInput") ?? "");       
 
+        setIsInDarkMode(GetPreferences("UIPreferences")?.darkMode ?? false);
+
     }, []);
 
     return (<>
@@ -107,7 +110,7 @@ export default function CalculatorPage (): JSX.Element {
                         </h1>
                         <span className={styles.inputHolder}>
                             
-                            <div style={{display:"flex", flexDirection:"row", gap:"1rem", alignItems:"center"}}>
+                            <div style={{display:"flex", flexDirection:"row", gap:"1rem", alignItems:"center", position: "relative"}}>
                                 <input 
                                     className={styles.input}
                                     type="text" 
@@ -128,7 +131,19 @@ export default function CalculatorPage (): JSX.Element {
                                     }}
                                     tabIndex={1}
                                 />
-                                <Image  onClick={() => setInputText("")} className={ GetPreferences("UIPreferences")?.darkMode == true ? styles.darkClear : styles.clear } src="/images/x-white.webp" alt="x" width={20} height={20} />
+                                <Image 
+                                    onClick={() => {
+                                        setInputText("");
+                                        SetPreferences({
+                                            "CalculatorInput": ""
+                                        });
+                                    }} 
+                                    className={ isInDarkMode ? styles.darkClear : styles.clear } 
+                                    src="/images/x-white.webp" 
+                                    alt="x" 
+                                    width={20} 
+                                    height={20} 
+                                />
                             </div>
 
 
