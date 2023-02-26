@@ -1,5 +1,5 @@
 import { MathJaxContext } from "better-react-mathjax";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image"
 
 import { ISolutionData } from "../classes/ResponseData";
@@ -10,13 +10,14 @@ import styles from "../styles/calculator.module.css"
 import MathJaxConfig from "../mathjax.config.json"
 import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
+import { GetPreferences, SetPreferences } from "../scripts/Preferences";
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
 
 export default function CalculatorPage (): JSX.Element {
     
-    const inputRef = useRef("");
+    const [inputText, setInputText] = useState<string>("sin(x)^2");
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -34,7 +35,7 @@ export default function CalculatorPage (): JSX.Element {
 
         await setIsLoading(true);
         
-        const result: ISolutionData | IResponseError = await DifferentiateInput(inputRef.current, fetchAbortSignal);
+        const result: ISolutionData | IResponseError = await DifferentiateInput(inputText, fetchAbortSignal);
         
         setIsLoading(false);
         
@@ -75,7 +76,19 @@ export default function CalculatorPage (): JSX.Element {
         }
 
         setSolutionData(result as ISolutionData);
+
+        SetPreferences({
+            "CalculatorSolutionData": result
+        });
     }
+
+    useEffect (() => {
+
+        setSolutionData(GetPreferences("CalculatorSolutionData") ?? null);
+
+        setInputText(GetPreferences("CalculatorInput") ?? "");       
+
+    }, []);
 
     return (<>
 
@@ -99,7 +112,14 @@ export default function CalculatorPage (): JSX.Element {
                                 placeholder="sin(x)^2" 
                                 autoComplete="false"
                                 aria-autocomplete="none"
-                                onChange={e => inputRef.current = e.target.value}
+                                value={inputText}
+                                onChange={e => {
+                                    setInputText(e.target.value);
+
+                                    SetPreferences({
+                                        "CalculatorInput": e.target.value
+                                    });
+                                }}
                                 onKeyDown={e => {
                                     if (e.key == "Enter")
                                         QueryDifferentiationAndUpdateUI()

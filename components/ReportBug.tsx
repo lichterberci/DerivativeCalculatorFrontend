@@ -4,6 +4,7 @@ import styles from "../styles/RepurtBug.module.css"
 import Modal from 'react-modal';
 import Image from 'next/image'
 import { GetPreferences } from "../scripts/Preferences";
+import { GoogleLogEvent } from "../scripts/GoogleAnalytics";
 
 export default function ReportBug (): JSX.Element {
 
@@ -55,8 +56,7 @@ export default function ReportBug (): JSX.Element {
         if (isDataValid == false)
             return;
 
-        setIsOpen(!isOpen);
-
+            
         const success = await WriteBugReport({
             title: title,
             description: description,
@@ -68,7 +68,14 @@ export default function ReportBug (): JSX.Element {
             setSendError("Nem tudtuk elküldeni a hibajelentést!");
             return;
         }
+        
+        GoogleLogEvent("bug_report", {
+            "title": title,
+            "description": description,
+            "priority": priority
+        });            
 
+        setIsOpen(false);
         setTitle("");
         setDescription("");
         setPriority(0);

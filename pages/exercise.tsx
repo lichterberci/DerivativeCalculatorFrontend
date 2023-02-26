@@ -12,8 +12,7 @@ import LoadingAnim from "../public/LoadingAnim.gif"
 import Head from "next/head";
 
 import styles from "../styles/exercise.module.css"
-import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
-import { FirebaseInit } from "../scripts/Firebase";
+import { GetPreferences, SetPreferences } from "../scripts/Preferences";
 
 let fetchAbortController = new AbortController();
 let fetchAbortSignal = fetchAbortController.signal;
@@ -24,8 +23,7 @@ export default function ExercisePage (): JSX.Element {
     const [solutionData, setSolutionData] = useState<ISolutionData | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-
-    const selectedLevel = useRef<DifficultyLevel>("MEDIUM");
+    const [selectedLevel, setSelectedLevel] = useState<DifficultyLevel>("MEDIUM");
 
     const GenerateExerciseAndUpdateUI = async () => {
 
@@ -40,7 +38,7 @@ export default function ExercisePage (): JSX.Element {
 
         await setIsLoading(true);
 
-        const level = selectedLevel.current;
+        const level = selectedLevel;
 
         const result: ISolutionData | IResponseError = await GenerateExercise(level, fetchAbortSignal);
 
@@ -85,7 +83,18 @@ export default function ExercisePage (): JSX.Element {
         await setShowSolution(false);
 
         setSolutionData(result as ISolutionData);
+
+        SetPreferences({
+            "ExerciseSolutionData": result
+        });
     };
+
+    useEffect(() => {
+
+        setSolutionData(GetPreferences("ExerciseSolutionData") as ISolutionData ?? null);
+        setSelectedLevel(GetPreferences("SelectedLevel") as DifficultyLevel ?? "MEDIUM");
+
+    }, []); 
 
     return (<>
 
@@ -105,9 +114,16 @@ export default function ExercisePage (): JSX.Element {
                 <div className={styles.inputHolder}>
                     <select
                         className={styles.select}
-                        defaultValue={"MEDIUM"}
-                        onChange={(e: ChangeEvent<HTMLSelectElement>) => selectedLevel.current = e.target.value as DifficultyLevel}
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+                            
+                            setSelectedLevel(e.target.value as DifficultyLevel);
+
+                            SetPreferences({
+                                "SelectedLevel": e.target.value
+                            });
+                        }}
                         tabIndex={1}
+                        value={selectedLevel}
                     >
                         <option key={"EASY"} value={"EASY"} className={styles.option}>
                             Könnyű
@@ -119,7 +135,7 @@ export default function ExercisePage (): JSX.Element {
                             Nehéz
                         </option>
                         <option key={"HARDCORE"} value={"HARDCORE"} className={styles.option}>
-                            Nehezebb
+                            6-os ZH
                         </option>
                     </select>
 

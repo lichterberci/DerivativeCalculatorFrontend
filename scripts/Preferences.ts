@@ -25,7 +25,7 @@ export function GetPreferences (key: string): any | undefined {
 
     const data = localStorage.getItem(key);
 
-    if (data === null) {
+    if (data == null) {
         console.warn(`Key '${key}' is not set in localStorage!`);
         return undefined;
     }
