@@ -94,12 +94,13 @@
     font-weight: 400;
     text-align: center;
     margin: 0 1rem;
+    transition: 0.3s;
 }
 
 .githubLink:hover,
 .githubLink:focus-visible {
-
-    animation: 0.3s;
+    
+    transition: 0.3s;
     font-weight: bold;
     filter: saturate(1.4);
 
