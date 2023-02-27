@@ -83,12 +83,13 @@
     color:#6513AA;
     background-color: white;
     text-decoration: none;
+    transition: 0.2s;
 }
 
 .button:hover,
 .button:focus-within {
 
-    animation: 0.2s;
+    transition: 0.2s;
     outline: 2px solid white;
 
 }
@@ -158,11 +159,12 @@
     /* font-family: Inter; */
     padding: 8px 1rem;
     border-radius: 5px;
+    transition: 0.2s;
 }
 
 .ctaButton:focus-visible,
 .ctaButton:hover {
-    animation: 0.2s;
+    transition: 0.2s;
     background-color: transparent;
     outline: 2px solid #8E10EF;
     color: #8E10EF;
