@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router';
-import Script from 'next/script'
 import { useEffect } from 'react';
 import HamburgerMenu from '../components/HamburgerMenu';
 import { GoogleLogPage } from '../scripts/GoogleAnalytics';

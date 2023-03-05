@@ -214,7 +214,6 @@ export default function ReportBug (): JSX.Element {
                 </div>
             </Modal>
             
-
         </div>
 
     );

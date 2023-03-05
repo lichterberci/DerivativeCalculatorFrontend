@@ -1,9 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/about.module.css"
 import TeamCard from "../components/TeamCard";
-import { useEffect } from 'react';
-import { FirebaseInit } from "../scripts/Firebase";
-import { GetPreferences, SetCSSThemeFromLocalStorage } from "../scripts/Preferences";
 import Link from "next/link";
 
 export default function About (): JSX.Element {

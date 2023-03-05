@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { ISimplificationPreferences, IUserInterfacePreferences } from "../classes/FrontendPreferenceTypes";
-import { FirebaseInit } from "../scripts/Firebase";
 import { GetPreferences, SetCSSThemeFromLocalStorage, SetPreferences } from "../scripts/Preferences";
 import styles from "../styles/settings.module.css"
 
