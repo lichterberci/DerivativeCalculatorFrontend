@@ -1,5 +1,5 @@
 import { MathJaxContext } from "better-react-mathjax";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image"
 
 import { ISolutionData } from "../classes/ResponseData";
