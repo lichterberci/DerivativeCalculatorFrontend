@@ -27,14 +27,18 @@ export let db: Database | null = null;
 
 export function FirebaseInit (): void {
     
-    if (firebaseApp === null)
-        firebaseApp = initializeApp(firebaseConfig);
-    if (firebaseAnalytics === null)
-        firebaseAnalytics = getAnalytics(firebaseApp);
-    if (db === null)
-        db = getDatabase(firebaseApp);
-
-    console.log("Firebase initialized!");
+    try {
+        if (firebaseApp === null)
+            firebaseApp = initializeApp(firebaseConfig);
+        if (firebaseAnalytics === null)
+            firebaseAnalytics = getAnalytics(firebaseApp);
+        if (db === null)
+            db = getDatabase(firebaseApp);
+    
+        console.log("Firebase initialized!");
+    } catch (e: any) {
+        console.error(`Firebase initialization failed: ${e.message}`);
+    }
 }
 
 export async function WriteBugReport (bugReport: IBugReport): Promise<boolean> {
