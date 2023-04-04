@@ -36,7 +36,7 @@ export function FirebaseInit (): void {
             db = getDatabase(firebaseApp);
     
         console.log("Firebase initialized!");
-    } catch (e) {
+    } catch (e: any) {
         console.error(`Firebase initialization failed: ${e.message}`);
     }
 }
