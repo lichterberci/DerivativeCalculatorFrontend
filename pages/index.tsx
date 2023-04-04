@@ -70,7 +70,6 @@ export default function Home() {
 						<p className={styles.ctaTitle}>Nem érzed biztosnak magad a deriválás terén? <br /> Közeleg egy ZH, és szeretnél felpörögni? <br /> Régen tanultad, és szeretnéd tudni, hogyan megy?</p>
 						<Link className={styles.ctaButton} href="/exercise" >Próbáld ki magad!</Link>
 					</div>
-
 				</div>
 			</section>	
 
